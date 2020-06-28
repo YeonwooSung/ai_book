@@ -1,5 +1,9 @@
 # Batch Size
 
+The batch size defines the number of samples that will be propagated through the network.
+
+For instance, let's say you have 1050 training samples and you want to set up a batch_size equal to 100. The algorithm takes the first 100 samples (from 1st to 100th) from the training dataset and trains the network. Next, it takes the second 100 samples (from 101st to 200th) and trains the network again. We can keep doing this procedure until we have propagated all samples through of the network. Problem might happen with the last set of samples. In our example, we've used 1050 which is not divisible by 100 without remainder. The simplest solution is just to get the final 50 samples and train the network.
+
 ## Table of Contents
 
 1. [Why not using whole training set to compute the gradient](#why-not-using-whole-training-set-to-compute-the-gradient)
