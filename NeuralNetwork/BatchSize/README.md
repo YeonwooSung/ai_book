@@ -24,7 +24,7 @@ The key point of this paper is that the networks that is trained with large-batc
 
 ![experiment_result_table](./img/result1.png)
 
-[N. S. Keskar [1]](https://arxiv.org/abs/1609.04836) mentioned that the lack of generalization ability is due to the fact that large-batch methods tend to converge to sharp minimizers of the training function.
+In the paper, [N. S. Keskar [1]](https://arxiv.org/abs/1609.04836) mentioned that the lack of generalization ability is due to the fact that large-batch methods tend to converge to sharp minimizers of the training function. To reproduce the figures in their paper, please visit [here](https://github.com/keskarnitish/large-batch-training).
 
 Furthermore, [P. Goyal et. al. [2]](https://arxiv.org/abs/1706.02677) stated that if the neural network uses the large batch for training, it would be possible that the network could not learn properly from the data due to the inaccurate update of the weights from previous epochs. This happens because, in general, the loss functions of the neural networks are non-convex functions, where the gradient value varies greatly depending on the parameter states if the loss function is a non-convex function.
 
