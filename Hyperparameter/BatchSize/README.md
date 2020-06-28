@@ -36,6 +36,16 @@ Furthermore, [P. Goyal et. al. [2]](https://arxiv.org/abs/1706.02677) stated tha
 
 However, [P. Goyal et. al. [2]](https://arxiv.org/abs/1706.02677) also stated that the performance of the network that is trained with extremely small batch size is also not good. In their paper, they mentioned that the optimal batch size for the BN layer of the ResNet-32 model is 8. While doing this experiment, they also found that found that the optimal batch size for BN is generally smaller than the SGD batch size, and it also tends to be independent of the SGD batch size.
 
+## Effect of using extremely small batch sizes
+
+Deep Learning is an empirical and highly iterative process, as you end up training model after model to see which one fits the data the best. If you use extremely small batch sizes it’s going to require a lot of computing power because you will end up losing the “vectorization” or the stacking up of the weights in the process. By using the vectorization, you could stack the weights together and avoid loops (i.e. for loops).
+
+In the [coursera course](https://www.coursera.org/learn/deep-neural-network/home/), Dr. Andrew Ng stated that by using the small batch, it will produce a noisier (Higher cost in one iteration, lower cost in another iteration) gradient descent (Stochastic Gradient Descent). Clearly, it is not necessarily a bad thing, as long as the cost function keeps going down.
+
+It is well known that the ideal batch size is to make it in the power of 2: 64, 128, 256, 512. This can improve training speed (According to Andrew’s video), because of how memory is laid out. Also, this will allow it to fit into GPU, and CPU memory (Overflowing them, a.k.a assigning more than the GPU/CPU can handle, could impact negatively training time).
+
+Furthremore, since you are using an extremely small batch size, you will always be suffering from sample bias. You are over-fitting the mini-batch distribution and not the actual distribution of the dataset. This means reduced accuracy.
+
 ## References
 
 [1] Nitish Shirish Keskar, Dheevatsa Mudigere, Jorge Nocedal, Mikhail Smelyanskiy, Ping Tak Peter Tang. [On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima](https://arxiv.org/abs/1609.04836)
