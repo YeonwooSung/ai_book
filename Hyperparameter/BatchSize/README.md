@@ -4,7 +4,8 @@
 
 1. [Why not using whole training set to compute the gradient](#why-not-using-whole-training-set-to-compute-the-gradient)
 2. [Large Batch vs Small Batch](#large-batch-vs-small-batch)
-3. [References](#references)
+3. [Effect of using extremely small batch sizes](#effect-of-using-extremely-small-batch-sizes)
+4. [References](#references)
 
 ## Why not using whole training set to compute the gradient
 
