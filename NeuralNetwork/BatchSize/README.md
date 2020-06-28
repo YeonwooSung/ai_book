@@ -1,5 +1,11 @@
 # Batch Size
 
+## Table of Contents
+
+1. [Why not using whole training set to compute the gradient](#why-not-using-whole-training-set-to-compute-the-gradient)
+2. [Large Batch vs Small Batch](#large-batch-vs-small-batch)
+3. [References](#references)
+
 ## Why not using whole training set to compute the gradient
 
 The size of the learning rate is limited mostly by factors like how curved the cost function is. You can think of gradient descent as making a linear approximation to the cost function, then moving downhill along that approximate cost. If the cost function is highly non-linear (highly curved) then the approximation will not be very good for very far, so only small step sizes are safe.
