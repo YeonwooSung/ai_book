@@ -30,12 +30,6 @@ Furthermore, [P. Goyal et. al. [2]](https://arxiv.org/abs/1706.02677) stated tha
 
 However, [P. Goyal et. al. [2]](https://arxiv.org/abs/1706.02677) also stated that the performance of the network that is trained with extremely small batch size is also not good. In their paper, they mentioned that the optimal batch size for the BN layer of the ResNet-32 model is 8. While doing this experiment, they also found that found that the optimal batch size for BN is generally smaller than the SGD batch size, and it also tends to be independent of the SGD batch size.
 
-## Experiment
-
-The optimal batch size is generally not big, however, too small (smaller than the optimal value) batch size is also bad.
-
-ToDo experiment??
-
 ## References
 
 [1] Nitish Shirish Keskar, Dheevatsa Mudigere, Jorge Nocedal, Mikhail Smelyanskiy, Ping Tak Peter Tang. [On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima](https://arxiv.org/abs/1609.04836)
