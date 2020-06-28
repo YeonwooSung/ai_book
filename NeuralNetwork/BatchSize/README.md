@@ -20,11 +20,21 @@ As you could see above, the large batch and small batch has strong point and wea
 
 According to the "[On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima](https://arxiv.org/abs/1609.04836)" paper, the stochastic gradient descent method and its variants are algorithms of choice for many Deep Learning tasks. These methods operate in a small-batch regime wherein a fraction of the training data, usually 32--512 data points, is sampled to compute an approximation to the gradient. It has been observed in practice that when using a larger batch there is a significant degradation in the quality of the model, as measured by its ability to generalize. There have been some attempts to investigate the cause for this generalization drop in the large-batch regime, however the precise answer for this phenomenon is, hitherto unknown. This paper presents ample numerical evidence that supports the view that large-batch methods tend to converge to sharp minimizers of the training and testing functions -- and that sharp minima lead to poorer generalization. In contrast, small-batch methods consistently converge to flat minimizers, and our experiments support a commonly held view that this is due to the inherent noise in the gradient estimation. We also discuss several empirical strategies that help large-batch methods eliminate the generalization gap and conclude with a set of future research ideas and open questions.
 
-[N. K. Keskar et. al. [1]](https://arxiv.org/abs/1609.04836) also stated that the lack of generalization ability is due to the fact that large-batch methods tend to converge to sharp minimizers of the training function.
+The key point of this paper is that the networks that is trained with large-batch do not have much generalization ability. In other words, the large-batch models show the lack of generalization ability. To prove this they did experiment by using VGG net. They trained various VGG nets, and for each VGG net, they trained one with large-batch method and trained other with the small-batch method. When they tested the networks' performance with validation set, there were no huge difference between validaltion accuracy values of the large-batch networks and the small-batch networks. However, when they tested the networks' performance with testing set, for every single case, the accuracy of the small-batch VGG net was much higher than the accuracy of the large-batch VGG net. Below is the table that shows their result.
+
+![experiment_result_table](./img/result1.png)
+
+[N. S. Keskar [1]](https://arxiv.org/abs/1609.04836) mentioned that the lack of generalization ability is due to the fact that large-batch methods tend to converge to sharp minimizers of the training function.
 
 Furthermore, [P. Goyal et. al. [2]](https://arxiv.org/abs/1706.02677) stated that if the neural network uses the large batch for training, it would be possible that the network could not learn properly from the data due to the inaccurate update of the weights from previous epochs. This happens because, in general, the loss functions of the neural networks are non-convex functions, where the gradient value varies greatly depending on the parameter states if the loss function is a non-convex function.
 
 However, [P. Goyal et. al. [2]](https://arxiv.org/abs/1706.02677) also stated that the performance of the network that is trained with extremely small batch size is also not good. In their paper, they mentioned that the optimal batch size for the BN layer of the ResNet-32 model is 8. While doing this experiment, they also found that found that the optimal batch size for BN is generally smaller than the SGD batch size, and it also tends to be independent of the SGD batch size.
+
+## Experiment
+
+The optimal batch size is generally not big, however, too small (smaller than the optimal value) batch size is also bad.
+
+ToDo experiment??
 
 ## References
 
