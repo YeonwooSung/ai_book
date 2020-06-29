@@ -20,6 +20,8 @@ Despite the popularity of these common beliefs, experiments suggest that they ar
 
 [K. You et. al. [1]](https://arxiv.org/abs/1908.01878) stated that "an initially large learning rate suppresses the network from memorizing noisy data while decaying the learning rate improves the learning of complex patterns".
 
+To train the neural network better, machine learning researchers devised various learning rate decaying algorithms and techniques. Below are the representative examples of the learning rate decaying methods.
+
 ### Learning Rate Schedule
 
 The Learning Rate Schedule helps to adjust the learning rate while the training process by changing the learning rate through a predefined schedule. There are three variants of learning rate schedules such as time-based decay, exponential decay, and step decay.
