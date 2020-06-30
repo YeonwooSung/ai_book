@@ -1,6 +1,14 @@
 # Generative Adversarial Networks
 
-A generative adversarial network (GAN) is a class of machine learning frameworks designed by Ian Goodfellow and his colleagues in 2014. Two neural networks contest with each other in a game (in the sense of game theory, often but not always in the form of a zero-sum game).
+A generative adversarial network (GAN) is a class of machine learning frameworks designed by [Ian Goodfellow and his colleagues in 2014 [1]](https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf). Two neural networks contest with each other in a game (in the sense of game theory, often but not always in the form of a zero-sum game).
+
+## Table of Contents
+
+1. [We do not care about overfitting for the GANs](#we-do-not-care-about-overfitting-for-the-gans)
+2. [Mode Collapse](#mode-collapse)
+3. [Failure to Converge](#failure-to-converge)
+4. [Evaluating GANs](#evaluating-gans)
+5. [References](#references)
 
 ## We do not care about overfitting for the GANs
 
@@ -39,3 +47,36 @@ However, GANs frequently fail to converge.
 1. Adding noise to discriminator inputs
 
 2. Penalizing discriminator weights
+
+## Evaluating GANs
+
+As mentioned above, the we do not use validation while training the GANs. For evaluating the GANs, researchers generally use either Fréchet Inception Distance (FID) or Inception score.
+
+### Inception Score
+
+The Inception Score is an objective metric for evaluating the quality of generated images, specifically synthetic images output by generative adversarial network models.
+
+The inception score was proposed by [Tim Salimans, et al.](https://arxiv.org/abs/1606.03498) in their 2016 paper titled “Improved Techniques for Training GANs”.
+
+In the paper, the authors use a crowd-sourcing platform (Amazon Mechanical Turk) to evaluate a large number of GAN generated images. They developed the inception score as an attempt to remove the subjective human evaluation of images. The authors discover that their scores correlated well with the subjective evaluation. [Tim Salimans et. al.](https://arxiv.org/abs/1606.03498) stated that "As an alternative to human annotators, we propose an automatic method to evaluate samples, which we find to correlate well with human evaluation".
+
+Basically, the inception score seeks to capture two properties of a collection of generated images:
+
+    - Image Quality. Do images look like a specific object?
+    - Image Diversity. Is a wide range of objects generated?
+
+The inception score has a lowest value of 1.0 and a highest value of the number of classes supported by the classification model; in this case, the Inception v3 model supports the 1,000 classes of the ILSVRC 2012 dataset, and as such, the highest inception score on this dataset is 1,000.
+
+### Fréchet Inception Distance
+
+FID is a measure of similarity between two datasets of images. It was shown to correlate well with human judgement of visual quality and is most often used to evaluate the quality of samples of Generative Adversarial Networks. FID is calculated by computing the Fréchet distance between two Gaussians fitted to feature representations of the Inception network.
+
+Further insights and an independent evaluation of the FID score can be found in [Are GANs Created Equal? A Large-Scale Study](https://arxiv.org/abs/1711.10337).
+
+## References
+
+[1] Ian J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, Yoshua Bengio. [Generative Adversarial Nets](https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf)
+
+[2] Tim Salimans, Ian Goodfellow, Wojciech Zaremba, Vicki Cheung, Alec Radford, Xi Chen. [Improved Techniques for Training GANs](https://arxiv.org/abs/1606.03498)
+
+[3] Mario Lucic, Karol Kurach, Marcin Michalski, Sylvain Gelly, Olivier Bousquet. [Are GANs Created Equal? A Large-Scale Study](https://arxiv.org/abs/1711.10337)
