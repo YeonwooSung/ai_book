@@ -53,3 +53,7 @@ From a practical usage standpoint, while tf-idf is a simple scoring scheme and t
 ## L2 Normalisation
 
 When calculating the tf-idf vector, the tf-idf method performs the feature scaling method to all columns in the document matrix. Clearly, this column scaling method is same thing with the L2 normalisation. Therefore, it is possible to say that the tf-idf does the L2 normalisation internally.
+
+## Implementation
+
+I implemented a simple TF-IDF functions, which use python dictionary type variables. You could find the python code in ["./src/tf_idf.py" file](./src/tf_idf).
