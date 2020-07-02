@@ -56,4 +56,4 @@ When calculating the tf-idf vector, the tf-idf method performs the feature scali
 
 ## Implementation
 
-I implemented a simple TF-IDF functions, which use python dictionary type variables. You could find the python code in ["./src/tf_idf.py" file](./src/tf_idf).
+I implemented a simple TF-IDF functions, which use python dictionary type variables. You could find the python code in ["./src/tf_idf.py" file](./src/tf_idf.py).
