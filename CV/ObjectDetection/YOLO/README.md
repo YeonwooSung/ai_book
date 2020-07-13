@@ -144,7 +144,7 @@ We can further simplify the backbone CNN used. Darknet requires 5.58 billion ope
 
 Here is the detail network description:
 
-![Detail network description of DarkNet](darknet_description.png)
+![Detail network description of DarkNet](./imgs/darknet_description.png)
 
 We replace the last convolution layer (the cross-out section) with three 3 × 3 convolutional layers each outputting 1024 output channels. Then we apply a final 1 × 1 convolutional layer to convert the 7 × 7 × 1024 output into 7 × 7 × 125. (5 boundary boxes each with 4 parameters for the box, 1 objectness score and 20 conditional class probabilities)
 
