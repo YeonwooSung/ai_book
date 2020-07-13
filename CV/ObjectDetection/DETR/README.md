@@ -30,6 +30,10 @@ Transformers’ self-attention mechanisms allow DETR to perform global reasoning
 
 We also demonstrate that this pipeline can be extended to related tasks such as [panoptic segmentation [3]](https://ai.facebook.com/blog/improving-scene-understanding-through-panoptic-segmentation/?ref=shareable), which aims at segmenting distinct foreground objects while simultaneously labeling all the pixels from the background. DETR treats foreground items, such as animals or people, and background items, such as sky or grass, in a truly unified manner.
 
+## How to use
+
+You could find the jupyter notebook about using DETR pretrained model for the object detection in [here](src/DETR_tutorial.ipynb). The codes in this notebook are referred to [this video](https://youtu.be/LfUsGv-ESbc). Credits to [Yannic Kilcher](https://www.youtube.com/channel/UCZHmQk67mSJgfCCTn7xBfew).
+
 ## Reference
 
 [1] Nicolas Carion, Francisco Massa, Gabriel Synnaeve, Nicolas Usunier,Alexander Kirillov, and Sergey Zagoruyko. [End-to-End Object Detection with Transformers](https://ai.facebook.com/research/publications/end-to-end-object-detection-with-transformers)
