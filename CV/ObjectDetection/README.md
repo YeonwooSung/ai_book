@@ -15,6 +15,7 @@ These techniques, while simple, play an absolutely critical role in object detec
 The main idea of the Selective Search is using the bottom-up grouping of image regions to generate a hierarchy of small to large regions.
 
 Basically, the Selective Search has 3 main steps:
+
     1) Generate initial sub-segmentation
     2) Recursively combine similar regions into larger ones
     3) Use the generated regions to produce candidate object locations.
@@ -24,8 +25,11 @@ By using this method, the object detection model could calculate the "Similarity
 ### What do we mean by similarity
 
 Two-pronged approach:
+
     1) Choose a color space that captures interesting things.
+
         a) Different color spaces have different invariants, and different responses to changes in color.
+
     2) Choose a similarity metric for that space that captures everything we’re interested: color, texture, size, and shape.
 
 ## References
