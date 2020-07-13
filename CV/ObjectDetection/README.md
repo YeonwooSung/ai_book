@@ -27,9 +27,7 @@ By using this method, the object detection model could calculate the "Similarity
 Two-pronged approach:
 
     1) Choose a color space that captures interesting things.
-
         a) Different color spaces have different invariants, and different responses to changes in color.
-
     2) Choose a similarity metric for that space that captures everything we’re interested: color, texture, size, and shape.
 
 ## References
