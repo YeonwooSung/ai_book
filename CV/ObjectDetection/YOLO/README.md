@@ -220,6 +220,14 @@ YOLOv3 performs very well in the fast detector category when speed is important.
 
 ![Performance comparison between YOLOv3 and RetinaNets](./imgs/YOLOv3_vs_RetinaNet.png)
 
+## YOLOv4
+
+TODO - ????
+
+## YOLOv5
+
+TODO - ????
+
 ## References
 
 [1] Joseph Redmon, Santosh Divvala, Ross Girshick, Ali Farhadi. [You Only Look Once: Unified, Real-Time Object Detection](https://arxiv.org/abs/1506.02640)
