@@ -2,6 +2,16 @@
 
 You only look once (YOLO) is an object detection system targeted for real-time processing.
 
+## Table of Contents
+
+1. [How YOLO works](#how-yolo-works)
+2. [YOLOv2](#yolov2)
+3. [YOLOv3](#yolov3)
+4. [Do we need to keep doing research about CV](#do-we-need-to-keep-doing-research-about-cv)
+5. [YOLOv4](#yolov4)
+6. [YOLOv5](#yolov5)
+7. [References](#references)
+
 ## How YOLO works
 
 YOLO divides the input image into an S×S grid. Each grid cell predicts only one object. For example, the yellow grid cell below tries to predict the “person” object whose center (the blue dot) falls inside the grid cell. Each grid cell predicts a fixed number of boundary boxes.
@@ -220,13 +230,141 @@ YOLOv3 performs very well in the fast detector category when speed is important.
 
 ![Performance comparison between YOLOv3 and RetinaNets](./imgs/YOLOv3_vs_RetinaNet.png)
 
+## Do we need to keep doing research about CV
+
+On 21st February 2020, Joseph Redmon, a creator of the popular object detection algorithm YOLO (You Only Look Once), tweeted that he had ceased his computer vision research to avoid enabling potential misuse of the tech — citing in particular “military applications and privacy concerns.”
+
+His comment emerged from a Twitter discussion on last Wednesday’s announcement of revised NeurIPS 2020 paper submission guidelines, which now ask authors to add a section on the broader impact of their work “including possible societal consequences — both positive and negative.”
+
+Redmon said he felt certain degree humiliation for ever believing “science was apolitical and research objectively moral and good no matter what the subject is.” He said he’d come to realize that facial recognition technologies have more downside than upside, and that they would not be developed if enough researchers thought about the broader impact of the enormous downside risks.
+
+Ethical discussions around AI are not new and will undoubtedly intensify as the technologies move from labs to the streets. This new attention from a high-profile conference like NeurIPS and Redmon’s recent reveal suggest that experts in particular fields will join the broader ML community and the general public in this ongoing process.
+
 ## YOLOv4
 
-TODO - ????
+In fact, no one in the research community expected a YOLOv4 to be released, since Joseph Redmon, the original author, recently announced that he would stop doing computer vision research because of the military and ethical issues.
+
+The main contributor of the YOLOv4 is Alexey Bochkovskiy, who is also know as "AlexeyAB", the one who created the Windows version of YOLOv2 and YOLOv3. Definitely, he helped a lot of engineers (me included) in implementing YOLO in object detection projects.
+
+The YOLOv4 model outperformed the YOLOv3 model, and showed interesting results.
+
+### DarkNet to CSPDarkNet
+
+The main changes between YOLOv3 and YOLOv4 is a new backbone network. The creators of the YOLOv4 appended more layers to increase the accuracy of the YOLOv4 model. Since they added more layers, the number of parameters also increased. This means that the training time is also increased. To overcome this issue, the creators of the YOLOv4 developed a new backbone network by using the CSPNet.
+
+#### Cross-Stage-Partial-connections (CSP)
+
+CSPNet separates the input feature maps of the DenseBlock into two parts. The first part x0' bypasses the DenseBlock and becomes part of the input to the next transition layer. The second part x0" will go thought the Dense block as below.
+
+![Architecture of DenseNet and CSPDenseNet](./imgs/dense_vs_csp_dense.png)
+
+This new design reduces the computational complexity by separating the input into two parts — with only one going through the Dense Block.
+
+#### CSPDarkNet
+
+YOLOv4 utilizes the CSP connections above with the Darknet-53 below as the backbone in feature extraction.
+
+The CSPDarknet53 model has higher accuracy in object detection compared with ResNet based designs even they have a better classification performance. But the classification accuracy of CSPDarknet53 can be improved with Mish and other techniques discussed later. The final choice for YOLOv4 is therefore CSPDarknet53.
+
+### Neck
+
+Object detectors composed of a backbone in feature extraction and a head (the rightmost block below) for object detection. And to detect objects at different scales, a hierarchy structure is produced with the head probing feature maps at different spatial resolutions.
+
+To enrich the information that feeds into the head, neighboring feature maps coming from the bottom-up stream and the top-down stream are added together element-wise or concatenated before feeding into the head. Therefore, the head’s input will contain spatial rich information from the bottom-up stream and the semantic rich information from the top-down stream. This part of the system is called a neck. Let’s get more details in its design.
+
+#### Feature Pyramid Networks (FPN)
+
+YOLOv3 adapts a similar approach as FPN in making object detection predictions at different scale levels.
+
+In making predictions for a particular scale, FPN upsamples (2×) the previous top-down stream and add it with the neighboring layer of the bottom-up stream. The result is passed into a 3×3 convolution filter to reduce upsampling artifacts and create the feature maps P4 below for the head.
+
+#### SPP (spatial pyramid pooling layer)
+
+SPP applies a slightly different strategy in detecting objects of different scales. It replaces the last pooling layer (after the last convolutional layer) with a spatial pyramid pooling layer. The feature maps are spatially divided into m×m bins with m, say, equals 1, 2, and 4 respectively. Then a maximum pool is applied to each bin for each channel. This forms a fixed-length representation that can be further analyzed with FC-layers.
+
+Many CNN-based models containing FC-layers and therefore, accepts input images of specific dimensions only. In contrast, SPP accepts images of different sizes. Nevertheless, there are technologies like fully convolution networks (FCN) that contain no FC-layers and accepts images of different dimensions. This type of design is particularly useful for image segmentation which spatial information is important. Therefore, for YOLO, convert 2-D feature maps into a fixed-size 1-D vector is not necessarily desirable.
+
+#### YOLO with SPP
+
+In YOLO, the SPP is modified to retain the output spatial dimension. A maximum pool is applied to a sliding kernel of size say, 1×1, 5×5, 9×9, 13×13. The spatial dimension is preserved. The features maps from different kernel sizes are then concatenated together as output.
+
+#### Path Aggregation Network (PAN)
+
+In early DL, the model design is relatively simple. Each layer takes input from the previous layer. The early layers extract localized texture and pattern information to build up the semantic information needed in the later layers. However, as we progress to the right, localized information that may be needed to fine-tune the prediction may be lost.
+
+In later DL development, the interconnectivity among layers is getting more complex. In DenseNet, it goes to the extreme. Each layer is connected with all previous layers. In FPN, information is combined from neighboring layers in the bottom-up and top-down stream. The flow of information among layers becomes another key decision in the model design.
+
+The diagram below is the Path Aggregation Network (PAN) for object detection. A bottom-up path (b) is augmented to make low-layer information easier to propagate to the top. In FPN, the localized spatial information traveled upward in the red arrow. While not clearly demonstrates in the diagram, the red path goes through about 100+ layers. PAN introduced a short-cut path (the green path) which only takes about 10 layers to go to the top N₅ layer. This short-circuit concepts make fine-grain localized information available to top layers.
+
+![Diagrams](./imgs/diagram1.png)
+
+However, instead of adding neighbor layers together, features maps are concatenated together in YOLOv4.
+
+![YOLOv4 concatenate feature maps](./imgs/diagram2.png)
+
+#### Spatial Attention Module (SAM)
+
+Attention has widely adopted in DL designs. In SAM, maximum pool and average pool are applied separately to input feature maps to create two sets of feature maps. The results are feed into a convolution layer followed by a sigmoid function to create spatial attention. This spatial attention mask is applied to the input feature to output the refined feature maps.
+
+![Spatial Attention Module](./imgs/SAM.png)
+
+In YOLOv4, a modified SAM is used without applying the maximum and average pooling.
+
+![Spatial Attention Module(SAM) and SAM in YOLOv4](./imgs/SAM.png)
+
+In YOLOv4, the FPN concept is gradually implemented/replaced with the modified SPP, PAN, and PAN.
+
+### Bag of Freebies (BoF) for backbone
+
+The BoF features for YOLOv4 backbone include:
+
+    - CutMix and Mosaic data augmentation
+    - DropBlock regularization
+    - Class label smoothing
+
+#### CutMix data augmentation
+
+Cutout data augmentation removes a region of an image (see the diagram below). This forces the model not to be overconfident on specific features in making classifications. However, a portion of the image is filled with useless information and this is a waste. In [CutMix [7]](https://arxiv.org/abs/1905.04899), a portion of an image is cut-and-paste over another image. The ground truth labels are readjusted proportionally to the area of the patches, e.g. 0.6 like a dog and 0.4 like a cat.
+
+Conceptually, CutMix has a broader view of what an object may compose of. The cutout area forces the model to learn object classification with different sets of features. This avoids overconfidence. Since that area is replaced with another image, the amount of information in the image and the training efficient will not be impacted significantly also.
+
+#### Mosaic data augmentation
+
+Mosaic is a data augmentation method that combines 4 training images into one for training (instead of 2 in CutMix). This enhances the detection of objects outside their normal context. In addition, each mini-batch contains a large variant of image (4×) and therefore, reduces the need for large mini-batch sizes in estimating the mean and the variance.
+
+#### DropBlock regularization
+
+In Fully-connected layers, we can apply dropoff to force the model to learn from a variety of features instead of being too confident on a few. However, this may not work for convolution layers. Neighboring positions are highly correlated. So even some of the pixels are dropped (the middle diagram below), the spatial information remains detectable. DropBlock regularization builds on a similar concept that works on convolution layers.
+
+![Drop Block Example](./imgs/dropblock1.png)
+
+Instead of dropping individual pixels, a block of block_size × block_size of pixels is dropped.
+
+![DropBlock Algorithm](./imgs/dropblock2.png)
+
+#### Class label smoothing
+
+Whenever you feel absolutely right, you may be plainly wrong. A 100% confidence in a prediction may reveal that the model is memorizing the data instead of learning. Label smoothing adjusts the target upper bound of the prediction to a lower value say 0.9. And it will use this value instead of 1.0 in calculating the loss. This concept mitigates overfitting.
 
 ## YOLOv5
 
-TODO - ????
+Apr 23rd, 2020 — YOLOv4 was released.
+
+And on June 10th 2020, YOLOv5 was also released.
+
+Glenn Jocher the founder and CEO of Ultralytics released its open source implementation of [YOLOv5 repo on GitHub [5]](https://github.com/ultralytics/yolov5), which supposedly said to be the state of the art among all known YOLO implementations according to the Ultralytics GitHub page.
+
+Based on their results is shows how well it outperformed EfficientDet which is Googles open source object detection framework, but what I find strange is that while they do not explicitly show their comparison with YOLOv4, YOLOv5 is said to be able to achieve fast detection at 140FPS running on a Tesla P100 in comparison to YOLOv4 which bench-marked at a measly 50 FPS stated on an article.
+
+Furthermore, they mentioned that “YOLOv5 is small at only 27 Megabytes”. What, that is ridiculously small compared to the 244 megabytes of YOLOv4 with darknet architecture…Whaaat.. That’s nearly 90 percent small than YOLOv4.
+
+### Is YOLOv5 actually here
+
+Redmon had created 3 iterations of YOLO in partnership with Ali Faradi.
+
+Now later this year YOLOv4 appeared in April 2020 but by none of the original authors but rather by Bochkovskiy et. al. The paper was published and peer reviewed, GitHub code uploaded to the AlexeyAB/darknet repo and everything seemed fine, the technological upgrade was great and well received in the computer vision community. So does this mean that if Bochkovskiy et. al. did it, then anyone else can take the YOLO framework, make some improvements and increment the version number? Well that’s exactly what happened.
+
+I strongly recommend you to read [this article](https://medium.com/swlh/yolov5-controversy-is-yolov5-real-20e048bebb08), and rethink about YOLOv5 model. Is it actually here in 2020?
 
 ## References
 
@@ -234,3 +372,6 @@ TODO - ????
 [2] Jonathan Hui. [Real-time Object Detection with YOLO, YOLOv2 and now YOLOv3](https://medium.com/@jonathan_hui/real-time-object-detection-with-yolo-yolov2-28b1b93e2088)
 [3] Joseph Redmon, Ali Farhadi. [YOLO9000: Better, Faster, Stronger](https://arxiv.org/abs/1612.08242)
 [4] Joseph Redmon, Ali Farhadi. [YOLOv3: An Incremental Improvement](https://arxiv.org/abs/1804.02767)
+[5] Alexey Bochkovskiy, Chien-Yao Wang, Hong-Yuan Mark Liao. [YOLOv4: Optimal Speed and Accuracy of Object Detection](https://arxiv.org/abs/2004.10934)
+[6] Ultralytics. [YOLOv5 GitHub Repository](https://github.com/ultralytics/yolov5)
+[7] Sangdoo Yun, Dongyoon Han, Seong Joon Oh, Sanghyuk Chun, Junsuk Choe, Youngjoon Yoo. [CutMix: Regularization Strategy to Train Strong Classifiers with Localizable Features](https://arxiv.org/abs/1905.04899)
