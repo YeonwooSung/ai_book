@@ -1,4 +1,4 @@
-# DETR
+# Detection Transformers (DETR)
 
 According to the [Facebook Research [1]](https://ai.facebook.com/research/publications/end-to-end-object-detection-with-transformers), DETR approaches object detection as a direct set prediction problem, unlike traditional computer vision techniques. It consists of a set-based global loss, which forces unique predictions via bipartite matching, and a Transformer encoder-decoder architecture. Given a fixed small set of learned object queries, DETR reasons about the relations of the objects and the global image context to directly output the final set of predictions in parallel. Due to this parallel nature, DETR is very fast and efficient.
 
