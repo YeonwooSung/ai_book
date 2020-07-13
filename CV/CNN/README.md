@@ -7,6 +7,8 @@ The CNN, which stands for Convolutional Neural Network, is a class of deep neura
 1. [Origin of CNN](#origin-of-cnn)
 2. [Using Conv Net for other categories](#using-conv-net-for-other-categories)
 3. [Understanding limits of CNN](#understanding-limits-of-cnn)
+4. [Implementation](#implementation)
+5. [References](#references)
 
 ## Origin of CNN
 
@@ -23,6 +25,10 @@ Some people might think that the CNN is only for the Computer Vision. However, t
 ## Understanding limits of CNN
 
 In AAAI 2020 conference, Geofferey Hinton mentioned that "CNNs are designed to cope with translations" [6](https://bdtechtalks.com/2020/03/02/geoffrey-hinton-convnets-cnn-limits/). This means that a well-trained convnet can identify an object regardless of where it appears in an image. But they’re not so good at dealing with other effects of changing viewpoints such as rotation and scaling. One approach to solving this problem, according to Hinton, is to use 4D or 6D maps to train the AI and later perform object detection. “But that just gets hopelessly expensive,” he added.
+
+## Implementation
+
+I implemented various CNN architectures with PyTorch. You could find all codes from [my GitHub repository](https://github.com/YeonwooSung/PyTorch_CNN_Architectures).
 
 ## References
 

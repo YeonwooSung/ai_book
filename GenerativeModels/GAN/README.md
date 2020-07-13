@@ -8,7 +8,8 @@ A generative adversarial network (GAN) is a class of machine learning frameworks
 2. [Mode Collapse](#mode-collapse)
 3. [Failure to Converge](#failure-to-converge)
 4. [Evaluating GANs](#evaluating-gans)
-5. [References](#references)
+5. [Implementation](#implementation)
+6. [References](#references)
 
 ## We do not care about overfitting for the GANs
 
@@ -72,6 +73,10 @@ The inception score has a lowest value of 1.0 and a highest value of the number 
 FID is a measure of similarity between two datasets of images. It was shown to correlate well with human judgement of visual quality and is most often used to evaluate the quality of samples of Generative Adversarial Networks. FID is calculated by computing the Fréchet distance between two Gaussians fitted to feature representations of the Inception network.
 
 Further insights and an independent evaluation of the FID score can be found in [Are GANs Created Equal? A Large-Scale Study](https://arxiv.org/abs/1711.10337).
+
+## Implementation
+
+I implemented various GANs with PyTorch. You could find my implementations in [my GitHub repository](https://github.com/YeonwooSung/GAN_Implementation).
 
 ## References
 
