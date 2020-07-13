@@ -4,7 +4,7 @@ According to the [Facebook Research [1]](https://ai.facebook.com/research/public
 
 ## Using Transformer model for
 
-[N. Carion et. al. [2]](https://ai.facebook.com/blog/end-to-end-object-detection-with-transformers) stated that transformers are a deep learning architecture that has gained popularity in recent years. They rely on a simple yet powerful mechanism called attention, which enables AI models to selectively focus on certain parts of their input and thus reason more effectively. Transformers have been widely applied on problems with sequential data, in particular in natural language processing (NLP) tasks such as language modeling and machine translation, and have also been extended to tasks as diverse as speech recognition, symbolic mathematics, and reinforcement learning. But, perhaps surprisingly, computer vision has not yet been swept up by the Transformer revolution.
+[N. Carion et. al. [2]](https://ai.facebook.com/blog/end-to-end-object-detection-with-transformers) stated that [transformers [3]](https://arxiv.org/abs/1706.03762) are a deep learning architecture that has gained popularity in recent years. They rely on a simple yet powerful mechanism called attention, which enables AI models to selectively focus on certain parts of their input and thus reason more effectively. Transformers have been widely applied on problems with sequential data, in particular in natural language processing (NLP) tasks such as language modeling and machine translation, and have also been extended to tasks as diverse as speech recognition, symbolic mathematics, and reinforcement learning. But, perhaps surprisingly, computer vision has not yet been swept up by the Transformer revolution.
 
 To help bridge this gap, Facebook Research released the Detection Transformers (DETR), which is an important new approach to object detection and panoptic segmentation. DETR completely changes the architecture compared with previous object detection systems. It is the first object detection framework to successfully integrate Transformers as a central building block in the detection pipeline.
 
@@ -28,7 +28,7 @@ The DETR framework consists of a set-based global loss, which forces unique pred
 
 Transformers’ self-attention mechanisms allow DETR to perform global reasoning on the image as well as on the specific objects that are predicted. For example, the model may look at other regions of the image to help make a decision about the object in a bounding box. It can also make predictions based on relationships or correlations between objects in an image. If DETR predicts that an image contains a person standing on the beach, for example, it knows that a partially occluded object is more likely to be a surfboard. In contrast, other detection models predict each object in isolation.
 
-We also demonstrate that this pipeline can be extended to related tasks such as [panoptic segmentation [3]](https://ai.facebook.com/blog/improving-scene-understanding-through-panoptic-segmentation/?ref=shareable), which aims at segmenting distinct foreground objects while simultaneously labeling all the pixels from the background. DETR treats foreground items, such as animals or people, and background items, such as sky or grass, in a truly unified manner.
+We also demonstrate that this pipeline can be extended to related tasks such as [panoptic segmentation [4]](https://ai.facebook.com/blog/improving-scene-understanding-through-panoptic-segmentation/?ref=shareable), which aims at segmenting distinct foreground objects while simultaneously labeling all the pixels from the background. DETR treats foreground items, such as animals or people, and background items, such as sky or grass, in a truly unified manner.
 
 ## How to use
 
@@ -40,4 +40,6 @@ You could find the jupyter notebook about using DETR pretrained model for the ob
 
 [2] Nicolas Carion, Sergey Zagoruyko, Francisco Massa. [Facebook Research Tech Blog - End-to-end object detection with Transformers](https://ai.facebook.com/blog/end-to-end-object-detection-with-transformers)
 
-[3] Facebook Research. [panoptic segmentation](https://ai.facebook.com/blog/improving-scene-understanding-through-panoptic-segmentation/?ref=shareable)
+[3] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin. [Attention is all you need](https://arxiv.org/abs/1706.03762)
+
+[4] Facebook Research. [panoptic segmentation](https://ai.facebook.com/blog/improving-scene-understanding-through-panoptic-segmentation/?ref=shareable)
