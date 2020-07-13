@@ -2,6 +2,10 @@
 
 Object detection is the task of detecting instances of objects of a certain class within an image.
 
+Basically, it is possible to say that:
+
+    "Object Detection = Multi-labeled Classification + Bounding Box Regression"
+
 ## Table of Contents
 
 1. [Sliding Window](#sliding-window)
