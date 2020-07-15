@@ -7,7 +7,11 @@
 
 ## MSE and Cross Entropy
 
-TODO
+TL;DR - You use MSE if you assume that your dataset is following the Gaussian distribution (continuous - Regression problem), and you use Cross Entropy if you assume that your dataset is Bernoulli distribution (discrete - Classification problem).
+
+First, Cross Entropy (or softmax loss, but Cross Entropy works better) is a better measure than MSE for classification, because the decision boundary in a classification task is large (in comparison with regression). MSE doesn’t punish misclassifications enough but is the right loss for regression, where the distance between two values that can be predicted is small.
+
+Second, from a probabilistic point of view, the Cross Entropy arises as the natural cost function to use if you have a sigmoid or softmax nonlinearity in the output layer of your network, and you want to maximize the likelihood of classifying the input data correctly. If instead you assume the target is continuous and normally distributed, and you maximize the likelihood of the output of the net under these assumptions, you get the MSE (combined with a linear output layer). For classification, Cross Entropy tends to be more suitable than MSE – the underlying assumptions just make more sense for this setting. That said, you can train a classifier with the MSE loss and it will probably work fine (although it does not play very nicely with the sigmoid/softmax nonlinearities, a linear output layer would be a better choice in that case). For regression problems, you would almost always use the MSE. Another alternative for classification is to use a margin loss, which basically amounts to putting a (linear) SVM on top of your network. ive for classification is to use a margin loss, which basically amounts to putting a (linear) SVM on top of your network.
 
 ## RMSE and MAE
 
