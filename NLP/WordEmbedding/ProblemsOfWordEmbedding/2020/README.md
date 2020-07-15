@@ -30,6 +30,10 @@ One of the biggest issue that we need to consider for the word embedding models 
 
 Besides the insight that word2vec with skip-gram negative sampling implicitly factorizes a PMI matrix [11](http://papers.nips.cc/paper/5477-neural-word-embedding-as-implicit-matrix-factorization), there has been comparatively little work on gaining a better theoretical understanding of the word embedding space and its properties, e.g. that summation captures analogy relations. [Arora et al. [12]](https://arxiv.org/abs/1502.03520) propose a new generative model for word embeddings, which treats corpus generation as a random walk of a discourse vector and establishes some theoretical motivations regarding the analogy behaviour.
 
+## Transfer learning
+
+Rather than adapting word embeddings to any particular task, recent work has sought to create contextualized word vectors by augmenting word embeddings with embeddings based on the hidden states of models pre-trained for certain tasks, such as machine translation or language modelling. Together with fine-tuning pre-trained models, this is one of the most promising research directions.
+
 ## References
 
 [1] Guillaume Lample, Miguel Ballesteros, Sandeep Subramanian, Kazuya Kawakami, Chris Dyer. [Neural Architectures for Named Entity Recognition](https://arxiv.org/abs/1603.01360)
