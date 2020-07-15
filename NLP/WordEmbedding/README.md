@@ -2,7 +2,7 @@
 
 ## word2vec
 
-The [word2vec [1]](https://arxiv.org/abs/1310.4546) is a group of related models that are used to produce word embeddings. These models are shallow, two-layer neural networks that are trained to reconstruct linguistic contexts of words. Word2vec takes as its input a large corpus of text and produces a vector space, typically of several hundred dimensions, with each unique word in the corpus being assigned a corresponding vector in the space. Word vectors are positioned in the vector space such that words that share common contexts in the corpus are located close to one another in the space.
+The [word2vec [7]](https://arxiv.org/abs/1310.4546) is a group of related models that are used to produce word embeddings. These models are shallow, two-layer neural networks that are trained to reconstruct linguistic contexts of words. Word2vec takes as its input a large corpus of text and produces a vector space, typically of several hundred dimensions, with each unique word in the corpus being assigned a corresponding vector in the space. Word vectors are positioned in the vector space such that words that share common contexts in the corpus are located close to one another in the space.
 
 The word2vec was created and published in 2013 by a team of researchers led by Tomas Mikolov at Google and patented. The algorithm has been subsequently analysed and explained by other researchers. Embedding vectors created using the Word2vec algorithm have some advantages compared to earlier algorithms such as latent semantic analysis.
 
@@ -28,4 +28,13 @@ One of the biggest issue that we need to consider for the word embedding models 
 
 ## References
 
-[1] Tomas Mikolov, Ilya Sutskever, Kai Chen, Greg Corrado, Jeffrey Dean. [Distributed Representations of Words and Phrases and their Compositionality](https://arxiv.org/abs/1310.4546)
+[1] Guillaume Lample, Miguel Ballesteros, Sandeep Subramanian, Kazuya Kawakami, Chris Dyer. [Neural Architectures for Named Entity Recognition](https://arxiv.org/abs/1603.01360)
+[2] Barbara Plank, Anders Søgaard, Yoav Goldberg. [Multilingual Part-of-Speech Tagging with Bidirectional Long Short-Term Memory Models and Auxiliary Loss](https://arxiv.org/abs/1604.05529)
+[3] Miguel Ballesteros, Chris Dyer, Noah A. Smith. [Improved Transition-based Parsing by Modeling Characters instead of Words with LSTMs](https://www.aclweb.org/anthology/D15-1041/)
+[4] Xiang Yu, Ngoc Thang Vu. [Character Composition Model with Convolutional Neural Networks for Dependency Parsing on Morphologically Rich Languages](https://arxiv.org/abs/1705.10814)
+[5] Yoon Kim, Yacine Jernite, David Sontag, Alexander M. Rush. [Character-Aware Neural Language Models](https://arxiv.org/abs/1508.06615)
+[6] Armand Joulin, Edouard Grave, Piotr Bojanowski, Tomas Mikolov. [Bag of Tricks for Efficient Text Classification](https://arxiv.org/abs/1607.01759)
+[7] Tomas Mikolov, Ilya Sutskever, Kai Chen, Greg Corrado, Jeffrey Dean. [Distributed Representations of Words and Phrases and their Compositionality](https://arxiv.org/abs/1310.4546)
+[8] Aurelie Herbelot, Marco Baroni. [High-risk learning: acquiring new word vectors from tiny data](https://arxiv.org/abs/1707.06556)
+[9] Yuval Pinter, Robert Guthrie, Jacob Eisenstein. [Mimicking Word Embeddings using Subword RNNs](https://arxiv.org/abs/1707.06961)
+[10] Yulia Tsvetkov, Manaal Faruqui, Wang Ling, Guillaume Lample, Chris Dyer. [Evaluation of Word Vector Representations by Subspace Alignment](https://www.aclweb.org/anthology/D15-1243.pdf)
