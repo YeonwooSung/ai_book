@@ -21,3 +21,5 @@ MAE measures the average magnitude of the errors in a set of predictions, withou
 If the absolute value is not taken (the signs of the errors are not removed), the average error becomes the Mean Bias Error (MBE) and is usually intended to measure average model bias. MBE can convey useful information, but should be interpreted cautiously because positive and negative errors will cancel out.
 
 ## Cross Entropy
+
+The cross entropy between two probability distributions {\displaystyle p}p and {\displaystyle q}q over the same underlying set of events measures the average number of bits needed to identify an event drawn from the set if a coding scheme used for the set is optimized for an estimated probability distribution {\displaystyle q}q, rather than the true distribution {\displaystyle p}p.
