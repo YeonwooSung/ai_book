@@ -22,4 +22,6 @@ If the absolute value is not taken (the signs of the errors are not removed), th
 
 ## Cross Entropy
 
-The cross entropy between two probability distributions {\displaystyle p}p and {\displaystyle q}q over the same underlying set of events measures the average number of bits needed to identify an event drawn from the set if a coding scheme used for the set is optimized for an estimated probability distribution {\displaystyle q}q, rather than the true distribution {\displaystyle p}p.
+The cross entropy between two probability distributions p and q over the same underlying set of events measures the average number of bits needed to identify an event drawn from the set if a coding scheme used for the set is optimized for an estimated probability distribution q, rather than the true distribution p.
+
+Basically, cross entropy is good for classification problem, because the cross entropy minimises the diferrence between 2 distributions (distribution of data and distribution of model), which makes the classifier to make a better decision.
