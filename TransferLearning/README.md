@@ -34,4 +34,5 @@ A typical example is that you use transfer learning when retraining the YOLO mod
 ## References
 
 [1] Jeffrey Pennington, Richard Socher, Christopher D. Manning. [GloVe: Global Vectors for Word Representation](https://www.aclweb.org/anthology/D14-1162.pdf)
+
 [2] Tomas Mikolov, Kai Chen, Greg Corrado, Jeffrey Dean. [Efficient Estimation of Word Representations in Vector Space](https://arxiv.org/abs/1301.3781)

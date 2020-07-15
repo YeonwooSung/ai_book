@@ -35,6 +35,9 @@ Kobayashi verified the language model approach with CNN and RNN on six dataset a
 ## References
 
 [1] Xiang Zhang, Junbo Zhao, Yann LeCun. [Character-level Convolutional Networks for Text Classification](https://arxiv.org/abs/1509.01626)
+
 [2] William Yang Wang, Diyi Yang. [That’s So Annoying!!!: A Lexical and Frame-Semantic Embedding Based Data Augmentation Approach to Automatic Categorization of Annoying Behaviors using #petpeeve Tweets](https://www.aclweb.org/anthology/D15-1306/)
+
 [3] Marzieh Fadaee, Arianna Bisazza, Christof Monz. [Data Augmentation for Low-Resource Neural Machine Translation](https://arxiv.org/abs/1705.00440)
+
 [4] Sosuke Kobayashi. [Contextual Augmentation: Data Augmentation by Words with Paradigmatic Relations](https://arxiv.org/abs/1805.06201)

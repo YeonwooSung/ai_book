@@ -59,4 +59,5 @@ Also, they mentioned that they can further reduce the number of parameter update
 ## References
 
 [1] Kaichao You, Mingsheng Long, Jianmin Wang, Michael I. Jordan. [How Does Learning Rate Decay Help Modern Neural Networks?](https://arxiv.org/abs/1908.01878)
+
 [2] Samuel L. Smith, Pieter-Jan Kindermans, Chris Ying & Quoc V. Le [Don't Decay the Learning Rate, Increase the Batch Size](https://arxiv.org/abs/1711.00489)
