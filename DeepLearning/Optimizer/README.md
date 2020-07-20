@@ -90,6 +90,12 @@ The update of weight is dependent on the derivate of loss for a batch of points.
 
 - May get stuck at local minima.
 
+#### Using GPU for accelerate training
+
+The main advantage of using mini-batch SGD is the performance gains achieved using the hardware that is optimized for matrix operations. One of the most well-known hardware that is optimized for the matrix operations would be the "GPU".
+
+As you know, by using GPU, we could accelerate the training of the neural network.
+
 ### Momentum
 
 _Momenum_
