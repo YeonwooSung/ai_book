@@ -110,7 +110,7 @@ The idea is to denoise derivative using exponential weighting average that is to
 
 SGD update equation:
 
-![Equation of SGD with momentum](./imgs/sgd_momentum_eqation.png)
+![Equation of SGD with momentum](./imgs/sgd_momentum_equation.png)
 
 Momentum at time ‘t’ is computed using all previous updates giving more weightage to recent updates compared to the previous update. This lead to speed up the convergence.
 
