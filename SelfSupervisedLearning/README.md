@@ -39,6 +39,7 @@ Clearly, it is possible to say that the Self-supervised learning brings us close
 
 1. [Jigsaw Puzzles](#jigsaw-puzzles)
 2. [Autoencoder-Base Approaches](#autoencoder-base-approaches)
+3. [Count](#count)
 
 ### Jigsaw Puzzles
 
@@ -66,7 +67,27 @@ There are many Autoencoder-Base self-supervised learning tasks.
 
 - [Split-Brain Autoencoder [7]](https://arxiv.org/abs/1611.09842)
 
+### Count
+
+On 2017, [M. Noroozi et. al. [8]](https://openaccess.thecvf.com/content_ICCV_2017/papers/Noroozi_Representation_Learning_by_ICCV_2017_paper.pdf) proposed the Count method for representation learning that uses an artificial supervision signal based on counting visual primitives. This supervision signal is obtained from an equivariance relation, which does not require any manual annotation.
+
+Unlike [Jigsaw Puzzles method](https://arxiv.org/abs/1603.09246) or Autoencoding methods, the Count method does not transform the input image, but it extracts the feature vectors from input images.
+
+A method that M. Noroozi et. al. proposed counts visual primitives. This method requires discriminative features, which can be useful to classification, and it can be formulated via detection. Make sure that the visual primitives are not equal to the labels, but it is more like vectors in the NLP embedding methods.
+
+Below is an example of Count method.
+
+![Count method](./imgs/count.png)
+
+As you could see above, the number of visual primitives in the whole image should match the sum of the number of visual primitives in each tile. The example above assumed that there are 4 different types of visual primitives, and count the number of visual primitives in each tiles. After finish counting the number of visual primitives in each tiles, it counts the number of visual primitives in the whole image. Then, it calculates the sum of the number of visual primitives in all tiles, and check if the number of visual primitives in the whole image matches the sum of the number of visual primitives in each tile.
+
+Basically, the previous self-supervised methods use information already present in the data as supervision signal so that supervised learning tools can be used. However, the Count method does not just use information already present in the data, but extracts the vectors from data.
+
 ## NLP
+
+### Transformer based models
+
+NLP models such as [BERT [8]](https://arxiv.org/abs/1810.04805) and [GPT [9]]((https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf)) uses the self-supervised method for pretraining. For example, the BERT method randomly chooses 15% of words in the corpus, converts those words to [MASK] token, and train the model to predict the word that is obscured by the [MASK] token.
 
 ## References
 
@@ -83,3 +104,7 @@ There are many Autoencoder-Base self-supervised learning tasks.
 [6] Deepak Pathak, Philipp Krahenbuhl, Jeff Donahue, Trevor Darrell, Alexei A. Efros. [Context Encoders: Feature Learning by Inpainting](https://arxiv.org/abs/1611.09842)
 
 [7] Richard Zhang, Phillip Isola, Alexei A. Efros. [Split-Brain Autoencoders: Unsupervised Learning by Cross-Channel Prediction](https://arxiv.org/abs/1611.09842)
+
+[8] Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova. [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
+
+[9] Alec Radford, Karthik Narasimhan, Tim Salimans, Ilya Sutskever. [Improving Language Understanding by Generative Pre-Training](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf)
