@@ -17,11 +17,11 @@ Cats continue to play an essential role in everything significant in machine lea
 
 Self-supervised learning is like unsupervised Learning because the system learns without using explicitly-provided labels. Thus, it might be possible to say that the Self-Supervised Learning is sort of Unsupervised Learning.
 
-## Self Supervised vs Semi Supervised learning
+## Self-Supervised vs Semi-Supervised learning
 
 Combination of labeled and unlabeled data is used to train semi-supervised learning algorithms, where smaller amounts of labeled data in conjunction with large amounts of unlabeled data can speed up learning tasks. Self-supervised learning is different as systems learn entirely without using explicitly-provided labels.
 
-## Why is Self Supervised Learning is relevant
+## Why is Self-Supervised Learning is relevant
 
 Self-supervised learning is essential for many reasons but mainly because of shortcomings in both approach and scalability of supervised learning.
 
@@ -35,7 +35,7 @@ Clearly, it is possible to say that the Self-supervised learning brings us close
 
 ## CV
 
-### Table of Contents
+### Table of Contents (CV)
 
 1. [Jigsaw Puzzles](#jigsaw-puzzles)
 2. [Autoencoder-Base Approaches](#autoencoder-base-approaches)
