@@ -105,6 +105,10 @@ The thing that makes the BYOL unique is that it achieved the state of the art wi
 
 ![BYOL](./imgs/byol_img.png)
 
+### Implementation Details
+
+![Implementation Details](./imgs/byol_implementation_details.png)
+
 ## References
 
 [1] Carl Doersch, Abhinav Gupta, Alexei A. Efros. [Unsupervised Visual Representation Learning by Context Prediction](https://arxiv.org/abs/1505.05192)
