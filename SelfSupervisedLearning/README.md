@@ -97,7 +97,7 @@ NLP models such as [BERT [8]](https://arxiv.org/abs/1810.04805) and [GPT [9]]((h
 
 ## Bootstrap Your Own Latent
 
-The Bootstrp Your Own Latent (BYOL) is an approach to self-supervised image representation learning. BYOL relies on two neural networks, referred to as online and target networks, that interact and learn from each other.
+The [Bootstrp Your Own Latent (BYOL) [10]](https://arxiv.org/abs/2006.07733) is an approach to self-supervised image representation learning. BYOL relies on two neural networks, referred to as online and target networks, that interact and learn from each other.
 
 The thing that makes the BYOL unique is that it achieved the state of the art without using the negative pair, where many previous self-supervised models such as contrastive learning models used negative pair to achieve the state of the art.
 
@@ -124,3 +124,5 @@ The thing that makes the BYOL unique is that it achieved the state of the art wi
 [8] Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova. [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
 
 [9] Alec Radford, Karthik Narasimhan, Tim Salimans, Ilya Sutskever. [Improving Language Understanding by Generative Pre-Training](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf)
+
+[10] Jean-Bastien Grill, Florian Strub, Florent Altché, Corentin Tallec, Pierre H. Richemond, Elena Buchatskaya, Carl Doersch, Bernardo Avila Pires, Zhaohan Daniel Guo, Mohammad Gheshlaghi Azar, Bilal Piot, Koray Kavukcuoglu, Rémi Munos, Michal Valko. [Bootstrap Your Own Latent: A New Approach to Self-Supervised Learning](https://arxiv.org/abs/2006.07733)
