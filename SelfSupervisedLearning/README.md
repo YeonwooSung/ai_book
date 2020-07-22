@@ -12,7 +12,8 @@ Cats continue to play an essential role in everything significant in machine lea
 4. [CV](#cv)
 5. [NLP](#nlp)
 6. [Contrastive Learning](#contrastive-learning)
-7. [References](#references)
+7. [Bootstrap Your Own Latent](#bootstrap-your-own-latent)
+8. [References](#references)
 
 ## Self Supervised and Unsupervised Learning
 
@@ -93,6 +94,16 @@ NLP models such as [BERT [8]](https://arxiv.org/abs/1810.04805) and [GPT [9]]((h
 ## Contrastive Learning
 
 [Contrastive Learning](./ContrastiveLearning)
+
+## Bootstrap Your Own Latent
+
+The Bootstrp Your Own Latent (BYOL) is an approach to self-supervised image representation learning. BYOL relies on two neural networks, referred to as online and target networks, that interact and learn from each other.
+
+The thing that makes the BYOL unique is that it achieved the state of the art without using the negative pair, where many previous self-supervised models such as contrastive learning models used negative pair to achieve the state of the art.
+
+![Architecture of BYOL](./imgs/byol.png)
+
+![BYOL](./imgs/byol_img.png)
 
 ## References
 
