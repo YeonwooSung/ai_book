@@ -11,9 +11,7 @@ Cats continue to play an essential role in everything significant in machine lea
 3. [Why is Self-Supervised Learning is relevant](#why-is-self-supervised-learning-is-relevant)
 4. [CV](#cv)
 5. [NLP](#nlp)
-6. [Contrastive Learning](#contrastive-learning)
-7. [Bootstrap Your Own Latent](#bootstrap-your-own-latent)
-8. [References](#references)
+6. [References](#references)
 
 ## Self Supervised and Unsupervised Learning
 
@@ -42,6 +40,8 @@ Clearly, it is possible to say that the Self-supervised learning brings us close
 1. [Jigsaw Puzzles](#jigsaw-puzzles)
 2. [Autoencoder-Base Approaches](#autoencoder-base-approaches)
 3. [Count](#count)
+4. [Contrastive Learning](#contrastive-learning)
+5. [Bootstrap Your Own Latent](#bootstrap-your-own-latent)
 
 ### Jigsaw Puzzles
 
@@ -85,17 +85,11 @@ As you could see above, the number of visual primitives in the whole image shoul
 
 Basically, the previous self-supervised methods use information already present in the data as supervision signal so that supervised learning tools can be used. However, the Count method does not just use information already present in the data, but extracts the vectors from data.
 
-## NLP
-
-### Transformer based models
-
-NLP models such as [BERT [8]](https://arxiv.org/abs/1810.04805) and [GPT [9]]((https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf)) uses the self-supervised method for pretraining. For example, the BERT method randomly chooses 15% of words in the corpus, converts those words to [MASK] token, and train the model to predict the word that is obscured by the [MASK] token.
-
-## Contrastive Learning
+### Contrastive Learning
 
 [Contrastive Learning](./ContrastiveLearning)
 
-## Bootstrap Your Own Latent
+### Bootstrap Your Own Latent
 
 The [Bootstrp Your Own Latent (BYOL) [10]](https://arxiv.org/abs/2006.07733) is an approach to self-supervised image representation learning. BYOL relies on two neural networks, referred to as online and target networks, that interact and learn from each other.
 
@@ -108,6 +102,12 @@ The thing that makes the BYOL unique is that it achieved the state of the art wi
 ### Implementation Details
 
 ![Implementation Details](./imgs/byol_implementation_details.png)
+
+## NLP
+
+### Transformer based models
+
+NLP models such as [BERT [8]](https://arxiv.org/abs/1810.04805) and [GPT [9]]((https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf)) uses the self-supervised method for pretraining. For example, the BERT method randomly chooses 15% of words in the corpus, converts those words to [MASK] token, and train the model to predict the word that is obscured by the [MASK] token.
 
 ## References
 
