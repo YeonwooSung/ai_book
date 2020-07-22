@@ -11,7 +11,8 @@ Cats continue to play an essential role in everything significant in machine lea
 3. [Why is Self-Supervised Learning is relevant](#why-is-self-supervised-learning-is-relevant)
 4. [CV](#cv)
 5. [NLP](#nlp)
-6. [References](#references)
+6. [Contrastive Learning](#contrastive-learning)
+7. [References](#references)
 
 ## Self Supervised and Unsupervised Learning
 
@@ -53,23 +54,23 @@ By using this method, the CFN could learn the knowledges about objects, which co
 
 As you know, searching all possible permutations take too much resources (9! = 362,880). Thus, what M. Noroozi et. al. did was choosing 100 representive permutations by removing all similar permutations, so that the model could perform the 100-class classification.
 
-Also, [C. Doersch et. al. [3]](https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Doersch_Unsupervised_Visual_Representation_ICCV_2015_paper.pdf) published similar paper, so please read the paper if you are interested in this topic.
+Also, [C. Doersch et. al. [1]](https://arxiv.org/abs/1505.05192) published similar paper, so please read the paper if you are interested in this topic.
 
 ### Autoencoder-Base Approaches
 
 There are many Autoencoder-Base self-supervised learning tasks.
 
-- [Denoising Autoencoder [4]](http://www.jmlr.org/papers/volume11/vincent10a/vincent10a.pdf)
+- [Denoising Autoencoder [3]](http://www.jmlr.org/papers/volume11/vincent10a/vincent10a.pdf)
 
-- [Image Colorization [5]](https://arxiv.org/abs/1603.08511)
+- [Image Colorization [4]](https://arxiv.org/abs/1603.08511)
 
-- [Context Autoencoder [6]](https://arxiv.org/abs/1604.07379)
+- [Context Autoencoder [5]](https://arxiv.org/abs/1604.07379)
 
-- [Split-Brain Autoencoder [7]](https://arxiv.org/abs/1611.09842)
+- [Split-Brain Autoencoder [6]](https://arxiv.org/abs/1611.09842)
 
 ### Count
 
-On 2017, [M. Noroozi et. al. [8]](https://openaccess.thecvf.com/content_ICCV_2017/papers/Noroozi_Representation_Learning_by_ICCV_2017_paper.pdf) proposed the Count method for representation learning that uses an artificial supervision signal based on counting visual primitives. This supervision signal is obtained from an equivariance relation, which does not require any manual annotation.
+On 2017, [M. Noroozi et. al. [7]](https://openaccess.thecvf.com/content_ICCV_2017/papers/Noroozi_Representation_Learning_by_ICCV_2017_paper.pdf) proposed the Count method for representation learning that uses an artificial supervision signal based on counting visual primitives. This supervision signal is obtained from an equivariance relation, which does not require any manual annotation.
 
 Unlike [Jigsaw Puzzles method](https://arxiv.org/abs/1603.09246) or Autoencoding methods, the Count method does not transform the input image, but it extracts the feature vectors from input images.
 
@@ -89,21 +90,25 @@ Basically, the previous self-supervised methods use information already present 
 
 NLP models such as [BERT [8]](https://arxiv.org/abs/1810.04805) and [GPT [9]]((https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf)) uses the self-supervised method for pretraining. For example, the BERT method randomly chooses 15% of words in the corpus, converts those words to [MASK] token, and train the model to predict the word that is obscured by the [MASK] token.
 
+## Contrastive Learning
+
+[Contrastive Learning](./ContrastiveLearning)
+
 ## References
 
 [1] Carl Doersch, Abhinav Gupta, Alexei A. Efros. [Unsupervised Visual Representation Learning by Context Prediction](https://arxiv.org/abs/1505.05192)
 
 [2] Mehdi Noroozi, Paolo Favaro. [Unsupervised Learning of Visual Representations by Solving Jigsaw Puzzles](https://arxiv.org/abs/1603.09246)
 
-[3] Carl Doersch, Abhinav Gupta, Alexei A. Efros. [Unsupervised Visual Representation Learning by Context Prediction](https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Doersch_Unsupervised_Visual_Representation_ICCV_2015_paper.pdf)
+[3] Pascal Vincent, Hugo Larochelle, Isabelle Lajoie, Yoshua Bengio, Pierre-Antoine Manzagol. [Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion](http://www.jmlr.org/papers/volume11/vincent10a/vincent10a.pdf)
 
-[4] Pascal Vincent, Hugo Larochelle, Isabelle Lajoie, Yoshua Bengio, Pierre-Antoine Manzagol. [Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion](http://www.jmlr.org/papers/volume11/vincent10a/vincent10a.pdf)
+[4] Richard Zhang, Phillip Isola, Alexei A. Efros. [Colorful Image Colorization](https://arxiv.org/abs/1603.08511)
 
-[5] Richard Zhang, Phillip Isola, Alexei A. Efros. [Colorful Image Colorization](https://arxiv.org/abs/1603.08511)
+[5] Deepak Pathak, Philipp Krahenbuhl, Jeff Donahue, Trevor Darrell, Alexei A. Efros. [Context Encoders: Feature Learning by Inpainting](https://arxiv.org/abs/1611.09842)
 
-[6] Deepak Pathak, Philipp Krahenbuhl, Jeff Donahue, Trevor Darrell, Alexei A. Efros. [Context Encoders: Feature Learning by Inpainting](https://arxiv.org/abs/1611.09842)
+[6] Richard Zhang, Phillip Isola, Alexei A. Efros. [Split-Brain Autoencoders: Unsupervised Learning by Cross-Channel Prediction](https://arxiv.org/abs/1611.09842)
 
-[7] Richard Zhang, Phillip Isola, Alexei A. Efros. [Split-Brain Autoencoders: Unsupervised Learning by Cross-Channel Prediction](https://arxiv.org/abs/1611.09842)
+[7] Mehdi Noroozi, Hamed Pirsiavash, Paolo Favaro. [Representation Learning by Learning to Count](https://openaccess.thecvf.com/content_ICCV_2017/papers/Noroozi_Representation_Learning_by_ICCV_2017_paper.pdf)
 
 [8] Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova. [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
 
