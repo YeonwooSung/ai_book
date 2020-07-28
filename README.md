@@ -42,4 +42,6 @@ The explanation model for instance x is the model g (e.g. linear regression mode
 
 ## References
 
-[1] Marco Tulio Ribeiro, Sameer Singh profile imageSameer Singh, Carlos Ernesto Guestrin profile imageCarlos Guestrin ["Why Should I Trust You?": Explaining the Predictions of Any Classifier](https://dl.acm.org/doi/abs/10.1145/2939672.2939778)
+[1] Matt Turek [Explainable Artificial Intelligence (XAI)](https://www.darpa.mil/program/explainable-artificial-intelligence)
+
+[2] Marco Tulio Ribeiro, Sameer Singh profile imageSameer Singh, Carlos Ernesto Guestrin profile imageCarlos Guestrin ["Why Should I Trust You?": Explaining the Predictions of Any Classifier](https://dl.acm.org/doi/abs/10.1145/2939672.2939778)
