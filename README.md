@@ -11,7 +11,14 @@ According to DARPA [[1]](https://www.darpa.mil/program/explainable-artificial-in
 
 New machine-learning systems will have the ability to explain their rationale, characterize their strengths and weaknesses, and convey an understanding of how they will behave in the future. The strategy for achieving that goal is to develop new or modified machine-learning techniques that will produce more explainable models. These models will be combined with state-of-the-art human-computer interface techniques capable of translating models into understandable and useful explanation dialogues for the end user (Figure 2). Our strategy is to pursue a variety of techniques in order to generate a portfolio of methods that will provide future developers with a range of design options covering the performance-versus-explainability trade space.
 
-### Local Surrogate (LIME)
+### Table of Contents (XAI)
+
+1. [LIME](#lime)
+2. [SHAP](#shap)
+
+### LIME
+
+_Local surrogagte_
 
 Local surrogate models are interpretable models that are used to explain individual predictions of black box machine learning models. [Local interpretable model-agnostic explanations (LIME) [2]](https://dl.acm.org/doi/abs/10.1145/2939672.2939778) is a paper in which the authors propose a concrete implementation of local surrogate models. Surrogate models are trained to approximate the predictions of the underlying black box model. Instead of training a global surrogate model, LIME focuses on training local surrogate models to explain individual predictions.
 
@@ -38,10 +45,22 @@ The explanation model for instance x is the model g (e.g. linear regression mode
 
 #### Example
 
-[example code - applying LIME to image data](./CV/src/Apply_LIME_to_Image_data.ipynb)
+[example code (1) - applying LIME to image data](./CV/src/Apply_LIME_to_Image_data.ipynb)
+
+[example code (2) - applying LIME to text data](./Applying_LIME_to_text_data.ipynb)
+
+### SHAP
+
+[SHAP (SHapley Additive exPlanations) [3]](http://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions) is a game theoretic approach to explain the output of any machine learning model. It connects optimal credit allocation with local explanations using the classic Shapley values from game theory and their related extensions.
+
+#### Example
+
+[example code](./src/SHAP.ipynb)
 
 ## References
 
 [1] Matt Turek [Explainable Artificial Intelligence (XAI)](https://www.darpa.mil/program/explainable-artificial-intelligence)
 
 [2] Marco Tulio Ribeiro, Sameer Singh profile imageSameer Singh, Carlos Ernesto Guestrin profile imageCarlos Guestrin ["Why Should I Trust You?": Explaining the Predictions of Any Classifier](https://dl.acm.org/doi/abs/10.1145/2939672.2939778)
+
+[3] Scott M. Lundberg, Su-In Lee [A Unified Approach to Interpreting Model Predictions](http://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)
