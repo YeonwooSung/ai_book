@@ -43,7 +43,7 @@ The explanation model for instance x is the model g (e.g. linear regression mode
 
 - Explain the prediction by interpreting the local model.
 
-#### Example
+#### Example (LIME)
 
 [example code (1) - applying LIME to image data](./CV/src/Apply_LIME_to_Image_data.ipynb)
 
@@ -53,7 +53,7 @@ The explanation model for instance x is the model g (e.g. linear regression mode
 
 [SHAP (SHapley Additive exPlanations) [3]](http://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions) is a game theoretic approach to explain the output of any machine learning model. It connects optimal credit allocation with local explanations using the classic Shapley values from game theory and their related extensions.
 
-#### Example
+#### Example (SHAP)
 
 [example code](./src/SHAP.ipynb)
 
