@@ -17,7 +17,8 @@ Self-Supervised Learning = Filling in the blanks
 3. [Why is Self-Supervised Learning is relevant](#why-is-self-supervised-learning-is-relevant)
 4. [CV](#cv)
 5. [NLP](#nlp)
-6. [References](#references)
+6. [Learning World Models for Autonomous AI Agents](#learning-world-models-for-autonomous-ai-agents)
+7. [References](#references)
 
 ## Self Supervised and Unsupervised Learning
 
