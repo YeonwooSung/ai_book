@@ -119,7 +119,7 @@ NLP models such as [BERT [8]](https://arxiv.org/abs/1810.04805) and [GPT [9]]((h
 
 ![Learning World Models for Autonomous AI Agents](./imgs/learning_world_model.png)
 
-In the lecture in NYU, Yann LeCun suggested to use the latent variables with energy-based model to learn the world models for autonomous AI agents, since the latent variables allow systems to make multiple predictions
+In the lecture in NYU [[11]](https://www.youtube.com/watch?v=tVwV14YkbYs&list=PLLHTzKZzVU9eaEyErdV26ikyolxOsz6mq&index=12), Yann LeCun suggested to use the latent variables with energy-based model to learn the world models for autonomous AI agents, since the latent variables allow systems to make multiple predictions
 
 ![use the latent variables with energy-based model](./imgs/latent_variable_with_ebm.png)
 
@@ -144,3 +144,5 @@ In the lecture in NYU, Yann LeCun suggested to use the latent variables with ene
 [9] Alec Radford, Karthik Narasimhan, Tim Salimans, Ilya Sutskever. [Improving Language Understanding by Generative Pre-Training](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf)
 
 [10] Jean-Bastien Grill, Florian Strub, Florent Altché, Corentin Tallec, Pierre H. Richemond, Elena Buchatskaya, Carl Doersch, Bernardo Avila Pires, Zhaohan Daniel Guo, Mohammad Gheshlaghi Azar, Bilal Piot, Koray Kavukcuoglu, Rémi Munos, Michal Valko. [Bootstrap Your Own Latent: A New Approach to Self-Supervised Learning](https://arxiv.org/abs/2006.07733)
+
+[11] Yann LeCun. [NYU DeepLearning lecture Week 7 – Lecture: Energy based models and self-supervised learning](https://www.youtube.com/watch?v=tVwV14YkbYs&list=PLLHTzKZzVU9eaEyErdV26ikyolxOsz6mq&index=12)
