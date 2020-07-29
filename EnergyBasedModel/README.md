@@ -78,15 +78,55 @@ In the example above, blue dots are data points. As you could see, the data are 
 
 ## Seven Strategies to Shape the Energy Function
 
-1. Build the machine so that the volume of low energy stuff is constant
+[한글 설명](http://jaejunyoo.blogspot.com/2018/02/energy-based-generative-adversarial-nets-1.html)
 
-    - i.e. PCA, K-mean, GMM, square ICA
+### 1. Build the machine so that the volume of low energy stuff is constant
+
+- PCA
+
+- K-mean
+
+- GMM
+
+- square ICA
 
 ![PCA, K-mean](./imgs/seven_strategy_1.png)
 
-2. Push down of the energy of data points, push up everywhere else
+### 2. Push down of the energy of data points, push up everywhere else
 
-    - Maximum likelihood (needs tractable partition function)
+- Maximum likelihood (needs tractable partition function)
+
+### 3. Push down of the energy of data points, push up on chosen locations
+
+- Contrastive divergence
+
+- Ratio matching
+
+- Noise contrastive estimation
+
+- Minimum probability flow
+
+### 4. Minimize the gradient and maximize the curvature around data points
+
+- score matching
+
+### 5. Train a dynamical system so that the dynamics go to the manifold
+
+- denoising auto-encoder
+
+### 6. Use a regularizer that limits the volume of space that has low energy
+
+- Sparse coding
+
+- Sparse auto-encoder
+
+- Predictive Sparse Decomposition
+
+![Sparse coding energy surface](./imgs/sparse_coding_energy_surface.png)
+
+### 7. If E(Y)=||Y−G(Y)||^2, make G(Y) as "constant" as possible
+
+- Contracting auto-encoder, saturating auto-encoder
 
 ## References
 
