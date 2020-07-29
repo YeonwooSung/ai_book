@@ -76,6 +76,18 @@ In the example above, blue dots are data points. As you could see, the data are 
 
 ![Marginalizing over the latent variable](./imgs/marginalizing_over_latent_variable.png)
 
+## Seven Strategies to Shape the Energy Function
+
+1. Build the machine so that the volume of low energy stuff is constant
+
+    - i.e. PCA, K-mean, GMM, square ICA
+
+![PCA, K-mean](./imgs/seven_strategy_1.png)
+
+2. Push down of the energy of data points, push up everywhere else
+
+    - Maximum likelihood (needs tractable partition function)
+
 ## References
 
 [1] Yann LeCun [Lecture: Energy based models and self-supervised learning](https://www.youtube.com/watch?v=tVwV14YkbYs&list=PLLHTzKZzVU9eaEyErdV26ikyolxOsz6mq&index=12)
