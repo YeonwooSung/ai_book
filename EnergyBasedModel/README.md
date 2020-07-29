@@ -60,6 +60,22 @@ In the example above, blue dots are data points. As you could see, the data are 
 
 ![Inference with latent variables](./imgs/inference_with_latent_var.png)
 
+## Energy-Based Models vs Probabilistic Models
+
+- Probabilistic model is a special case of energy-based model (Energies are like unnormalised negative log probabilities)
+
+- Why use EBM instead of probabilistic models?
+
+    1) EBM gives more flexibility in the choice of the sciring function
+
+    2) More flexibility in the choice of objective function for learning
+
+- From energy to probability: Gibbs Boltzmann distribution (Beta is a positive constant)
+
+![Gibbs Boltzmann distribution](./imgs/gibbs_boltzmann.png)
+
+![Marginalizing over the latent variable](./imgs/marginalizing_over_latent_variable.png)
+
 ## References
 
 [1] Yann LeCun [Lecture: Energy based models and self-supervised learning](https://www.youtube.com/watch?v=tVwV14YkbYs&list=PLLHTzKZzVU9eaEyErdV26ikyolxOsz6mq&index=12)
