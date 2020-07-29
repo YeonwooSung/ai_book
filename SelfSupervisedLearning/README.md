@@ -4,6 +4,12 @@ Self-supervised learning is autonomous supervised learning. It is a representati
 
 Cats continue to play an essential role in everything significant in machine learning. Self-supervised research [“Unsupervised Visual Representation Learning by Context Prediction” [1]](https://arxiv.org/abs/1505.05192) predicts the positional location of one rectangular section of an image relative to another by using spatial context as a supervisory signal for training a rich visual representation. For instance, the right ear of a cat would be in the top-right position relative to the eyes of a cat. This approach allows learning about cats, dogs, or buses without prior explicit semantic labeling.
 
+## Overview of Self-Supervised Learning
+
+Self-Supervised Learning = Filling in the blanks
+
+![Self-Supervised Learning = Filling in the blanks](./imgs/self_supervise_learning_overview.png)
+
 ## Table of Contents
 
 1. [Self-Supervised and Unsupervised Learning](#self-supervised-and-unsupervised-learning)
@@ -108,6 +114,14 @@ The thing that makes the BYOL unique is that it achieved the state of the art wi
 ### Transformer based models
 
 NLP models such as [BERT [8]](https://arxiv.org/abs/1810.04805) and [GPT [9]]((https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf)) uses the self-supervised method for pretraining. For example, the BERT method randomly chooses 15% of words in the corpus, converts those words to [MASK] token, and train the model to predict the word that is obscured by the [MASK] token.
+
+## Learning World Models for Autonomous AI Agents
+
+![Learning World Models for Autonomous AI Agents](./imgs/learning_world_model.png)
+
+In the lecture in NYU, Yann LeCun suggested to use the latent variables with energy-based model to learn the world models for autonomous AI agents, since the latent variables allow systems to make multiple predictions
+
+![use the latent variables with energy-based model](./imgs/latent_variable_with_ebm.png)
 
 ## References
 
