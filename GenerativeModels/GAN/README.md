@@ -1,6 +1,6 @@
 # Generative Adversarial Networks
 
-A generative adversarial network (GAN) is a class of machine learning frameworks designed by [Ian Goodfellow and his colleagues in 2014 [1]](https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf). Two neural networks contest with each other in a game (in the sense of game theory, often but not always in the form of a zero-sum game).
+A generative adversarial network (GAN) is a class of machine learning frameworks designed by [Ian Goodfellow and his colleagues in 2014 [1]](https://arxiv.org/abs/1406.2661). Two neural networks contest with each other in a game (in the sense of game theory, often but not always in the form of the zero-sum game).
 
 ## Table of Contents
 
@@ -31,11 +31,29 @@ The following approaches try to force the generator to broaden its scope by prev
 
 1. Wasserstein loss (Wasserstein GAN)
 
-    The Wasserstein loss alleviates mode collapse by letting you train the discriminator to optimality without worrying about vanishing gradients. If the discriminator doesn't get stuck in local minima, it learns to reject the outputs that the generator stabilizes on. So the generator has to try something new.
+    [The Wasserstein loss](https://arxiv.org/abs/1701.07875) alleviates mode collapse by letting you train the discriminator to optimality without worrying about vanishing gradients. If the discriminator doesn't get stuck in local minima, it learns to reject the outputs that the generator stabilizes on. So the generator has to try something new.
 
 2. Unrolled GANs
 
     Unrolled GANs use a generator loss function that incorporates not only the current discriminator's classifications, but also the outputs of future discriminator versions. So the generator can't over-optimize for a single discriminator.
+
+3. DRAGAN
+
+    [The DRAGAN paper](https://arxiv.org/abs/1705.07215) hypothesizes that the mode collapse is the result of the game converging to bad local equilibria. It also hypothesizes that the sudden drop in inception score is related to the gradient’s norm. Hence, to improve image quality, DRAGAN recommends adding gradient penalty in the cost function.
+
+## Vanishing Gradients
+
+[Research](https://arxiv.org/abs/1701.04862) has suggested that if your discriminator is too good, then generator training can fail due to vanishing gradients. In effect, an optimal discriminator doesn't provide enough information for the generator to make progress.
+
+### Attempts to Remedy Vanishing Gradients
+
+1. Wasserstein loss
+
+    [The Wasserstein loss](https://arxiv.org/abs/1701.07875) is designed to prevent vanishing gradients even when you train the discriminator to optimality.
+
+2. Modified minimax loss
+
+    [The original GAN paper](https://arxiv.org/abs/1406.2661) proposed a modification to minimax loss to deal with vanishing gradients.
 
 ## Failure to Converge
 
@@ -80,8 +98,14 @@ I implemented various GANs with PyTorch. You could find my implementations in [m
 
 ## References
 
-[1] Ian J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, Yoshua Bengio. [Generative Adversarial Nets](https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf)
+[1] Ian J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, Yoshua Bengio. [Generative Adversarial Nets](https://arxiv.org/abs/1406.2661)
 
 [2] Tim Salimans, Ian Goodfellow, Wojciech Zaremba, Vicki Cheung, Alec Radford, Xi Chen. [Improved Techniques for Training GANs](https://arxiv.org/abs/1606.03498)
 
 [3] Mario Lucic, Karol Kurach, Marcin Michalski, Sylvain Gelly, Olivier Bousquet. [Are GANs Created Equal? A Large-Scale Study](https://arxiv.org/abs/1711.10337)
+
+[4] Martin Arjovsky, Soumith Chintala, Léon Bottou. [Wasserstein GAN](https://arxiv.org/abs/1701.07875)
+
+[5] Martin Arjovsky, Léon Bottou. [Towards Principled Methods for Training Generative Adversarial Networks](https://arxiv.org/abs/1701.04862)
+
+[6] Naveen Kodali, Jacob Abernethy, James Hays, Zsolt Kira. [On Convergence and Stability of GANs](https://arxiv.org/abs/1705.07215)
