@@ -19,3 +19,7 @@ Surprisingly, the Axial-DeepLab worked well on not only for image classification
 On 2019, FAIR (Facebook AI Research) proposed a novel model called DETR, which uses the Transfomers model for the object detection.
 
 Please see more information about the DETR in [here](../ObjectDetection/DETR)
+
+## References
+
+[1] Huiyu Wang, Yukun Zhu, Bradley Green, Hartwig Adam, Alan Yuille, Liang-Chieh Chen. [Axial-DeepLab: Stand-Alone Axial-Attention for Panoptic Segmentation](https://arxiv.org/abs/2003.07853)
