@@ -22,24 +22,6 @@ As I mentioned above, the Layer Normalization was proposed to overcome the probl
 
 For CV tasks, Layer Normalization does not work well in many cases. Especially, the Layer Normalization does not work well with the CNN. Thus, researchers prefer to use Batch Normalization rather than Layer Normalization for the CNN.
 
-## Pre-LN vs Post-LN
-
-### Dependency and Amplification Effect
-
-According to [Liu et al. [2]](https://arxiv.org/abs/2004.08249), Pre-LN is more robust than Post-LN, whereas Post-LN typically leads to a better performance.
-
-![6 Layer dependencies](./imgs/6_layer_dependency.png)
-
-With further exploration, Liu et al. find that for a N-layer residual network, after updating its parameters W to W*, its outputs change is proportion to the dependency on residual branches.
-
-![Output Change](./imgs/output_change.png)
-
-Intuitively, since a larger output change indicates a more unsmooth loss surface, the large dependency complicates training. In the paper, Liu et al. said that "each layer in a multi-layer Transformer model, heavy dependency on its residual branch makes training unstable since it amplifies small parameter perturbations (e.g., parameter updates) and result in significant disturbances in the model output, yet a light dependency limits the potential of model training and can lead to an inferior trained model".
-
-Inspired by these analysis, Liu et al. proposed the Admin (adaptive model initialization), which starts the training from the area with a smoother surface.
-
 ## References
 
 [1] Jimmy Lei Ba, Jamie Ryan Kiros, Geoffrey E. Hinton. [Layer Normalisation](https://arxiv.org/abs/1607.06450)
-
-[2] Liyuan Liu, Xiaodong Liu, Jianfeng Gao, Weizhu Chen, Jiawei Han. [Understanding the Difficulty of Training Transformers](https://arxiv.org/abs/2004.08249)
