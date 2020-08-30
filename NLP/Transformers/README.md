@@ -18,7 +18,7 @@ In practice, we compute the attention function on a set of queries simultaneousl
 
 The two most commonly used attention functions are additive attention, and dot-product attention. Additive attention computes the compatibility function using a feed-forward network with a single hidden layer. While the two are similar in theoretical complexity, dot-product attention is much faster and more space-efficient in practice, since it can be implemented using highly optimized matrix multiplication code.
 
-While for small values of d_k the two mechanisms perform similarly, additive attention outperforms dot product attention without scaling for larger values of d_k [4](https://arxiv.org/abs/1703.03906).
+While for small values of d_k the two mechanisms perform similarly, additive attention outperforms dot product attention without scaling for larger values of d_k [[4]](https://arxiv.org/abs/1703.03906).
 
 ### Multi-head Attention
 
