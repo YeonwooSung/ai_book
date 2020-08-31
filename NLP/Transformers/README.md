@@ -6,7 +6,7 @@ Basically, from 2018, the Transformer based models achieved SOTA for at least on
 
 ## Positional Encoding
 
-Unlike traditional language models, the encoder-decoder model encodes the input to the vector, and decode it. Thus, in order for the model to make use of the order of the sequence, we must inject some information about the relative or absolute position of the tokens in the sequence. To this end, we add “positional encodings” to the input embeddings at the bottoms of the encoder and decoder stacks. The positional encodings have the same dimension d_model as the embeddings, so that the two can be summed. There are many choices of positional encodings, learned and fixed [[5]](https://arxiv.org/abs/1705.03122).
+Unlike traditional language models, the Transformer model has neither recurrence nor convolution. Thus, in order for the model to make use of the order of the sequence, we must inject some information about the relative or absolute position of the tokens in the sequence. To this end, we add “positional encodings” to the input embeddings at the bottoms of the encoder and decoder stacks. The positional encodings have the same dimension d_model as the embeddings, so that the two can be summed. There are many choices of positional encodings, learned and fixed [[5]](https://arxiv.org/abs/1705.03122).
 
 To implement this, Vaswani et al. used the sine and cosine functions of different frequencies PE_(pos, 2i) = sin(pos / 10000^(2i / d_model)) and PE_(pos, 2i + 1) = cos(pos / 10000^(2i / d_model)) where pos is the position and i is the dimension. That is, each dimension of the positional encoding corresponds to a sinusoid. The wavelengths form a geometric progression from 2π to 10000 ⋅ 2π. This function is chosen because hypothesized it would allow the model to easily learn to attend by relative positions, since for any fixed offset k, PE_(pos + k) can be represented as a linear function of PE_pos.
 
@@ -31,6 +31,8 @@ While for small values of d_k the two mechanisms perform similarly, additive att
 ![Multi-head Attention](./imgs/multi_head_attention.png)
 
 Multi-head attention allows the model to jointly attend to information from different representation subspaces at different positions. With a single attention head, averaging inhibits this.
+
+By using this Multi-head Attention method, the Transformer model could perform attention mechanism for each sequence in parallel. In othre words, we could use GPU to perform attention mechanism for each sequence concurrently.
 
 ### Applications of Attention in Transformer
 
