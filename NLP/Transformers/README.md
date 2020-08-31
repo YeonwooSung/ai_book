@@ -4,6 +4,12 @@ Transformers are a type of neural network architecture that have been gaining po
 
 Basically, from 2018, the Transformer based models achieved SOTA for at least one NLP tasks (i.e. BERT achieved the SOTA for 11 NLP tasks). In 2020, the Transformer architecture is also used for CV tasks (i.e. DETR for object detection).
 
+## Positional Encoding
+
+Unlike traditional language models, the encoder-decoder model encodes the input to the vector, and decode it. Thus, in order for the model to make use of the order of the sequence, we must inject some information about the relative or absolute position of the tokens in the sequence. To this end, we add “positional encodings” to the input embeddings at the bottoms of the encoder and decoder stacks. The positional encodings have the same dimension d_model as the embeddings, so that the two can be summed. There are many choices of positional encodings, learned and fixed [[5]](https://arxiv.org/abs/1705.03122).
+
+To implement this, Vaswani et al. used the sine and cosine functions of different frequencies PE_(pos, 2i) = sin(pos / 10000^(2i / d_model)) and PE_(pos, 2i + 1) = cos(pos / 10000^(2i / d_model)) where pos is the position and i is the dimension. That is, each dimension of the positional encoding corresponds to a sinusoid. The wavelengths form a geometric progression from 2π to 10000 ⋅ 2π. This function is chosen because hypothesized it would allow the model to easily learn to attend by relative positions, since for any fixed offset k, PE_(pos + k) can be represented as a linear function of PE_pos.
+
 ## Attention mechanism in Transformers
 
 An attention function can be described as mapping a query and a set of key-value pairs to an output, where the query, keys, values, and output are all vectors. The output is computed as a weighted sum of the values, where the weight assigned to each value is computed by a compatibility function of the query with the corresponding key.
@@ -71,3 +77,7 @@ Inspired by these analysis, Liu et al. proposed the Admin (adaptive model initia
 [2] Liyuan Liu, Xiaodong Liu, Jianfeng Gao, Weizhu Chen, Jiawei Han. [Understanding the Difficulty of Training Transformers](https://arxiv.org/abs/2004.08249)
 
 [3] Yonghui Wu, Mike Schuster, Zhifeng Chen, Quoc V. Le, Mohammad Norouzi, Wolfgang Macherey, Maxim Krikun, Yuan Cao, Qin Gao, Klaus Macherey, Jeff Klingner, Apurva Shah, Melvin Johnson, Xiaobing Liu, Łukasz Kaiser, Stephan Gouws, Yoshikiyo Kato, Taku Kudo, Hideto Kazawa, Keith Stevens, George Kurian, Nishant Patil, Wei Wang, Cliff Young, Jason Smith, Jason Riesa, Alex Rudnick, Oriol Vinyals, Greg Corrado, Macduff Hughes, Jeffrey Dean. [Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation](https://arxiv.org/abs/1609.08144)
+
+[4] Denny Britz, Anna Goldie, Minh-Thang Luong, Quoc Le. [Massive Exploration of Neural Machine Translation Architectures](https://arxiv.org/abs/1703.03906)
+
+[5] Jonas Gehring, Michael Auli, David Grangier, Denis Yarats, Yann N. Dauphin. [Convolutional Sequence to Sequence Learning](https://arxiv.org/abs/1705.03122)
