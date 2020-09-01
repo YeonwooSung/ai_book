@@ -58,7 +58,7 @@ When implement this layer, we need to prevent leftward information flow in the d
 
 ![Architecture of Pre-LN and Post-LN](./imgs/architecture_of_pre_ln_and_post_ln.png)
 
-![Differences between Pre-LN and Post-LN](differences_between_pre_ln_and_post_ln.png)
+![Differences between Pre-LN and Post-LN](./imgs/differences_between_pre_ln_and_post_ln.png)
 
 According to [Liu et al. [2]](https://arxiv.org/abs/2004.08249), Pre-LN is more robust than Post-LN, whereas Post-LN typically leads to a better performance.
 
