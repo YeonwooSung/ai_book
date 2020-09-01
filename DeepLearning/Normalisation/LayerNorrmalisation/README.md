@@ -22,6 +22,12 @@ As I mentioned above, the Layer Normalization was proposed to overcome the probl
 
 For CV tasks, Layer Normalization does not work well in many cases. Especially, the Layer Normalization does not work well with the CNN. Thus, researchers prefer to use Batch Normalization rather than Layer Normalization for the CNN.
 
+## Advantages
+
+- Layer normalization can be easily applied to recurrent neural networks by computing the normalization statistics separately at each time step.
+
+- This approach is effective at stabilising the hidden state dynamics in recurrent networks.
+
 ## References
 
 [1] Jimmy Lei Ba, Jamie Ryan Kiros, Geoffrey E. Hinton. [Layer Normalisation](https://arxiv.org/abs/1607.06450)
