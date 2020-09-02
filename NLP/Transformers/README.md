@@ -4,6 +4,10 @@ Transformers are a type of neural network architecture that have been gaining po
 
 Basically, from 2018, the Transformer based models achieved SOTA for at least one NLP tasks (i.e. BERT achieved the SOTA for 11 NLP tasks). In 2020, the Transformer architecture is also used for CV tasks (i.e. DETR for object detection).
 
+## Semi-Supervised Learning
+
+Transformers typically undergo semi-supervised learning involving unsupervised pretraining followed by supervised fine-tuning.
+
 ## Positional Encoding
 
 Unlike traditional language models, the Transformer model has neither recurrence nor convolution. Thus, in order for the model to make use of the order of the sequence, we must inject some information about the relative or absolute position of the tokens in the sequence. To this end, we add “positional encodings” to the input embeddings at the bottoms of the encoder and decoder stacks. The positional encodings have the same dimension d_model as the embeddings, so that the two can be summed. There are many choices of positional encodings, learned and fixed [[5]](https://arxiv.org/abs/1705.03122).
