@@ -4,12 +4,17 @@ A generative adversarial network (GAN) is a class of machine learning frameworks
 
 ## Table of Contents
 
-1. [We do not care about overfitting for the GANs](#we-do-not-care-about-overfitting-for-the-gans)
-2. [Mode Collapse](#mode-collapse)
-3. [Failure to Converge](#failure-to-converge)
-4. [Evaluating GANs](#evaluating-gans)
-5. [Implementation](#implementation)
-6. [References](#references)
+1. [Unsupervised Learning](#unsupervised-learning)
+2. [We do not care about overfitting for the GANs](#we-do-not-care-about-overfitting-for-the-gans)
+3. [Mode Collapse](#mode-collapse)
+4. [Failure to Converge](#failure-to-converge)
+5. [Evaluating GANs](#evaluating-gans)
+6. [Implementation](#implementation)
+7. [References](#references)
+
+## Unsupervised Learning
+
+GANs are unsupervised learning algorithms that use a supervised loss as part of the training. The later appears to be where you are getting hung-up.
 
 ## We do not care about overfitting for the GANs
 
