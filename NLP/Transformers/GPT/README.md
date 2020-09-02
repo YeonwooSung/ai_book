@@ -174,6 +174,8 @@ With that, the model has completed an iteration resulting in outputting a single
 
 - GPT-2 was trained with a causal language modeling (CLM) objective and is therefore powerful at predicting the next token in a sequence.
 
+### GPT-3
+
 ## References
 
 [1] Alec Radford, Karthik Narasimhan, Tim Salimans, Ilya Sutskever. [Improving Language Understanding by Generative Pre-Training [1]](./papers/gpt.pdf)
