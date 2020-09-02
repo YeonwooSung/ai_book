@@ -50,7 +50,7 @@ The GPT2, and some later models like TransformerXL and XLNet are auto-regressive
 
 ### The Evolution of the Transformer Block
 
-The [initial transformer paper](./papers/gpt.pdf) introduced two types of transformer blocks:
+The [initial transformer paper](https://arxiv.org/abs/1706.03762) introduced two types of transformer blocks:
 
 #### The Encoder Block
 
@@ -76,7 +76,7 @@ It’s important that the distinction between self-attention (what BERT uses) an
 
 #### The Decoder-Only Block
 
-Subsequent to the original paper, [Generating Wikipedia by Summarizing Long Sequences [3]](https://arxiv.org/abs/1801.10198) proposed another arrangement of the transformer block that is capable of doing language modeling. This model threw away the Transformer encoder. For that reason, let’s call the model the “Transformer-Decoder”. This early transformer-based language model was made up of a stack of six transformer decoder blocks:
+Subsequent to [the original paper](https://arxiv.org/abs/1706.03762), [Generating Wikipedia by Summarizing Long Sequences [3]](https://arxiv.org/abs/1801.10198) proposed another arrangement of the transformer block that is capable of doing language modeling. This model threw away the Transformer encoder. For that reason, let’s call the model the “Transformer-Decoder”. This early transformer-based language model was made up of a stack of six transformer decoder blocks:
 
 ![Decoder only block](./imgs/decoder_only_block.png)
 
