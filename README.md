@@ -1,3 +1,3 @@
 # DeusX
 
-Basically, the main aim of this project is to eXplain the things about AI.
+Basically, the main aim of this project is to explain the things about AI.
