@@ -176,7 +176,7 @@ With that, the model has completed an iteration resulting in outputting a single
 
 ### GPT-3
 
-On May 2020, [Tom B. Brown et al. [6]](https://arxiv.org/abs/2005.14165) proposed the GPT-3, which surprised everyone. Similar to the previous GPT models, this model also inference the result by predicting the next word with attention mechanism.
+On May 2020, [Tom B. Brown et al. [6]](./papers/gpt3.pdf) proposed the GPT-3, which surprised everyone. Similar to the previous GPT models, this model also inference the result by predicting the next word with attention mechanism.
 
 The most special thing in the GPT-3 is that the size of the model is extremely huge, compare to all models that we faced with (until 2020). The GPT-2 model was considered as a big and powerful model, since it has about 1.5 billion parameters. However, GPT-3 has about 175 billion parameters. Clearly, there is no special differences between the architecture of GPT-2 and GPT-3 - they just increase the size of the model, and it actually made the model extremely powerful.
 
@@ -218,4 +218,4 @@ Fifth, the GPT-3 just inference the result by predicting the next word. Clearly,
 
 [5] Jay Alammar. [The Illustrated GPT-2 (Visualizing Transformer Language Models)](http://jalammar.github.io/illustrated-gpt2/)
 
-[6] Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan, Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, Sandhini Agarwal, Ariel Herbert-Voss, Gretchen Krueger, Tom Henighan, Rewon Child, Aditya Ramesh, Daniel M. Ziegler, Jeffrey Wu, Clemens Winter, Christopher Hesse, Mark Chen, Eric Sigler, Mateusz Litwin, Scott Gray, Benjamin Chess, Jack Clark, Christopher Berner, Sam McCandlish, Alec Radford, Ilya Sutskever, Dario Amodei. [Language Models are Few-Shot Learners](https://arxiv.org/abs/2005.14165)
+[6] Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan, Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, Sandhini Agarwal, Ariel Herbert-Voss, Gretchen Krueger, Tom Henighan, Rewon Child, Aditya Ramesh, Daniel M. Ziegler, Jeffrey Wu, Clemens Winter, Christopher Hesse, Mark Chen, Eric Sigler, Mateusz Litwin, Scott Gray, Benjamin Chess, Jack Clark, Christopher Berner, Sam McCandlish, Alec Radford, Ilya Sutskever, Dario Amodei. [Language Models are Few-Shot Learners](./papers/gpt3.pdf)
