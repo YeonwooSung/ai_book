@@ -176,6 +176,36 @@ With that, the model has completed an iteration resulting in outputting a single
 
 ### GPT-3
 
+On May 2020, [Tom B. Brown et al. [6]](https://arxiv.org/abs/2005.14165) proposed the GPT-3, which surprised everyone. Similar to the previous GPT models, this model also inference the result by predicting the next word with attention mechanism.
+
+The most special thing in the GPT-3 is that the size of the model is extremely huge, compare to all models that we faced with (until 2020). The GPT-2 model was considered as a big and powerful model, since it has about 1.5 billion parameters. However, GPT-3 has about 175 billion parameters. Clearly, there is no special differences between the architecture of GPT-2 and GPT-3 - they just increase the size of the model, and it actually made the model extremely powerful.
+
+![Size of the GPT-3](./imgs/size_of_gpt3.png)
+
+![Performance Comparison by size of model](./imgs/performance_comparison_by_size_of_models.png)
+
+#### AGI - we are almost there now
+
+AGI, Artifical General Intelligence, is the hypothetical intelligence of a machine that has the capacity to understand or learn any intellectual task that a human being can. It is a primary goal of some artificial intelligence research and a common topic in science fiction and futures studies. AGI can also be referred to as strong AI, full AI, or general intelligent action.
+
+Humans do not require large supervised datasets to learn most language tasks, but neural networks do (until now). However, the GPT-3 does not. The special thing about GPT-3 is that the GPT-3 achieved extremely good results for various NLP tasks without fine-tuning for the benchmark under consideration, but achieved by the language model without any further information (“zero-shot”) or with little additional information (“one-shot” or “few-shot”).
+
+![Zero-shot, One-shot, and Few-shot learning VS Traditional fine-tuning](./imgs/n_shot_learning_vs_fine_tuning.png)
+
+#### Problems that GPT-3 has
+
+Apparently, GPT-3 achieved brilliant achievements. However, it still has problems that should be fixed.
+
+First, GPT-3 actually works well for almost all NLP tasks, however, this does not mean that it achieved the SOTA for almost all NLP tasks. In other words, the GPT-3 works well with most of the NLP tasks, however, the accuracy (or performance) is not as good as SOTA model, which is highly optimised to the specific task.
+
+Second, it does not know about the physical world. For example, when you give a question "Will the cheese melt when you put the cheese in the refridgerator?", then the GPT-3 will answer "Yes, it will". Clearly, the cheese will not melt when we put it in the refridgerator. The reason that this happened is because GPT-3 learned everything from texts. So, it does not know the facts that are not in the training dataset. If it could understand the question, it should be able to answer with "correct" answer. To overcome this issue, we could probably make the model to learn the knowledge not onlt from texts, but also from vision data.
+
+Third, GPT-3 is too big. The huge model takes a lot of time and computing resources for training, since there are too many parameters to train. Also, a huge model is not good for utilization. The huge model takes more operations for single inference, and this will make the application slower. Perhaps, this might be solved if the price of the GPU becomes much cheaper.
+
+Forth, the model does not "memorize". Basically, there is not concept of "memory" in Transformer model. It just generates outputs by calculating the results from last N input tokens (where N is the size of the input).
+
+Fifth, the GPT-3 just inference the result by predicting the next word. Clearly, this is weird, since humans do not learn things by predicting the next word. Due to this reason, many researchers criticized that the GPT-3 is not doing fancy things, it just predicts the next word statistically, and the reason why it works well is because it has huge amount of parameters.
+
 ## References
 
 [1] Alec Radford, Karthik Narasimhan, Tim Salimans, Ilya Sutskever. [Improving Language Understanding by Generative Pre-Training [1]](./papers/gpt.pdf)
@@ -187,3 +217,5 @@ With that, the model has completed an iteration resulting in outputting a single
 [4] Rami Al-Rfou, Dokook Choe, Noah Constant, Mandy Guo, Llion Jones. [Character-Level Language Modeling with Deeper Self-Attention](https://arxiv.org/abs/1808.04444)
 
 [5] Jay Alammar. [The Illustrated GPT-2 (Visualizing Transformer Language Models)](http://jalammar.github.io/illustrated-gpt2/)
+
+[6] Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan, Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, Sandhini Agarwal, Ariel Herbert-Voss, Gretchen Krueger, Tom Henighan, Rewon Child, Aditya Ramesh, Daniel M. Ziegler, Jeffrey Wu, Clemens Winter, Christopher Hesse, Mark Chen, Eric Sigler, Mateusz Litwin, Scott Gray, Benjamin Chess, Jack Clark, Christopher Berner, Sam McCandlish, Alec Radford, Ilya Sutskever, Dario Amodei. [Language Models are Few-Shot Learners](https://arxiv.org/abs/2005.14165)
