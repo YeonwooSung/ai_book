@@ -1,6 +1,6 @@
-# DeusX
+# AI Book
 
-Basically, the main aim of this project is to explain the things about AI.
+Literally, this repository contains explanations, etc about AI, which will help people to understand technologies about AI.
 
 ## Table of Contents
 
