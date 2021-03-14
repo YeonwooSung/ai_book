@@ -128,6 +128,10 @@ In the example above, blue dots are data points. As you could see, the data are 
 
 - Contracting auto-encoder, saturating auto-encoder
 
+## Personal Thoughts
+
+Personally, I think EBM can just be applied to any problem, because the EBM simply means the loss function. The concept and the terms of the EBM does not tell you anything.
+
 ## References
 
 [1] Yann LeCun [Lecture: Energy based models and self-supervised learning](https://www.youtube.com/watch?v=tVwV14YkbYs&list=PLLHTzKZzVU9eaEyErdV26ikyolxOsz6mq&index=12)
