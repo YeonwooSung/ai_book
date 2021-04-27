@@ -20,6 +20,14 @@ On 2019, FAIR (Facebook AI Research) proposed a novel model called DETR, which u
 
 Please see more information about the DETR in [here](../ObjectDetection/DETR)
 
+## Vision Transformers
+
+ViT (Vision Transformers) is an architecture that is proposed by Google, which is a Transformer-based model for CV tasks.
+The most interesting point is that this model is not the ConvNet-based model. As you know, most CV models are CNN based until now.
+However, [Dosovitskiy et. al. [2]](https://arxiv.org/abs/2010.11929) showed that it is possible to use pure Transformer models for CV tasks.
+
 ## References
 
 [1] Huiyu Wang, Yukun Zhu, Bradley Green, Hartwig Adam, Alan Yuille, Liang-Chieh Chen. [Axial-DeepLab: Stand-Alone Axial-Attention for Panoptic Segmentation](https://arxiv.org/abs/2003.07853)
+
+[2] Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn, Xiaohua Zhai, Thomas Unterthiner, Mostafa Dehghani, Matthias Minderer, Georg Heigold, Sylvain Gelly, Jakob Uszkoreit, Neil Houlsby. [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929)
