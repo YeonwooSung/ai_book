@@ -4,7 +4,7 @@
 
 The key idea is to make each expert focus on predicting the right answer for the cases where it is already doing better than the other experts
 
-  - If we always average all the predictors, each model is trying to compensate for the combined error made by all the other models
+- If we always average all the predictors, each model is trying to compensate for the combined error made by all the other models
 
 ## Switch_Transformers
 
