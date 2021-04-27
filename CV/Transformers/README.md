@@ -6,6 +6,12 @@
 - [DETR](#detr)
 - [Vision Transformers](#vision-transformers)
 
+## Transformer based models for CV tasks
+
+Below is a summary of key designs adopted in different variants of transformers for a representive set of CV applications.
+
+![A summary of key designs adopted in different variants of transformers for a representive set of CV applications](./imgs/models_tasks.png)
+
 ## Axial-DeepLab
 
 Convolutional Neural Networks have dominated image processing for the last decade, but transformers are quickly replacing traditional models. [Wang et al. [1]](https://arxiv.org/abs/2003.07853) proposes a fully attentional model for images by combining learned Positional Embeddings with Axial Attention. This new model can compete with CNNs on image classification and achieve state-of-the-art in various image segmentation tasks.
@@ -29,8 +35,20 @@ Please see more information about the DETR in [here](../ObjectDetection/DETR)
 ## Vision Transformers
 
 ViT (Vision Transformers) is an architecture that is proposed by Google, which is a Transformer-based model for CV tasks.
-The most interesting point is that this model is not the ConvNet-based model. As you know, most CV models are CNN based until now.
-However, [Dosovitskiy et. al. [2]](https://arxiv.org/abs/2010.11929) showed that it is possible to use pure Transformer models for CV tasks.
+The most interesting point is that this model is not the ConvNet-based model. As you know, almost all CV models are CNN based until now.
+However, [Dosovitskiy et. al. [2]](https://arxiv.org/abs/2010.11929) showed that it is possible to use the Transformer-based models for the image classification.
+
+![ViT architecture](./imgs/ViT_architecture.png)
+
+What they did is 1) divide the input image into several patches, 2) input those patches to the CNN (ResNet) and get the feature maps, 3) flatten the feature map, 4) input the flattened feature maps to the Transformer encoder, and 5) use the classifier as a last layer.
+
+Since they divide the input image into patches, they convert the "H x W x C" to "N * (P x P x C)", where H = height, W = width, C = channel, N = num of patches, and P is the size of the patch.
+
+As you could imagine, when dividing the image into patches, we might loss the positional information in the original image. To overcome this issue, they adopted the positional encoding as below.
+
+![ViT's positional encoding](./imgs/vit_positional_encoding.png)
+
+As well as other Transformer based models, ViT also pretrains the model with huge dataset, and fine-tuning the model with small downstream task. It is well known that it is better to use the high resolution images for the fine-tuning, since it helps us to improve the accuracy.
 
 ## References
 
