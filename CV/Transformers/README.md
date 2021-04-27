@@ -1,5 +1,11 @@
 # Transformers for CV
 
+## Table of Contents (Transformers for CV)
+
+1. [Axial-DeepLab](#axial-deepLab)
+2. [DETR](#detr)
+3. [Vision Transformers](#vision-transformers)
+
 ## Axial-DeepLab
 
 Convolutional Neural Networks have dominated image processing for the last decade, but transformers are quickly replacing traditional models. [Wang et al. [1]](https://arxiv.org/abs/2003.07853) proposes a fully attentional model for images by combining learned Positional Embeddings with Axial Attention. This new model can compete with CNNs on image classification and achieve state-of-the-art in various image segmentation tasks.
