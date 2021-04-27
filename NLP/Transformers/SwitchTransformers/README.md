@@ -6,9 +6,9 @@ The key idea is to make each expert focus on predicting the right answer for the
 
   - If we always average all the predictors, each model is trying to compensate for the combined error made by all the other models
 
-## Switch Transformers
+## Switch_Transformers
 
-Scale is the next frontier for AI. Google Brain uses sparsity and hard routing to massively increase a model's parameters, while keeping the FLOPs per forward pass constant. 
+Scale is the next frontier for AI. Google Brain uses sparsity and hard routing to massively increase a model's parameters, while keeping the FLOPs per forward pass constant.
 The [Switch Transformer [1]](https://arxiv.org/abs/2101.03961) compares favorably to its dense counterparts in terms of speed and sample efficiency and breaks the next magic number: One Trillion Parameters.
 
 [codebase](https://github.com/google-research/text-to-text-transfer-transformer)
