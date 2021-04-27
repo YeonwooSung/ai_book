@@ -2,9 +2,9 @@
 
 ## Table of Contents (Transformers for CV)
 
-1. [Axial-DeepLab](#axial-deepLab)
-2. [DETR](#detr)
-3. [Vision Transformers](#vision-transformers)
+- [Axial-DeepLab](#axial-deepLab)
+- [DETR](#detr)
+- [Vision Transformers](#vision-transformers)
 
 ## Axial-DeepLab
 
