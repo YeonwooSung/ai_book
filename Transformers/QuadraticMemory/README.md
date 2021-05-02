@@ -2,6 +2,11 @@
 
 Since the Transformer Layers compute the attention map by doing the dot product with K and V (Key and Value), the size of the memory increases quadratically when increasing the size of the input data.
 
+## Table of Contents
+
+- [Linformer](#linformer)
+- [Performer](#performer)
+
 ## Linformer
 
 [Wang. et. al [1]](https://arxiv.org/abs/2006.04768) stated that the self-attention is low rank. Based on this theorem, they proposed a new self-attention mechanism, which reduces the overall self-attention complexity from O(n^2) to O(n) in both time and space. The resulting linear transformer, the Linformer, performs on par with standard Transformer models, while being much more memory- and time-efficient.
