@@ -11,3 +11,7 @@ Howard, J. and Gugger, S. [Deep Learning for Coders with Fastai and Pytorch: AI 
 ## KakaoBrain - NLP paper reading
 
 [kakaobrain/nlp-paper-reading](https://github.com/kakaobrain/nlp-paper-reading)
+
+## Kyubyong - NLP tasks
+
+[Kyubyong/nlp_tasks](https://github.com/Kyubyong/nlp_tasks)
