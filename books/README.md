@@ -15,3 +15,7 @@ Howard, J. and Gugger, S. [Deep Learning for Coders with Fastai and Pytorch: AI 
 ## Kyubyong - NLP tasks
 
 [Kyubyong/nlp_tasks](https://github.com/Kyubyong/nlp_tasks)
+
+## rasbt - deeplearning-models
+
+[rasbt/deeplearning-models](https://github.com/rasbt/deeplearning-models)
