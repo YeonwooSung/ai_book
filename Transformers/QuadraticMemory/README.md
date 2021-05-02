@@ -66,8 +66,14 @@ ORFs is a well-known method, yet it turns out that it works particularly well wi
 
 ## Longformer
 
+The [Longformer [3]](https://arxiv.org/abs/2004.05150) extends the Transformer by introducing sliding window attention and sparse global attention. This allows for the processing of much longer documents than classic models like BERT.
+
+![Comparing 4 different attention mechanisms](./imgs/longformer_attention_comparison.png)
+
 ## References
 
 [1] Sinong Wang, Belinda Z. Li, Madian Khabsa, Han Fang, Hao Ma. [Linformer: Self-Attention with Linear Complexity](https://arxiv.org/abs/2006.04768)
 
 [2] Krzysztof Choromanski, Valerii Likhosherstov, David Dohan, Xingyou Song, Andreea Gane, Tamas Sarlos, Peter Hawkins, Jared Davis, Afroz Mohiuddin, Lukasz Kaiser, David Belanger, Lucy Colwell, Adrian Weller. [Rethinking Attention with Performers](https://arxiv.org/abs/2009.14794)
+
+[3] Iz Beltagy, Matthew E. Peters, Arman Cohan. [Longformer: The Long-Document Transformer](https://arxiv.org/abs/2004.05150)
