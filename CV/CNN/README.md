@@ -44,6 +44,63 @@ In AAAI 2020 conference, Geofferey Hinton mentioned that "CNNs are designed to c
 
 I implemented various CNN architectures with PyTorch. You could find all codes from [my GitHub repository](https://github.com/YeonwooSung/PyTorch_CNN_Architectures).
 
+## EfficientNet
+
+[EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks [7]](https://arxiv.org/abs/1905.11946)
+
+### Table of Contents (EfficientNet)f
+
+- [Overview](#overview)
+- [Single Dimension Model Scaling](#single-dimension-model-scaling)
+- [Compound Scaling](#compound-scaling)
+
+### Overview
+
+When improving the accuracy of CNN, researchers not only consider to build a new model but also increase the complexity of the existing CNN model.
+
+![Model Scaling](./imgs/model_scaling.png)
+
+As you could see in the image above, there are various model scaling methods: width scaling, depth scaling, and resolution scaling.
+
+The width scaling is a method that increases the number of the filters, which increases the number of output channels.
+The depth scaling is a method that appends the new layers to the neural network, so that we could make a deeper neural net.
+The resolution scaling is a method that improves the resolution of the input image (use higher resolution image as an input).
+
+ResNet is the representative depth scaling model (ResNet-50, ResNet-101), and the MobileNet, ShuffleNet are the well-known examples of the width scaling (MobileNet-224 1.0, MobileNet-224 0.5). However, none of the previous researches considered the 3 model scaling methods at the same time.
+
+### Single Dimension Model Scaling
+
+First, Tan. et. al did the single dimension model scaling - change the one factor while fixing the other 2 factors. For example, when scaling up the network by using the width scaling, they fixed the depth and resolution. Below is the result of the single dimension model scaling experiment.
+
+![Single Dimension Model Scaling](./imgs/single_dimension_model_scaling.png)
+
+As you could see both width scaling and depth scaling satisfy the saturation in early stage, however, the resolution scaling increases continuously.
+
+Next, they tested the single dimension model scaling with 4 different networks, where each network has different depth and resolution.
+
+![Scaling Networks Width](./imgs/model_scaling_multiple_factors.png)
+
+If you see the green line and yellow line in the chart, you could find that it is better to increase the resolution rather than depth for higher accuracy.
+Also, from red line, you could find that the best scaling method is scaling up all 3 factors.
+
+### Compound Scaling
+
+Even if we could enhance the accuracy with model scaling methods, it is better to choose the good initial model. To find a good initial model, Tan. et. al used the NAS (Neural network Architecture Search), and named the found model as "EfficientNet-B0".
+
+![EfficientNet-B0](./imgs/efficientnet_b0.png)
+
+Next, they scaled up this model by using the Compound Scaling, which scales up all 3 factors that we mentioned above.
+
+![compound scaling](./imgs/compound_scaling.png)
+
+So, they represent the depth as alpha, width as beta, and resolution as gamma. The main goal of this scaling method is to fulfill the yellow part in the image.
+
+You would wonder why the beta and gamma are squared. This is because when we double the depth the FLOPS would also be doubled, however, when we double the either width or resolution the FLOPS would increase quadratically (width * height). Tan. et. al used the simple grid search to find the best pairs of alpha, beta, and gamma for the target dataset (they used alpha = 1.2, beta = 1.1, gamma = 1.15).
+
+Below is the CAM(Class Activation Map) for different models, where each model uses different scaling method. As you could see, the model that uses the compound scaling has the most elaborated CAM.
+
+![Class Activation Map](./imgs/class_activation_map.png)
+
 ## References
 
 [1] Kunihiko Fukushima, Sei Miyake. [Neocognitron: A Self-Organizing Neural Network Model for a Mechanism of Visual Pattern Recognition](https://link.springer.com/chapter/10.1007/978-3-642-46466-9_18)
@@ -57,3 +114,5 @@ I implemented various CNN architectures with PyTorch. You could find all codes f
 [5] Li-Chia Yang, Szu-Yu Chou, Yi-Hsuan Yang. [MidiNet: A Convolutional Generative Adversarial Network for Symbolic-domain Music Generation](https://arxiv.org/abs/1703.10847)
 
 [6] Ben Dickson (TechTalks). ["Understanding the limits of CNNs, one of AI’s greatest achievements"](https://bdtechtalks.com/2020/03/02/geoffrey-hinton-convnets-cnn-limits/)
+
+[7] Mingxing Tan, Quoc V. Le. [EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks](https://arxiv.org/abs/1905.11946)
