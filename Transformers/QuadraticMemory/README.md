@@ -6,6 +6,7 @@ Since the Transformer Layers compute the attention map by doing the dot product 
 
 - [Linformer](#linformer)
 - [Performer](#performer)
+- [Longformer](#longformer)
 
 ## Linformer
 
