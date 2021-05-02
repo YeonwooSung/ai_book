@@ -18,4 +18,8 @@ Literally, this repository contains explanations, etc about AI, which will help 
 
 - [Transfer Learning](./TransferLearning)
 
+- [Transformers](./Transformers)
+
 - [XAI](./XAI)
+
+- [additional helpful books, resources, etc](./books)
