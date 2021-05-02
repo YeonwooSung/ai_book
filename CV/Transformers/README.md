@@ -51,6 +51,14 @@ As you could imagine, when dividing the image into patches, we might loss the po
 
 As well as other Transformer based models, ViT also pretrains the model with huge dataset, and fine-tuning the model with small downstream task. It is well known that it is better to use the high resolution images for the fine-tuning, since it helps us to improve the accuracy.
 
+### 해설 (Vision Transformers)
+
+Transformer를 활용하기 위해 Input Image를 여러 개의 patch로 쪼개서 CNN (ResNet)에 넣어서 feature map을 뽑아낸 뒤 flatten 시켜서 Transformer encoder에 넣어줍니다. 그 뒤 Classifier를 붙여서 학습을 시킵니다.
+
+여기서 중요한 점이 있는데, Transformer 기반의 방법들은 무수히 많은 양의 데이터 셋으로 pre-training을 시킨 뒤 downstream task (e.g. ImageNet)에 fine-tuning을 시켜야 좋은 성능이 보장됩니다. 하지만 실험에서 사용한 대용량의 데이터셋은 Google 내부에서만 사용하고 있는 300 million image 데이터 셋인 JFT-300M이라 Google이 아닌 연구 집단에서는 같은 방법을 적용해도 좋은 성능이 나올 수 없다는 뜻입니다.
+
+CNN과 Transformer를 비교해보면, CNN은 translation equivariance 등 inductive bias가 많이 들어가 있는 모델이라 비교적 적은 수의 데이터로도 어느정도 성능이 보장이 되는 반면, Transformer는 inductive bias가 거의 없는 모델이라 많은 수의 데이터가 있어야 성능이 향상됩니다. 이 점이 Transformer의 장점이자 단점이 될 수 있는 부분인데 Google에서는 많은 수의 데이터를 통해 장점으로 승화시킨 점이 인상깊지만 많은 수의 데이터를 확보하기 어려운 분야에서는 적용하기 어렵다는 단점도 잘 보여주는 것 같습니다.
+
 ## Non-local Neural Networks
 
 The non-local means operation is ususally used for the image denoising. [Wang. et. al [3]] adapted the key idea of this operation to the neural networks.
