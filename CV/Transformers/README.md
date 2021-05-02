@@ -5,6 +5,7 @@
 - [Axial-DeepLab](#axial-deepLab)
 - [DETR](#detr)
 - [Vision Transformers](#vision-transformers)
+- [Non-local Neural Networks](#non-local-neural-networks)
 
 ## Transformer based models for CV tasks
 
@@ -50,8 +51,22 @@ As you could imagine, when dividing the image into patches, we might loss the po
 
 As well as other Transformer based models, ViT also pretrains the model with huge dataset, and fine-tuning the model with small downstream task. It is well known that it is better to use the high resolution images for the fine-tuning, since it helps us to improve the accuracy.
 
+## Non-local Neural Networks
+
+The non-local means operation is ususally used for the image denoising. [Wang. et. al [3]] adapted the key idea of this operation to the neural networks.
+
+![Non-local Neural Networks](./imgs/non_local_neural_networks.png)
+
+By using the non-local block, we could get the long-range dependency for both spatial and temporal axis. This means that it is possible to make the neural network to learn the relation between specific pixel and all other pixles. Clearly, this is kind of self-attention, which enables the neural net to learn relation between one pixel and the other pixel that is outside of the given distance, which is not able to do with CNN.
+
+### 해설 (Non-local Neural Networks)
+
+Non-local block을 통해 spatial, temporal 축에서 모두 long-range dependency를 확보할 수 있게 됩니다. 즉, input image (혹은 feature map)에서 특정 pixel과 나머지 모든 pixel 들 간의 relation을 weighted sum 형태로 계산하면서 relation을 배울 수 있게 됩니다. 즉, self-attention의 일종이라고 볼 수 있으며, CNN에서는 주어진 거리 밖에 있는 pixel과는 아무런 relation도 배울 수 없었지만 Non-local Neural Network는 그 것이 가능해지는 셈입니다. 논문에서는 3D 데이터인 Video의 Classification에 적용을 하였지만 2D Image에 적용해도 성능 향상을 얻을 수 있는 방법입니다.
+
 ## References
 
 [1] Huiyu Wang, Yukun Zhu, Bradley Green, Hartwig Adam, Alan Yuille, Liang-Chieh Chen. [Axial-DeepLab: Stand-Alone Axial-Attention for Panoptic Segmentation](https://arxiv.org/abs/2003.07853)
 
 [2] Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn, Xiaohua Zhai, Thomas Unterthiner, Mostafa Dehghani, Matthias Minderer, Georg Heigold, Sylvain Gelly, Jakob Uszkoreit, Neil Houlsby. [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929)
+
+[3] Xiaolong Wang, Ross Girshick, Abhinav Gupta, Kaiming He. [Non-local Neural Networks](https://arxiv.org/abs/1711.07971)
