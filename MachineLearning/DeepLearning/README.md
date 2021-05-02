@@ -52,6 +52,12 @@ Also, sometimes, adding more layers could lead us to un-intended problems.
 
 As you could see in the image above, you could have much higher training and testing error scores. Clearly, this is not an overfitting, since the training error is high. [He et al. [1]](https://arxiv.org/abs/1512.03385) said "the degration of training accuracy indicates that not all systems all similarly easy to optimize". Since we added more layers to the neural network, it became much complex, and much harder to optimize.
 
+## Catastrophic Forgetting
+
+When we retrain the trained neural network with new data, the neural network usually forgets the things that it trained before. This is called Catastrophic Forgetting.
+
+To avoid this, we should retrain the neural network from begining with all dataset (original dataset + new data).
+
 ## References
 
 [1] Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
