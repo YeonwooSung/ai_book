@@ -6,13 +6,15 @@ Since the Transformer Layers compute the attention map by doing the dot product 
 
 [Wang. et. al [1]](https://arxiv.org/abs/2006.04768) stated that the self-attention is low rank. Based on this theorem, they proposed a new self-attention mechanism, which reduces the overall self-attention complexity from O(n^2) to O(n) in both time and space. The resulting linear transformer, the Linformer, performs on par with standard Transformer models, while being much more memory- and time-efficient.
 
+![Linformer](./imgs/linformer.png)
+
 ### 해설 (Linformer)
 
 "low rank"란 저차원이라는 뜻으로, 이 논문의 저자들은 self-attention을 통해 만든 attention map을 보면 대부분의 정보가 낮은 차원 (eigenvalue index < 128)에 몰려 있다는 점을 밝혔고, 고차원의 데이터를 저차원에 투영(projection)했을 때, 투영된 데이터 점들 사이의 거리는 원래의 데이터 점들 사이의 거리와 큰 괴리가 없다는 점 역시 밝혔다. 이를 통해서, 논문의 저자들은 V와 K의 차원을 줄이는 Projection layer를 Attention mechanism 내에 추가함으로써 별다른 성능저하 없이 어텐션 맵의 차원을 줄이는 데 성공해냈다.
 
 ## Performer
 
-Transformers have huge memory and compute requirements because they construct an Attention matrix, which grows quadratically in the size of the input. The Performer is a model that uses random positive orthogonal features to construct an unbiased estimator to the Attention matrix and obtains an arbitrarily good approximation in linear time! The method generalizes beyond attention and opens the door to the next generation of deep learning architectures.
+Transformers have huge memory and compute requirements because they construct an Attention matrix, which grows quadratically in the size of the input. The [Performer [2]](https://arxiv.org/abs/2009.14794) is a model that uses random positive orthogonal features to construct an unbiased estimator to the Attention matrix and obtains an arbitrarily good approximation in linear time! The method generalizes beyond attention and opens the door to the next generation of deep learning architectures.
 
 - Performers do not rely on any priors such as sparsity or low-rankness.
 
@@ -62,3 +64,5 @@ ORFs is a well-known method, yet it turns out that it works particularly well wi
 ## References
 
 [1] Sinong Wang, Belinda Z. Li, Madian Khabsa, Han Fang, Hao Ma. [Linformer: Self-Attention with Linear Complexity](https://arxiv.org/abs/2006.04768)
+
+[2] Krzysztof Choromanski, Valerii Likhosherstov, David Dohan, Xingyou Song, Andreea Gane, Tamas Sarlos, Peter Hawkins, Jared Davis, Afroz Mohiuddin, Lukasz Kaiser, David Belanger, Lucy Colwell, Adrian Weller. [Rethinking Attention with Performers](https://arxiv.org/abs/2009.14794)
