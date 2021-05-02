@@ -82,6 +82,12 @@ Intuitively, since a larger output change indicates a more unsmooth loss surface
 
 Inspired by these analysis, Liu et al. proposed the Admin (adaptive model initialization), which starts the training from the area with a smoother surface.
 
+## Shortformer
+
+[O.Press et. al. [6]](https://arxiv.org/abs/2012.15832) challenge the conventional wisdom that scaling transformer language models to longer sequences improves results. They show that by initially training on shorter sub-sequences and then progressing to longer ones via staged training, we can improve perplexity and reduce training time.
+
+They additionally define a new method, position-infused attention, that enables caching and efficiently attending to previously computed representations. This method does not require large input sub-sequences.
+
 ## References
 
 [1] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin. [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
@@ -93,3 +99,5 @@ Inspired by these analysis, Liu et al. proposed the Admin (adaptive model initia
 [4] Denny Britz, Anna Goldie, Minh-Thang Luong, Quoc Le. [Massive Exploration of Neural Machine Translation Architectures](https://arxiv.org/abs/1703.03906)
 
 [5] Jonas Gehring, Michael Auli, David Grangier, Denis Yarats, Yann N. Dauphin. [Convolutional Sequence to Sequence Learning](https://arxiv.org/abs/1705.03122)
+
+[6] Ofir Press, Noah A. Smith, Mike Lewis. [Shortformer: Better Language Modeling using Shorter Inputs](https://arxiv.org/abs/2012.15832)
