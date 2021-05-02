@@ -33,6 +33,8 @@ The cross entropy between two probability distributions p and q over the same un
 
 Basically, cross entropy is good for classification problem, because the cross entropy minimises the diferrence between 2 distributions (distribution of data and distribution of model), which makes the classifier to make a better decision.
 
+Using the cross-entropy error function instead of the sum-of-squares for a classification problem leads to faster training as well as improved generalization.
+
 ## Hinge Loss
 
 The hinge loss is a loss function used for training classifiers. The hinge loss is used for "maximum-margin" classification, most notably for support vector machines (SVMs).
