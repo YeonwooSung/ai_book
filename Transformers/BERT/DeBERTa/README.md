@@ -1,5 +1,14 @@
 # DeBERTa
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Disentangled attention mechanism](#disentangled-attention-mechanism)
+- [Enhanced mask decoder](#enhanced-mask-decoder)
+- [Summary](#summary)
+- [Additional Resources](#additional-resources)
+- [References](#references)
+
 ## Overview
 
 DeBERTa, Decoding-enhanced BERT with disentangled attention) is a model architecture that is proposed by [He. et. al [1]](https://arxiv.org/abs/2006.03654).
