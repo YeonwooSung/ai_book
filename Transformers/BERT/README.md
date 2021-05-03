@@ -63,9 +63,9 @@ where, L is the number of Transformer blocks, H is the hidden size, and A is the
 
 Here, you could find that the BERT_base model uses the same hyper parameters. This means that even if we use the same hyper parameters, we could enhance the model performance by changing the pre-training concepts.
 
-![BERT fine tuning architecture](./imgs/BERT-Fine-Tuning-Model-Architecture.png)
-
 ## Fine tuning
+
+![BERT fine tuning architecture](./imgs/BERT-Fine-Tuning-Model-Architecture.png)
 
 Devlin et. al. used the BERT for diverse downstream tasks, and it actually achieve the SOTA in 11 NLP tasks!
 
