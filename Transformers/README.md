@@ -88,6 +88,16 @@ Inspired by these analysis, Liu et al. proposed the Admin (adaptive model initia
 
 They additionally define a new method, position-infused attention, that enables caching and efficiently attending to previously computed representations. This method does not require large input sub-sequences.
 
+## Towards AGI
+
+[Lu et al. [7]](https://arxiv.org/abs/2103.05247) stated that it is possible to use the Transformer that is pre-trained with natural language dataset for fine-tuning with different domain. For example, they used the pre-trained Transformer (pre-trained with NLP dataset) for various non-language downstream tasks: image classfication, bitwise operation, homology detection, etc.
+
+They found that the model that is pre-trained with the language dataset works well both language downstream tasks and non-language downstream tasks. While doing the tasks, they found that we could do the domain transfer learning with all domains as a pre-training task, however, the model that is pre-trained with language dataset outperforms the others. This means that we could use the language pre-training tasks for any other domains, and do the domain transfer learning for fine-tuning.
+
+Furthermore, they stated that it is much efficient to freeze the self-attention layers and feed-forward layers when fine-tuning the Transfoermer. They stated that there is a possibility that the Transformer might be overfitted if we do not freeze the self-attention layers and feed-forward layers. In other words, it is possible to say that freezing these layers could help us to prevent overfitting.
+
+![Frozen Pretrained Transformers](./imgs/frozen_pretrained_transformer.png)
+
 ## References
 
 [1] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin. [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
@@ -101,3 +111,5 @@ They additionally define a new method, position-infused attention, that enables 
 [5] Jonas Gehring, Michael Auli, David Grangier, Denis Yarats, Yann N. Dauphin. [Convolutional Sequence to Sequence Learning](https://arxiv.org/abs/1705.03122)
 
 [6] Ofir Press, Noah A. Smith, Mike Lewis. [Shortformer: Better Language Modeling using Shorter Inputs](https://arxiv.org/abs/2012.15832)
+
+[7] Kevin Lu, Aditya Grover, Pieter Abbeel, Igor Mordatch. [Pretrained Transformers as Universal Computation Engines](https://arxiv.org/abs/2103.05247)
