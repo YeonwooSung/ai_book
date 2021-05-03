@@ -98,6 +98,8 @@ Furthermore, they stated that it is much efficient to freeze the self-attention 
 
 ![Frozen Pretrained Transformers](./imgs/frozen_pretrained_transformer.png)
 
+Unlike self-attention layers and feed-forward layers, they stated that it is better to fine-tuning the output layer, input layer, layer-norm parameters, and positional embedding parameters.
+
 ## References
 
 [1] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin. [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
