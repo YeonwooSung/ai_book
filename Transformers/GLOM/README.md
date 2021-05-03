@@ -10,7 +10,7 @@ So, the main object of the GLOM is to build a parse tree when the image is given
 
 ## Summary
 
-Geoffrey Hinton describes GLOM, a Computer Vision model that combines transformers, neural fields, contrastive learning, capsule networks, denoising autoencoders and RNNs. GLOM decomposes an image into a parse tree of objects and their parts. However, unlike previous systems, the parse tree is constructed dynamically and differently for each input, without changing the underlying neural network. This is done by a multi-step consensus algorithm that runs over different levels of abstraction at each location of an image simultaneously. GLOM is just an idea for now but suggests a radically new approach to AI visual scene understanding.
+Geoffrey Hinton describes [GLOM [1]](https://arxiv.org/abs/2102.12627), a Computer Vision model that combines transformers, neural fields, contrastive learning, capsule networks, denoising autoencoders and RNNs. GLOM decomposes an image into a parse tree of objects and their parts. However, unlike previous systems, the parse tree is constructed dynamically and differently for each input, without changing the underlying neural network. This is done by a multi-step consensus algorithm that runs over different levels of abstraction at each location of an image simultaneously. GLOM is just an idea for now but suggests a radically new approach to AI visual scene understanding.
 
 ## References
 
