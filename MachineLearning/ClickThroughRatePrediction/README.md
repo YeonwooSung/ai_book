@@ -12,7 +12,7 @@ too over-parameterized to be deployed under limited computing resource scenarios
 
 ## Gradient Boosting for CTR
 
-[ et. al. [1]] stated that the Gradient Boosting models could overwhelm other SOTA models of CTR task by using the latest categorical feature encoding method.
+[Yi. et. al. [1]] stated that the Gradient Boosting models could overwhelm other SOTA models of CTR task by using the latest categorical feature encoding method.
 
 LE (Label Encoding) converts a categorical feature into an arbitrary number, so that it would show sub-optimal performance since there are few correlations between the target category and its encoded number.
 Meanwhile, TE (Target Encoding) changes the categorical feature into an informative number by calculating the mean of target values with each categorical feature (Micci-Barreca, 2001 [2]). However, TE causes overfitting by giving excessive information on each categorical feature (Schifferer et al., 2020 [3]).
