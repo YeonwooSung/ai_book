@@ -116,6 +116,16 @@ Unlike LSTM that backpropagates through time for learning via timesteps, everyth
 
 What they did is simply make an assumption that the attention matrix is formed with hierarchical low-rank structure, and use the Hierarchical-Matrix to implement the Hierarchical Attention that has the hierarchical structure. Unfortunately, we cannot adapt the cross-attention to this architecture, since there is no locality between source and target in this model.
 
+## Perceiver
+
+[A. Jaegle et. al. [10]](https://arxiv.org/abs/2103.03206) proposed a transformer based model called Perceiver. As you could see below, this model really looks like the LSTM. The reason that the authours of the paper designed the model just like LSTM is for the Multi-Modality. The Perceiver is designed to very flexibly handle a wide range of inputs out of the box even if they come from very different modalities, including high-bandwidth ones such as images and audio.
+
+![Perceiver](./imgs/perceiver.png)
+
+Unlike normal Transformers, this model builds the query from latent array, which is helpful for solving the quadratic memory issue. Basically, the Perceiver uses a cross-attention module to project an high-dimensional input byte array to a fixed-dimensional latent bottleneck before processing it using a deep stack of Transformer-style self-attention blocks in the latent space.
+
+Also, as you could see in the image above, the weights are optionally shared between repeats, which means that we could save memory. Here, you could see that how much did the authors take care about both performance and efficiency.
+
 ## References
 
 [1] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin. [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
@@ -135,3 +145,5 @@ What they did is simply make an assumption that the attention matrix is formed w
 [8] Pedro Henrique Martins, Zita Marinho, André F. T. Martins. [∞-former: Infinite Memory Transformer](https://arxiv.org/abs/2109.00301)
 
 [9] Zhenhai Zhu, Radu Soricut. [H-Transformer-1D: Fast One-Dimensional Hierarchical Attention for Sequences](https://arxiv.org/abs/2107.11906)
+
+[10] Andrew Jaegle, Felix Gimeno, Andrew Brock, Andrew Zisserman, Oriol Vinyals, Joao Carreira. [Perceiver: General Perception with Iterative Attention](https://arxiv.org/abs/2103.03206)
