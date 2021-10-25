@@ -110,6 +110,12 @@ Transformers struggle when attending to long contexts, since the amount of compu
 
 Unlike LSTM that backpropagates through time for learning via timesteps, everything in ∞ -former works heuristically. The ∞ -former uses the continuous attention, which adapts not the tokens but continuous signal to the self attention.
 
+## H-Transformer-1D
+
+[Z. Zhu et. al. [9]](https://arxiv.org/abs/2107.11906) describe an efficient hierarchical method to compute attention in the Transformer architecture. The proposed attention mechanism exploits a matrix structure similar to the Hierarchical Matrix (H-Matrix) developed by the numerical analysis community, and has linear run time and memory complexity. The authors perform extensive experiments to show that the inductive bias embodied by our hierarchical attention is effective in capturing the hierarchical structure in the sequences typical for natural language and vision tasks. And it turns out that their method is superior to alternative sub-quadratic proposals by over +6 points on average on the Long Range Arena benchmark.
+
+What they did is simply make an assumption that the attention matrix is formed with hierarchical low-rank structure, and use the Hierarchical-Matrix to implement the Hierarchical Attention that has the hierarchical structure. Unfortunately, we cannot adapt the cross-attention to this architecture, since there is no locality between source and target in this model.
+
 ## References
 
 [1] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin. [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
@@ -127,3 +133,5 @@ Unlike LSTM that backpropagates through time for learning via timesteps, everyth
 [7] Kevin Lu, Aditya Grover, Pieter Abbeel, Igor Mordatch. [Pretrained Transformers as Universal Computation Engines](https://arxiv.org/abs/2103.05247)
 
 [8] Pedro Henrique Martins, Zita Marinho, André F. T. Martins. [∞-former: Infinite Memory Transformer](https://arxiv.org/abs/2109.00301)
+
+[9] Zhenhai Zhu, Radu Soricut. [H-Transformer-1D: Fast One-Dimensional Hierarchical Attention for Sequences](https://arxiv.org/abs/2107.11906)
