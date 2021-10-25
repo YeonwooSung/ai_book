@@ -100,6 +100,12 @@ Furthermore, they stated that it is much efficient to freeze the self-attention 
 
 Unlike self-attention layers and feed-forward layers, they stated that it is better to fine-tuning the output layer, input layer, layer-norm parameters, and positional embedding parameters.
 
+## ∞ -former
+
+Transformers struggle when attending to long contexts, since the amount of computation grows with the context length, and therefore they cannot model long-term memories effectively. Several variations have been proposed to alleviate this problem, but they all have a finite memory capacity, being forced to drop old information. [P. H. Martins et. al. [8]](https://arxiv.org/abs/2109.00301) propose the ∞-former, which extends the vanilla transformer with an unbounded long-term memory. By making use of a continuous-space attention mechanism to attend over the long-term memory, the ∞-former's attention complexity becomes independent of the context length. Thus, it is able to model arbitrarily long contexts and maintain "sticky memories" while keeping a fixed computation budget.
+
+Unlike LSTM that backpropagates through time for learning via timesteps, everything in ∞ -former works heuristically. The ∞ -former uses the continuous attention, which adapts not the tokens but continuous signal to the self attention.
+
 ## References
 
 [1] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin. [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
@@ -115,3 +121,5 @@ Unlike self-attention layers and feed-forward layers, they stated that it is bet
 [6] Ofir Press, Noah A. Smith, Mike Lewis. [Shortformer: Better Language Modeling using Shorter Inputs](https://arxiv.org/abs/2012.15832)
 
 [7] Kevin Lu, Aditya Grover, Pieter Abbeel, Igor Mordatch. [Pretrained Transformers as Universal Computation Engines](https://arxiv.org/abs/2103.05247)
+
+[8] Pedro Henrique Martins, Zita Marinho, André F. T. Martins. [∞-former: Infinite Memory Transformer](https://arxiv.org/abs/2109.00301)
