@@ -16,3 +16,5 @@ Codes are available [here](./src/pipelines/).
 4. [Mask Filling](./src/pipelines/mask_filling.py)
 5. [Named Entity Recognition](./src/pipelines/ner.py)
 6. [Question Answering](./src/pipelines/qa.py)
+7. [Translation](./src/pipelines/translation.py)
+8. [Summarization](./src/pipelines/summarization.py)
