@@ -15,3 +15,4 @@ Codes are available [here](./src/pipelines/).
 3. [Text Generation](./src/pipelines/text_generation.py)
 4. [Mask Filling](./src/pipelines/mask_filling.py)
 5. [Named Entity Recognition](./src/pipelines/ner.py)
+6. [Question Answering](./src/pipelines/qa.py)
