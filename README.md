@@ -23,3 +23,7 @@ Literally, this repository contains explanations, etc about AI, which will help 
 - [XAI](./XAI)
 
 - [additional helpful books, resources, etc](./books)
+
+- [Frameworks](./MachineLearning/DeepLearning/Frameworks/)
+  * [PyTorch](./MachineLearning/DeepLearning/Frameworks/PyTorch/)
+  * [Hugging Face](./MachineLearning/DeepLearning/Frameworks/HuggingFace/)
