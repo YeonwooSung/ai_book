@@ -6,4 +6,10 @@ State-of-the-art Machine Learning for PyTorch, TensorFlow and JAX.
 
 ## Codes
 
-1. [pipelines](./src/pipelines/)
+### Pipelines
+
+Codes are available [here](./src/pipelines/).
+
+1. [Sentiment Analysis](./src/pipelines/sentiment_analysis.py)
+2. [Zero Shot Classification](./src/pipelines/zero_shot_classification.py)
+3. [Text Generation](./src/pipelines/text_generation.py)
