@@ -113,3 +113,28 @@ Unsurprisingly, there are many more techniques out there. To name a few:
 - Byte-level BPE, as used in GPT-2
 - WordPiece, as used in BERT
 - SentencePiece or Unigram, as used in several multilingual models
+
+#### Encoding with Tokenizers
+
+Translating text to numbers is known as encoding. Encoding is done in a two-step process: the tokenization, followed by the conversion to input IDs.
+
+As we’ve seen, the first step is to split the text into words (or parts of words, punctuation symbols, etc.), usually called tokens. There are multiple rules that can govern that process, which is why we need to instantiate the tokenizer using the name of the model, to make sure we use the same rules that were used when the model was pretrained.
+
+The second step is to convert those tokens into numbers, so we can build a tensor out of them and feed them to the model. To do this, the tokenizer has a vocabulary, which is the part we download when we instantiate it with the from_pretrained() method. Again, we need to use the same vocabulary used when the model was pretrained.
+
+You could find an example code from [here](./src/models_configs_and_tokenizers/encode_with_tokenizer.py)
+
+#### Decoding with Tokenizers
+
+As we encoded the texts by tokenizing the texts and converting tokens to ids, we could also use the tokenizers for decoding by converting the ids to texts by using decode() method.
+
+Below is the example code for using decode() method:
+
+```python3
+decoded_string = tokenizer.decode([7993, 170, 11303, 1200, 2443, 1110, 3014])
+
+print(decoded_string)
+```
+
+Note that the decode method not only converts the indices back to tokens, but also groups together the tokens that were part of the same words to produce a readable sentence. 
+This behavior will be extremely useful when we use models that predict new text (either text generated from a prompt, or for sequence-to-sequence problems like translation or summarization).
