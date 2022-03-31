@@ -138,3 +138,24 @@ print(decoded_string)
 
 Note that the decode method not only converts the indices back to tokens, but also groups together the tokens that were part of the same words to produce a readable sentence. 
 This behavior will be extremely useful when we use models that predict new text (either text generated from a prompt, or for sequence-to-sequence problems like translation or summarization).
+
+## Batch Input
+
+Batching allows the model to work when you feed it multiple sentences. Using multiple sequences is just as simple as building a batch with a single sequence. There’s a second issue, though. When you’re trying to batch together two (or more) sentences, they might be of different lengths. If you’ve ever worked with tensors before, you know that they need to be of rectangular shape, so you won’t be able to convert the list of input IDs into a tensor directly. To work around this problem, we usually pad the inputs.
+
+### Padding the inputs
+
+Since each sentence in the batch has different length, each list will have different number of ids. To handle this issue, we could introduce the concept of padding. Basically, we just add padding ids to the list of ids so that the model could always handle with a same length of sequences.
+
+### Attention masks
+
+Attention masks are tensors with the exact same shape as the input IDs tensor, filled with 0s and 1s: 1s indicate the corresponding tokens should be attended to, and 0s indicate the corresponding tokens should not be attended to (i.e., they should be ignored by the attention layers of the model).
+
+### Longer inputs
+
+With Transformer models, there is a limit to the lengths of the sequences we can pass the models. Most models handle sequences of up to 512 or 1024 tokens, and will crash when asked to process longer sequences. There are two solutions to this problem:
+
+- Use a model with a longer supported sequence length.
+- Truncate your sequences.
+
+Models have different supported sequence lengths, and some specialize in handling very long sequences.
