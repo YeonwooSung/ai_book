@@ -139,6 +139,69 @@ print(decoded_string)
 Note that the decode method not only converts the indices back to tokens, but also groups together the tokens that were part of the same words to produce a readable sentence. 
 This behavior will be extremely useful when we use models that predict new text (either text generated from a prompt, or for sequence-to-sequence problems like translation or summarization).
 
+### Padding
+
+Tokenizers can pad according to several objectives.
+
+[sample code](./src/models_configs_and_tokenizers/padding.py)
+
+### Truncates
+
+Tokenizers can also truncate sequences.
+
+[sample code](./src/models_configs_and_tokenizers/truncate.py)
+
+### Handling tensors for specific libraries
+
+The tokenizer object can handle the conversion to specific framework tensors, which can then be directly sent to the model. For example, in the following code sample we are prompting the tokenizer to return tensors from the different frameworks — "pt" returns PyTorch tensors, "tf" returns TensorFlow tensors, and "np" returns NumPy arrays:
+
+```python3
+sequences = ["I've been waiting for a HuggingFace course my whole life.", "So have I!"]
+
+# Returns PyTorch tensors
+model_inputs = tokenizer(sequences, padding=True, return_tensors="pt")
+
+# Returns TensorFlow tensors
+model_inputs = tokenizer(sequences, padding=True, return_tensors="tf")
+
+# Returns NumPy arrays
+model_inputs = tokenizer(sequences, padding=True, return_tensors="np")
+```
+
+### Special Tokens
+
+If we take a look at the input IDs returned by the tokenizer, we will see they are a tiny bit different from what we had earlier:
+
+```python3
+sequence = "I've been waiting for a HuggingFace course my whole life."
+
+model_inputs = tokenizer(sequence)
+print(model_inputs["input_ids"])
+
+tokens = tokenizer.tokenize(sequence)
+ids = tokenizer.convert_tokens_to_ids(tokens)
+print(ids)
+```
+
+```python3
+[101, 1045, 1005, 2310, 2042, 3403, 2005, 1037, 17662, 12172, 2607, 2026, 2878, 2166, 1012, 102]
+[1045, 1005, 2310, 2042, 3403, 2005, 1037, 17662, 12172, 2607, 2026, 2878, 2166, 1012]
+```
+
+One token ID was added at the beginning, and one at the end. Let’s decode the two sequences of IDs above to see what this is about:
+
+```python3
+print(tokenizer.decode(model_inputs["input_ids"]))
+print(tokenizer.decode(ids))
+```
+
+```python3
+"[CLS] i've been waiting for a huggingface course my whole life. [SEP]"
+"i've been waiting for a huggingface course my whole life."
+```
+
+The tokenizer added the special word [CLS] at the beginning and the special word [SEP] at the end. This is because the model was pretrained with those, so to get the same results for inference we need to add them as well. Note that some models don’t add special words, or add different ones; models may also add these special words only at the beginning, or only at the end. In any case, the tokenizer knows which ones are expected and will deal with this for you.
+
 ## Batch Input
 
 Batching allows the model to work when you feed it multiple sentences. Using multiple sequences is just as simple as building a batch with a single sequence. There’s a second issue, though. When you’re trying to batch together two (or more) sentences, they might be of different lengths. If you’ve ever worked with tensors before, you know that they need to be of rectangular shape, so you won’t be able to convert the list of input IDs into a tensor directly. To work around this problem, we usually pad the inputs.
