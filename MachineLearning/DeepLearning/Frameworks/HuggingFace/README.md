@@ -55,19 +55,19 @@ When asked to fill in the missing word in these two sentences by running the cod
 
 When you use these tools, you therefore need to keep in the back of your mind that the original model you are using could very easily generate sexist, racist, or homophobic content. Fine-tuning the model on your data won’t make this intrinsic bias disappear.
 
-### Transformers.Model
+## Transformers.Model
 
 The AutoModel class and all of its relatives are actually simple wrappers over the wide variety of models available in the library. It’s a clever wrapper as it can automatically guess the appropriate model architecture for your checkpoint, and then instantiates a model with this architecture.
 
 However, if you know the type of model you want to use, you can use the class that defines its architecture directly.
 
-#### Dimensions of tensor outputs by the model
+### Dimensions of tensor outputs by the model
 
 The dimensions of the tensor outputs by the Huggingface Transformers model would be 3:
 
 - The sequence length, the batch size, and the hidden size
 
-#### Model Heads
+### Model Heads
 
 Adaptation heads, also known simply as heads, come up in different forms: language modeling heads, question answering heads, sequence classification heads, etc.
 
@@ -98,11 +98,11 @@ model = PosModel()
 model.to('cuda')
 ```
 
-### Tokenizers
+## Tokenizers
 
 Tokenizers are one of the core components of the NLP pipeline. They serve one purpose: to translate text into data that can be processed by the model. Models can only process numbers, so tokenizers need to convert our text inputs to numerical data.
 
-#### Word-based Tokenizations
+### Word-based Tokenizations
 
 The first type of tokenizer that comes to mind is word-based. It’s generally very easy to set up and use with only a few rules, and it often yields decent results.
 
@@ -118,7 +118,7 @@ If we want to completely cover a language with a word-based tokenizer, we’ll n
 
 Finally, we need a custom token to represent words that are not in our vocabulary. This is known as the “unknown” token, often represented as ”[UNK]” or ””. It’s generally a bad sign if you see that the tokenizer is producing a lot of these tokens, as it wasn’t able to retrieve a sensible representation of a word and you’re losing information along the way. The goal when crafting the vocabulary is to do it in such a way that the tokenizer tokenizes as few words as possible into the unknown token.
 
-#### Character-based Tokenizations
+### Character-based Tokenizations
 
 Character-based tokenizers split the text into characters, rather than words. This has two primary benefits:
 
@@ -131,7 +131,7 @@ This approach isn’t perfect either. Since the representation is now based on c
 
 Another thing to consider is that we’ll end up with a very large amount of tokens to be processed by our model: whereas a word would only be a single token with a word-based tokenizer, it can easily turn into 10 or more tokens when converted into characters.
 
-#### Subword-based Tokenizations
+### Subword-based Tokenizations
 
 Subword tokenization algorithms rely on the principle that frequently used words should not be split into smaller subwords, but rare words should be decomposed into meaningful subwords.
 
@@ -143,7 +143,7 @@ These subwords end up providing a lot of semantic meaning: for instance, in the 
 
 This approach is especially useful in agglutinative languages such as Turkish, where you can form (almost) arbitrarily long complex words by stringing together subwords.
 
-#### Additional Tokenizations
+### Additional Tokenizations
 
 Unsurprisingly, there are many more techniques out there. To name a few:
 
@@ -151,7 +151,7 @@ Unsurprisingly, there are many more techniques out there. To name a few:
 - WordPiece, as used in BERT
 - SentencePiece or Unigram, as used in several multilingual models
 
-#### Encoding with Tokenizers
+### Encoding with Tokenizers
 
 Translating text to numbers is known as encoding. Encoding is done in a two-step process: the tokenization, followed by the conversion to input IDs.
 
@@ -161,7 +161,7 @@ The second step is to convert those tokens into numbers, so we can build a tenso
 
 You could find an example code from [here](./src/models_configs_and_tokenizers/encode_with_tokenizer.py)
 
-#### Decoding with Tokenizers
+### Decoding with Tokenizers
 
 As we encoded the texts by tokenizing the texts and converting tokens to ids, we could also use the tokenizers for decoding by converting the ids to texts by using decode() method.
 
@@ -176,19 +176,19 @@ print(decoded_string)
 Note that the decode method not only converts the indices back to tokens, but also groups together the tokens that were part of the same words to produce a readable sentence. 
 This behavior will be extremely useful when we use models that predict new text (either text generated from a prompt, or for sequence-to-sequence problems like translation or summarization).
 
-#### Padding
+### Padding
 
 Tokenizers can pad according to several objectives.
 
 [sample code](./src/models_configs_and_tokenizers/padding.py)
 
-#### Truncates
+### Truncates
 
 Tokenizers can also truncate sequences.
 
 [sample code](./src/models_configs_and_tokenizers/truncate.py)
 
-#### Handling tensors for specific libraries
+### Handling tensors for specific libraries
 
 The tokenizer object can handle the conversion to specific framework tensors, which can then be directly sent to the model. For example, in the following code sample we are prompting the tokenizer to return tensors from the different frameworks — "pt" returns PyTorch tensors, "tf" returns TensorFlow tensors, and "np" returns NumPy arrays:
 
@@ -205,7 +205,7 @@ model_inputs = tokenizer(sequences, padding=True, return_tensors="tf")
 model_inputs = tokenizer(sequences, padding=True, return_tensors="np")
 ```
 
-#### Special Tokens
+### Special Tokens
 
 If we take a look at the input IDs returned by the tokenizer, we will see they are a tiny bit different from what we had earlier:
 
