@@ -139,19 +139,19 @@ print(decoded_string)
 Note that the decode method not only converts the indices back to tokens, but also groups together the tokens that were part of the same words to produce a readable sentence. 
 This behavior will be extremely useful when we use models that predict new text (either text generated from a prompt, or for sequence-to-sequence problems like translation or summarization).
 
-### Padding
+#### Padding
 
 Tokenizers can pad according to several objectives.
 
 [sample code](./src/models_configs_and_tokenizers/padding.py)
 
-### Truncates
+#### Truncates
 
 Tokenizers can also truncate sequences.
 
 [sample code](./src/models_configs_and_tokenizers/truncate.py)
 
-### Handling tensors for specific libraries
+#### Handling tensors for specific libraries
 
 The tokenizer object can handle the conversion to specific framework tensors, which can then be directly sent to the model. For example, in the following code sample we are prompting the tokenizer to return tensors from the different frameworks — "pt" returns PyTorch tensors, "tf" returns TensorFlow tensors, and "np" returns NumPy arrays:
 
@@ -168,7 +168,7 @@ model_inputs = tokenizer(sequences, padding=True, return_tensors="tf")
 model_inputs = tokenizer(sequences, padding=True, return_tensors="np")
 ```
 
-### Special Tokens
+#### Special Tokens
 
 If we take a look at the input IDs returned by the tokenizer, we will see they are a tiny bit different from what we had earlier:
 
