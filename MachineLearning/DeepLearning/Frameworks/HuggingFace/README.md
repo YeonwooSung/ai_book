@@ -67,6 +67,37 @@ The dimensions of the tensor outputs by the Huggingface Transformers model would
 
 - The sequence length, the batch size, and the hidden size
 
+#### Model Heads
+
+Adaptation heads, also known simply as heads, come up in different forms: language modeling heads, question answering heads, sequence classification heads, etc.
+
+For example, when you want to retrain the BERT model for a specific task with a custom dataset, then you need to use the base BERT model, and add a task-specific header to your model.
+
+Below is the example of using the model head with a bert model:
+
+```python3
+import torch.nn as nn
+from transformers import AutoModel
+class PosModel(nn.Module):
+    def __init__(self):
+        super(PosModel, self).__init__()
+        
+        self.base_model = AutoModel.from_pretrained('bert-base-uncased')
+        self.dropout = nn.Dropout(0.5)
+        self.linear = nn.Linear(768, 2) # output features from bert is 768 and 2 is ur number of labels
+        
+    def forward(self, input_ids, attn_mask):
+        outputs = self.base_model(input_ids, attention_mask=attn_mask)
+        # You write you new head here
+        outputs = self.dropout(outputs[0])
+        outputs = self.linear(outputs)
+        
+        return outputs
+
+model = PosModel()
+model.to('cuda')
+```
+
 ### Tokenizers
 
 Tokenizers are one of the core components of the NLP pipeline. They serve one purpose: to translate text into data that can be processed by the model. Models can only process numbers, so tokenizers need to convert our text inputs to numerical data.
