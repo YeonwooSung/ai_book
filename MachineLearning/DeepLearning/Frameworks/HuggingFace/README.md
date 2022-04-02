@@ -61,6 +61,12 @@ The AutoModel class and all of its relatives are actually simple wrappers over t
 
 However, if you know the type of model you want to use, you can use the class that defines its architecture directly.
 
+#### Dimensions of tensor outputs by the model
+
+The dimensions of the tensor outputs by the Huggingface Transformers model would be 3:
+
+- The sequence length, the batch size, and the hidden size
+
 ### Tokenizers
 
 Tokenizers are one of the core components of the NLP pipeline. They serve one purpose: to translate text into data that can be processed by the model. Models can only process numbers, so tokenizers need to convert our text inputs to numerical data.
