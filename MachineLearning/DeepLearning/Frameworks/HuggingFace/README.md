@@ -167,7 +167,7 @@ As we encoded the texts by tokenizing the texts and converting tokens to ids, we
 
 Below is the example code for using decode() method:
 
-```python3
+```python
 decoded_string = tokenizer.decode([7993, 170, 11303, 1200, 2443, 1110, 3014])
 
 print(decoded_string)
@@ -192,7 +192,7 @@ Tokenizers can also truncate sequences.
 
 The tokenizer object can handle the conversion to specific framework tensors, which can then be directly sent to the model. For example, in the following code sample we are prompting the tokenizer to return tensors from the different frameworks — "pt" returns PyTorch tensors, "tf" returns TensorFlow tensors, and "np" returns NumPy arrays:
 
-```python3
+```python
 sequences = ["I've been waiting for a HuggingFace course my whole life.", "So have I!"]
 
 # Returns PyTorch tensors
@@ -209,7 +209,7 @@ model_inputs = tokenizer(sequences, padding=True, return_tensors="np")
 
 If we take a look at the input IDs returned by the tokenizer, we will see they are a tiny bit different from what we had earlier:
 
-```python3
+```python
 sequence = "I've been waiting for a HuggingFace course my whole life."
 
 model_inputs = tokenizer(sequence)
@@ -220,19 +220,19 @@ ids = tokenizer.convert_tokens_to_ids(tokens)
 print(ids)
 ```
 
-```python3
+```python
 [101, 1045, 1005, 2310, 2042, 3403, 2005, 1037, 17662, 12172, 2607, 2026, 2878, 2166, 1012, 102]
 [1045, 1005, 2310, 2042, 3403, 2005, 1037, 17662, 12172, 2607, 2026, 2878, 2166, 1012]
 ```
 
 One token ID was added at the beginning, and one at the end. Let’s decode the two sequences of IDs above to see what this is about:
 
-```python3
+```python
 print(tokenizer.decode(model_inputs["input_ids"]))
 print(tokenizer.decode(ids))
 ```
 
-```python3
+```python
 "[CLS] i've been waiting for a huggingface course my whole life. [SEP]"
 "i've been waiting for a huggingface course my whole life."
 ```
@@ -259,3 +259,129 @@ With Transformer models, there is a limit to the lengths of the sequences we can
 - Truncate your sequences.
 
 Models have different supported sequence lengths, and some specialize in handling very long sequences.
+
+## Datasets
+
+The 🤗 Datasets library provides a very simple command to download and cache a dataset on the Hub. We can download the MRPC dataset like this:
+
+```python
+from datasets import load_dataset
+
+raw_datasets = load_dataset("glue", "mrpc")
+raw_datasets
+```
+
+```python
+DatasetDict({
+    train: Dataset({
+        features: ['sentence1', 'sentence2', 'label', 'idx'],
+        num_rows: 3668
+    })
+    validation: Dataset({
+        features: ['sentence1', 'sentence2', 'label', 'idx'],
+        num_rows: 408
+    })
+    test: Dataset({
+        features: ['sentence1', 'sentence2', 'label', 'idx'],
+        num_rows: 1725
+    })
+})
+```
+
+As you can see, we get a DatasetDict object which contains the training set, the validation set, and the test set. Each of those contains several columns (sentence1, sentence2, label, and idx) and a variable number of rows, which are the number of elements in each set (so, there are 3,668 pairs of sentences in the training set, 408 in the validation set, and 1,725 in the test set).
+
+This command downloads and caches the dataset, by default in ~/.cache/huggingface/dataset. Recall from Chapter 2 that you can customize your cache folder by setting the HF_HOME environment variable.
+
+We can access each pair of sentences in our raw_datasets object by indexing, like with a dictionary:
+
+```python
+raw_train_dataset = raw_datasets["train"]
+raw_train_dataset[0]
+```
+
+```python
+{'idx': 0,
+ 'label': 1,
+ 'sentence1': 'Amrozi accused his brother , whom he called " the witness " , of deliberately distorting his evidence .',
+ 'sentence2': 'Referring to him as only " the witness " , Amrozi accused his brother of deliberately distorting his evidence .
+}
+```
+
+We can see the labels are already integers, so we won’t have to do any preprocessing there. To know which integer corresponds to which label, we can inspect the features of our raw_train_dataset. This will tell us the type of each column:
+
+```python
+raw_train_dataset.features
+```
+
+```python
+{'sentence1': Value(dtype='string', id=None),
+ 'sentence2': Value(dtype='string', id=None),
+ 'label': ClassLabel(num_classes=2, names=['not_equivalent', 'equivalent'], names_file=None, id=None),
+ 'idx': Value(dtype='int32', id=None)}
+```
+
+Behind the scenes, label is of type ClassLabel, and the mapping of integers to label name is stored in the names folder. 0 corresponds to not_equivalent, and 1 corresponds to equivalent.
+
+### Processing the dataset
+
+To preprocess the dataset, we need to convert the text to numbers the model can make sense of.
+
+We can feed the tokenizer one sentence or a list of sentences, so we can directly tokenize all the first sentences and all the second sentences of each pair like this:
+
+```python
+from transformers import AutoTokenizer
+
+checkpoint = "bert-base-uncased"
+tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+tokenized_sentences_1 = tokenizer(raw_datasets["train"]["sentence1"])
+tokenized_sentences_2 = tokenizer(raw_datasets["train"]["sentence2"])
+```
+
+However, we can’t just pass two sequences to the model and get a prediction of whether the two sentences are paraphrases or not. We need to handle the two sequences as a pair, and apply the appropriate preprocessing. Fortunately, the tokenizer can also take a pair of sequences and prepare it the way our BERT model expects:
+
+```python
+inputs = tokenizer("This is the first sentence.", "This is the second one.")
+inputs
+```
+
+```python
+{ 
+  'input_ids': [101, 2023, 2003, 1996, 2034, 6251, 1012, 102, 2023, 2003, 1996, 2117, 2028, 1012, 102],
+  'token_type_ids': [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1],
+  'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+}
+```
+
+If we decode the IDs inside input_ids back to words:
+
+```python
+tokenizer.convert_ids_to_tokens(inputs["input_ids"])
+```
+
+we will get:
+
+```python
+['[CLS]', 'this', 'is', 'the', 'first', 'sentence', '.', '[SEP]', 'this', 'is', 'the', 'second', 'one', '.', '[SEP]']
+```
+
+So we see the model expects the inputs to be of the form [CLS] sentence1 [SEP] sentence2 [SEP] when there are two sentences. Aligning this with the token_type_ids gives us:
+
+```python
+['[CLS]', 'this', 'is', 'the', 'first', 'sentence', '.', '[SEP]', 'this', 'is', 'the', 'second', 'one', '.', '[SEP]']
+[      0,      0,    0,     0,       0,          0,   0,       0,      1,    1,     1,        1,     1,   1,       1]
+```
+
+As you can see, the parts of the input corresponding to [CLS] sentence1 [SEP] all have a token type ID of 0, while the other parts, corresponding to sentence2 [SEP], all have a token type ID of 1.
+
+For this task, we could apply the padding and truncation by using the code below:
+
+```python
+tokenized_dataset = tokenizer(
+    raw_datasets["train"]["sentence1"],
+    raw_datasets["train"]["sentence2"],
+    padding=True,
+    truncation=True,
+)
+```
+
+This function takes a dictionary (like the items of our dataset) and returns a new dictionary with the keys input_ids, attention_mask, and token_type_ids. Note that it also works if the example dictionary contains several samples (each key as a list of sentences) since the tokenizer works on lists of pairs of sentences, as seen before. This will allow us to use the option batched=True in our call to map(), which will greatly speed up the tokenization. The tokenizer is backed by a tokenizer written in Rust from the 🤗 Tokenizers library. 
