@@ -399,3 +399,131 @@ data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
 ```
 
 For more example, please read [this sample code]
+
+## Trainer
+
+Hugging Face provides an API called "Trainer", which is a high-level API for training the Transformer model.
+
+[sample code](./src/trainer/bert_base_uncased_glue.py)
+
+The first step before we can define our Trainer is to define a TrainingArguments class that will contain all the hyperparameters the Trainer will use for training and evaluation. The only argument you have to provide is a directory where the trained model will be saved, as well as the checkpoints along the way. For all the rest, you can leave the defaults, which should work pretty well for a basic fine-tuning.
+
+```python
+from transformers import TrainingArguments
+
+training_args = TrainingArguments("test-trainer")
+```
+
+The second step is to define our model.
+
+```python
+from transformers import AutoModelForSequenceClassification
+
+model = AutoModelForSequenceClassification.from_pretrained(checkpoint, num_labels=2)
+```
+
+You will notice that unlike using the pretained model, you get a warning after instantiating this pretrained model. This is because BERT has not been pretrained on classifying pairs of sentences, so the head of the pretrained model has been discarded and a new head suitable for sequence classification has been added instead. The warnings indicate that some weights were not used (the ones corresponding to the dropped pretraining head) and that some others were randomly initialized (the ones for the new head). It concludes by encouraging you to train the model, which is exactly what we are going to do now.
+
+Once we have our model, we can define a Trainer by passing it all the objects constructed up to now — the model, the training_args, the training and validation datasets, our data_collator, and our tokenizer:
+
+```python
+from transformers import Trainer
+
+trainer = Trainer(
+    model,
+    training_args,
+    train_dataset=tokenized_datasets["train"],
+    eval_dataset=tokenized_datasets["validation"],
+    data_collator=data_collator,
+    tokenizer=tokenizer,
+)
+```
+
+Note that when you pass the tokenizer as we did here, the default data_collator used by the Trainer will be a DataCollatorWithPadding as defined previously, so you can skip the line data_collator=data_collator in this call.
+
+To fine-tune the model on our dataset, we just have to call the train() method of our Trainer:
+
+```python
+trainer.train()
+```
+
+This will start the fine-tuning (which should take a couple of minutes on a GPU) and report the training loss every 500 steps. It won’t, however, tell you how well (or badly) your model is performing. This is because:
+
+1. We didn’t tell the Trainer to evaluate during training by setting evaluation_strategy to either "steps" (evaluate every eval_steps) or "epoch" (evaluate at the end of each epoch).
+
+2. We didn’t provide the Trainer with a compute_metrics() function to calculate a metric during said evaluation (otherwise the evaluation would just have printed the loss, which is not a very intuitive number).
+
+Now, it is time for evaluating the trained model.
+
+Let’s see how we can build a useful compute_metrics() function and use it the next time we train. The function must take an EvalPrediction object (which is a named tuple with a predictions field and a label_ids field) and will return a dictionary mapping strings to floats (the strings being the names of the metrics returned, and the floats their values). To get some predictions from our model, we can use the Trainer.predict() command:
+
+```python
+predictions = trainer.predict(tokenized_datasets["validation"])
+print(predictions.predictions.shape, predictions.label_ids.shape)
+```
+
+```python
+(408, 2) (408,)
+```
+
+The output of the predict() method is another named tuple with three fields: predictions, label_ids, and metrics. The metrics field will just contain the loss on the dataset passed, as well as some time metrics (how long it took to predict, in total and on average). Once we complete our compute_metrics() function and pass it to the Trainer, that field will also contain the metrics returned by compute_metrics().
+
+As you can see, predictions is a two-dimensional array with shape 408 x 2 (408 being the number of elements in the dataset we used). Those are the logits for each element of the dataset we passed to predict(). To transform them into predictions that we can compare to our labels, we need to take the index with the maximum value on the second axis:
+
+```python
+import numpy as np
+
+preds = np.argmax(predictions.predictions, axis=-1)
+```
+
+We can now compare those preds to the labels. To build our compute_metric() function, we will rely on the metrics from the 🤗 Datasets library. We can load the metrics associated with the MRPC dataset as easily as we loaded the dataset, this time with the load_metric() function. The object returned has a compute() method we can use to do the metric calculation:
+
+```python
+from datasets import load_metric
+
+metric = load_metric("glue", "mrpc")
+metric.compute(predictions=preds, references=predictions.label_ids)
+```
+
+```python
+{'accuracy': 0.8578431372549019, 'f1': 0.8996539792387542}
+```
+
+The exact results you get may vary, as the random initialization of the model head might change the metrics it achieved. Here, we can see our model has an accuracy of 85.78% on the validation set and an F1 score of 89.97. Those are the two metrics used to evaluate results on the MRPC dataset for the GLUE benchmark. The table in the BERT paper reported an F1 score of 88.9 for the base model. That was the uncased model while we are currently using the cased model, which explains the better result.
+
+Wrapping everything together, we get our compute_metrics() function:
+
+```python
+def compute_metrics(eval_preds):
+    metric = load_metric("glue", "mrpc")
+    logits, labels = eval_preds
+    predictions = np.argmax(logits, axis=-1)
+    return metric.compute(predictions=predictions, references=labels)
+```
+
+And to see it used in action to report metrics at the end of each epoch, here is how we define a new Trainer with this compute_metrics() function:
+
+```python
+training_args = TrainingArguments("test-trainer", evaluation_strategy="epoch")
+model = AutoModelForSequenceClassification.from_pretrained(checkpoint, num_labels=2)
+
+trainer = Trainer(
+    model,
+    training_args,
+    train_dataset=tokenized_datasets["train"],
+    eval_dataset=tokenized_datasets["validation"],
+    data_collator=data_collator,
+    tokenizer=tokenizer,
+    compute_metrics=compute_metrics,
+)
+```
+
+Note that we create a new TrainingArguments with its evaluation_strategy set to "epoch" and a new model — otherwise, we would just be continuing the training of the model we have already trained. To launch a new training run, we execute:
+
+```python
+trainer.train()
+```
+
+This time, it will report the validation loss and metrics at the end of each epoch on top of the training loss. Again, the exact accuracy/F1 score you reach might be a bit different from what we found, because of the random head initialization of the model, but it should be in the same ballpark.
+
+The Trainer will work out of the box on multiple GPUs or TPUs and provides lots of options, like mixed-precision training (use fp16 = True in your training arguments).
