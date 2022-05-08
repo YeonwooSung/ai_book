@@ -49,3 +49,11 @@ SVMs are classifiers that are a representation of the data examples as points in
 Mostly SVMs are used to generate linear separations. For example, in 2D space the separation is a line and in 3D space it is a hyperplane. SVMs are not restricted to the use of linearly classifiable data. There are some kernel tricks that can be used to map data(not linearly classifiable) to higher dimensions to obtain linear separtaion.
 
 ## Focal Loss
+
+The focal loss was proposed by [T. Lin et. al. [1]](https://arxiv.org/abs/1708.02002) to address the class imbalance by reshaping the standard cross entropy loss such that it down-weights the loss assigned to well-classified examples. Focal Loss focuses training on a sparse set of hard examples and prevents the vast number of easy negatives from overwhelming the detector during training.
+
+Basically, it is proposed to handle the class imbalance issue in Object Detection tasks, however, it is also working perfectly fine for NER (Named Entity Recognition) and so on.
+
+## References
+
+[1] Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, Piotr Dollár [Focal Loss for Dense Object Detection](https://arxiv.org/abs/1708.02002)
