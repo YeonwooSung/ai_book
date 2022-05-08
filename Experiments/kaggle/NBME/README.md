@@ -12,6 +12,16 @@ Ranked on 117th (117 out of 1501)
 
 ## Useful resource
 
+### Focal Loss
+
+Focal loss was basically invented for object detection task, to overcome the class imbalance issue. However, this method is also perfectly suitable for NER tasks.
+
+[PyTorch code for focal loss](./src/FocalLoss.py)
+
+Also, we could improve the focal loss by using it with Label smoothing.
+
+[PyTorch code for Label Smoothing](./src/SmoothFocalLoss.py)
+
 ### Training MLM model
 
 #### Codes
