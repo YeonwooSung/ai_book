@@ -27,3 +27,8 @@ Literally, this repository contains explanations, etc about AI, which will help 
 - [Frameworks](./MachineLearning/DeepLearning/Frameworks/)
   * [PyTorch](./MachineLearning/DeepLearning/Frameworks/PyTorch/)
   * [Hugging Face](./MachineLearning/DeepLearning/Frameworks/HuggingFace/)
+
+- [Experiments](./Experiments/)
+
+- [Kaggle](./Experiments/kaggle/)
+  * [NBME - Score Clinical Patients Notes](./Experiments/kaggle/NBME/)
