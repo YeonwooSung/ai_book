@@ -1,6 +1,6 @@
 # AI Book
 
-Literally, this repository contains explanations, etc about AI, which will help people to understand technologies about AI.
+AI 101 for everyone
 
 ## Table of Contents
 
