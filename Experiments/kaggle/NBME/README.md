@@ -8,7 +8,7 @@ A NLP competition for NER (Named Entity Recognition) task.
 
 Ranked on 117th (117 out of 1501)
 
-## My codes
+[My baseline code](./src/NBME%20training.ipynb)
 
 ## Useful resource
 
