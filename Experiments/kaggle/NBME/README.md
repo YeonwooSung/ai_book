@@ -18,6 +18,8 @@ Focal loss was basically invented for object detection task, to overcome the cla
 
 [PyTorch code for focal loss](./src/FocalLoss.py)
 
+[Shorter version of focal loss](./src/FocalLoss_criterion_ver.py)
+
 Also, we could improve the focal loss by using it with Label smoothing.
 
 [PyTorch code for Label Smoothing](./src/SmoothFocalLoss.py)
