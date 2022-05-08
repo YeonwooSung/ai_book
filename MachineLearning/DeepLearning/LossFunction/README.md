@@ -54,6 +54,10 @@ The focal loss was proposed by [T. Lin et. al. [1]](https://arxiv.org/abs/1708.0
 
 Basically, it is proposed to handle the class imbalance issue in Object Detection tasks, however, it is also working perfectly fine for NER (Named Entity Recognition) and so on.
 
+- [Focal loss implemented with PyTorch](./src/focal_loss_pytorch.py)
+
+- [Tensorflow implemented example for focal loss with label smoothing](./src/focal_loss_with_label_smoothing_tf.py)
+
 ## References
 
 [1] Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, Piotr Dollár [Focal Loss for Dense Object Detection](https://arxiv.org/abs/1708.02002)
