@@ -2,12 +2,15 @@
 
 A loss function or cost function is a function that maps an event or values of one or more variables onto a real number intuitively representing some "cost" associated with the event. An optimization problem seeks to minimize a loss function. An objective function is either a loss function or its negative (in specific domains, variously called a reward function, a profit function, a utility function, a fitness function, etc.), in which case it is to be maximized.
 
+[This notebook](./src/train-cassava-starter-using-various-loss-funcs.ipynb) contains the example of using various loss functions for image classificaiton (used for [Cassava Leaf Disease Classification](https://www.kaggle.com/competitions/cassava-leaf-disease-classification) kaggle competition).
+
 ## Table of Contents
 
 1. [Mean Squared Error](#mean-squared-error)
 2. [Root Mean Squared Error](#root-mean-squared-error)
 3. [Mean Absolute Error](#mean-absolute-error)
 4. [Hinge Loss](#hinge-loss)
+5. [Focal Loss](#focal-loss)
 
 ## Mean Squared Error
 
@@ -44,3 +47,5 @@ Classification problems are about creating boundaries to partition data into dif
 SVMs are classifiers that are a representation of the data examples as points in space, mapped so that the examples of the separate categories are divided by a clear gap that is as wide as possible. New examples are then mapped into that same space and predicted to belong to a category based on which side of the gap they fall.
 
 Mostly SVMs are used to generate linear separations. For example, in 2D space the separation is a line and in 3D space it is a hyperplane. SVMs are not restricted to the use of linearly classifiable data. There are some kernel tricks that can be used to map data(not linearly classifiable) to higher dimensions to obtain linear separtaion.
+
+## Focal Loss
