@@ -22,7 +22,9 @@ Focal loss was basically invented for object detection task, to overcome the cla
 
 Also, we could improve the focal loss by using it with Label smoothing.
 
-[PyTorch code for Label Smoothing](./src/SmoothFocalLoss.py)
+[Focal Label Smoothing](./src/FocalLabelSmoothing.py)
+
+[PyTorch code for Label Smoothing - simple implementation (not optimised for NBME competition dataset)](./src/SmoothFocalLoss.py)
 
 As the provided dataset in this competition has a huge number of unlabeled data with imbalanced classes, training the model with focal loss and pseudo labeling worked perfectly fine.
 
