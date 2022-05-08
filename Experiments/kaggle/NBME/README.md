@@ -6,7 +6,7 @@ A NLP competition for NER (Named Entity Recognition) task.
 
 ## My Result
 
-Ranked on 117th (117 out of 1501)
+Ranked on 117th (117 out of 1501) - bronze medal
 
 [My baseline code](./src/NBME%20training.ipynb)
 
