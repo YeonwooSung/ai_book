@@ -3,12 +3,12 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
-class FocalLossV1(nn.Module):
+class FocalLoss(nn.Module):
     def __init__(self,
                  alpha=0.1,
                  gamma=2,
                  reduction='mean',):
-        super(FocalLossV1, self).__init__()
+        super(FocalLoss, self).__init__()
         self.alpha = alpha
         # self.alpha = torch.tensor([alpha, 1-alpha]).cuda()
         self.gamma = gamma
