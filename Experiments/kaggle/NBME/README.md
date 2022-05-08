@@ -24,11 +24,15 @@ Also, we could improve the focal loss by using it with Label smoothing.
 
 [PyTorch code for Label Smoothing](./src/SmoothFocalLoss.py)
 
+As the provided dataset in this competition has a huge number of unlabeled data with imbalanced classes, training the model with focal loss and pseudo labeling worked perfectly fine.
+
 ### Training MLM model
 
 #### Codes
 
 [Sample notebook for training MLM model with unlabeled data](./src/nbme-mlm.ipynb)
+
+Training the DeBERTa v3 large model with the unlabeled data as a masked language model is one of the key point of getting a high score for this competition. By pre-training the masked language model with unlabeled text data, the fine-tuned models were able to understand the distribution of the words in the patient notes.
 
 #### Links
 
