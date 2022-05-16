@@ -56,3 +56,5 @@ Related papers:
     - [Can Students outperform Teacher models](./resources/can_students_outperform_teache.pdf)
 
 Basically, the notebook above for the MPL (Meta Pseudo Labeling) is designed on the hypothethis that the student model could outperform the teacher model when additional data is involved.
+
+### AWP
