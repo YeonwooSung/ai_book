@@ -29,7 +29,6 @@ AI 101 for everyone
   * [Hugging Face](./MachineLearning/DeepLearning/Frameworks/HuggingFace/)
 
 - [Experiments](./Experiments/)
-
-- [Kaggle](./Experiments/kaggle/)
-  * [NBME - Score Clinical Patients Notes](./Experiments/kaggle/NBME/)
-  * [U.S. Patent Phrase to Phrase Matching](./Experiments/kaggle/PPPM/)
+  - [Kaggle](./Experiments/kaggle/)
+    * [NBME - Score Clinical Patients Notes](./Experiments/kaggle/NBME/)
+    * [U.S. Patent Phrase to Phrase Matching](./Experiments/kaggle/PPPM/)
