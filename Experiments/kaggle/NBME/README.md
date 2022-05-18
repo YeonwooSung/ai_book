@@ -58,3 +58,5 @@ Related papers:
 Basically, the notebook above for the MPL (Meta Pseudo Labeling) is designed on the hypothethis that the student model could outperform the teacher model when additional data is involved.
 
 ### AWP
+
+The Adversarial Weight Perturbation (AWP) was used in the [first place solution of the Feedback Prize competition](https://www.kaggle.com/competitions/feedback-prize-2021/discussion/313177), and it is showen to be [effective in the NBME competition](https://www.kaggle.com/competitions/nbme-score-clinical-patient-notes/discussion/315707) as well.
