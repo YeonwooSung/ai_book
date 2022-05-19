@@ -60,3 +60,5 @@ Basically, the notebook above for the MPL (Meta Pseudo Labeling) is designed on 
 ### AWP
 
 The Adversarial Weight Perturbation (AWP) was used in the [first place solution of the Feedback Prize competition](https://www.kaggle.com/competitions/feedback-prize-2021/discussion/313177), and it is showen to be [effective in the NBME competition](https://www.kaggle.com/competitions/nbme-score-clinical-patient-notes/discussion/315707) as well.
+
+[Simple code for AWP](./src/fast-awp.ipynb)
