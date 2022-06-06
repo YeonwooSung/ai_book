@@ -41,3 +41,7 @@ Pretrained on [this dataset](./src/pppm_abstract.csv)
 Using smoothed focal loss rather than BCE loss did not worked
 
 [My notebook](./src/PPPM%20training%20with%20focal%20loss.ipynb)
+
+### Training BART model
+
+Training the [Huggingface BART large model](https://huggingface.co/facebook/bart-large) did not work with my codes.
