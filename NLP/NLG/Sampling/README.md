@@ -93,6 +93,43 @@ The intuition is that when the model is very certain on some tokens, the set of 
 
 Comparing nucleus sampling (p=0.5) with top-K sampling (K = 10), we can see the nucleus does not consider token “you” to be a candidate. This shows that it can adapt to different cases and select different numbers of tokens, unlike Top-K sampling.
 
+Below is the sample code of using Nucleus sampling method with GPT-2 by using Huggingface framework.
+
+```python
+import tensorflow as tf
+from transformers import TFGPT2LMHeadModel, GPT2Tokenizer
+
+tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
+# Use EOS token as a PAD token to avoid the warnings
+model = TFGPT2LMHeadModel.from_pretrained("gpt2", pad_token_id=tokenizer.eos_token_id)
+tf.random.set_seed(0)
+
+# deactivate top_k sampling and sample only from 92% most likely words
+sample_output = model.generate(
+    input_ids, 
+    do_sample=True, 
+    max_length=50, 
+    top_p=0.92, # Top-P for p=0.92 (92%)
+    top_k=0
+)
+
+print("Output:\n" + 100 * '-')
+print(tokenizer.decode(sample_output[0], skip_special_tokens=True))
+```
+
+Also, we could use use Top-K strategy with Top-P (Nucleus):
+
+```python
+sample_outputs = model.generate(
+    input_ids,
+    do_sample=True, # use sampling
+    max_length=128, # maximum decoding length is 128
+    top_k=50, # exclude all tokens except Top-50 tokens
+    top_p=0.95, # use Top-P with p=0.95
+    num_return_sequences=3 # return 3 result sequences
+)
+```
+
 ## References
 
 [1] Angela Fan, Mike Lewis, Yann Dauphin. [Hierarchical Neural Story Generation](https://arxiv.org/abs/1805.04833)
