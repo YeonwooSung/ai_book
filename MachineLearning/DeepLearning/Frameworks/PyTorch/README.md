@@ -25,19 +25,19 @@ label = [_label.cuda() for _label in label]
 
 ```python
 data = []
-    label = []
-        
-    for D, true_label in batch_dataLabel:
-        D = D.float()
-        true_label = true_label.float()
-        # add new dimension to tensors and append to list
-        data.append(D.unsqueeze(0))
-        label.append(true_label.unsqueeze(0))
+label = []
     
-    data = torch.cat(data, dim=0)
-    label = torch.cat(label, dim=0)
+for D, true_label in batch_dataLabel:
+    D = D.float()
+    true_label = true_label.float()
+    # add new dimension to tensors and append to list
+    data.append(D.unsqueeze(0))
+    label.append(true_label.unsqueeze(0))
 
-    if gpu:
-            data = data.cuda()
-            label = label.cuda()
+data = torch.cat(data, dim=0)
+label = torch.cat(label, dim=0)
+
+if gpu:
+        data = data.cuda()
+        label = label.cuda()
 ```
