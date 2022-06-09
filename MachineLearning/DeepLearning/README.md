@@ -58,6 +58,12 @@ When we retrain the trained neural network with new data, the neural network usu
 
 To avoid this, we should retrain the neural network from begining with all dataset (original dataset + new data).
 
+## Deep Networks are kernel machines
+
+[P. Domingos et. al. [2]](https://arxiv.org/abs/2012.00152) Deep Neural Networks are often said to discover useful representations of the data. However, this paper challenges this prevailing view and suggest that rather than representing the data, deep neural networks store superpositions of the training data in their weights and act as kernel machines at inference time. This is a theoretical paper with a main theorem and an understandable proof and the result leads to many interesting implications for the field.
+
 ## References
 
 [1] Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
+
+[2] Pedro Domingos. [Every Model Learned by Gradient Descent Is Approximately a Kernel Machine](https://arxiv.org/abs/2012.00152)
