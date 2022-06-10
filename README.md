@@ -6,6 +6,8 @@ AI 101 for everyone
 
 - [CV](./CV)
 
+- [Distributed Training](./DistributedTraining/)
+
 - [Energy-Based Model](./EnergyBasedModel)
 
 - [Generative Models](./GenerativeModels)
