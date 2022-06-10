@@ -28,6 +28,14 @@ Most of the participants of this competition tried to use both DeBERTa-v3-large 
 
 [Training notebook for anferico/bert-for-patents](./src/PPPM%20BERT%204%20patent.ipynb)
 
+### RoBERTa
+
+[Training notebook for RoBERTa large](./src/PPPM%20RoBERTa%20MSE.ipynb)
+
+### CoCoLM large
+
+[Training notebook for CoCoLM large](./src/PPPM%20CoCoLM%20large%20MSE.ipynb)
+
 ### MLM
 
 [Pretraining with Masked Language Model](./src/PPPM%20MLM.ipynb)
