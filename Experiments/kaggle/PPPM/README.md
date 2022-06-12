@@ -6,6 +6,8 @@
 
 ### Loss function
 
+It is well-known that training a neural network model with an optimal loss function could enhance the performance of the model.
+
 #### BCE as a loss function
 
 [My training notebook](./src/PPPM%20training.ipynb)
