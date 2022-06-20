@@ -24,7 +24,9 @@ For the classification task, people used the BCE loss. And for the mse task, peo
 
 [This kaggle discussion](https://www.kaggle.com/competitions/ubiquant-market-prediction/discussion/302874) contains a good explanation about using PCC as a loss function.
 
-### BERT for Patents
+### Using various models for ensemble
+
+#### BERT for Patents
 
 Most of the participants of this competition tried to use both DeBERTa-v3-large model and [BERT-for-patents model](https://huggingface.co/anferico/bert-for-patents).
 
@@ -32,13 +34,17 @@ Most of the participants of this competition tried to use both DeBERTa-v3-large 
 
 [Training notebook for anferico/bert-for-patents with masked language model](./src/PPPM%20BERT-for-patents.ipynb)
 
-### RoBERTa
+#### RoBERTa
 
 [Training notebook for RoBERTa large](./src/PPPM%20RoBERTa%20MSE.ipynb)
 
-### CoCoLM large
+#### CoCoLM large
 
 [Training notebook for CoCoLM large](./src/PPPM%20CoCoLM%20large%20MSE.ipynb)
+
+#### ALBERT XXL v2
+
+[Training notebook for albert xxl v2](./src/PPPM%20ALBERT%20MSE.ipynb)
 
 ### MLM
 
@@ -57,3 +63,7 @@ Using smoothed focal loss rather than BCE loss did not worked
 ### Training BART model
 
 Training the [Huggingface BART large model](https://huggingface.co/facebook/bart-large) did not work with my codes.
+
+### Training DistilBERT model
+
+Training the [DistilBERT model](./src/PPPM%20BERTs.ipynb) did not work for ensembling. I also tried XLM-RoBERTa model with same code, but it also did not work.
