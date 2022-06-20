@@ -4,6 +4,8 @@
 
 ## Useful Resources
 
+## Things that worked for me
+
 ### Loss function
 
 It is well-known that training a neural network model with an optimal loss function could enhance the performance of the model.
