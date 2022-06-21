@@ -4,6 +4,10 @@
 
 ## Useful Resources
 
+### FGM
+
+### EMA (Exponential Moving Average)
+
 ## Things that worked for me
 
 ### Loss function
@@ -48,12 +52,6 @@ Most of the participants of this competition tried to use both DeBERTa-v3-large 
 
 [Training notebook for albert xxl v2](./src/PPPM%20ALBERT%20MSE.ipynb)
 
-### MLM
-
-[Pretraining with Masked Language Model](./src/PPPM%20MLM.ipynb)
-
-Pretrained on [this dataset](./src/pppm_abstract.csv)
-
 ## Things that not worked
 
 ### Focal loss
@@ -69,3 +67,9 @@ Training the [Huggingface BART large model](https://huggingface.co/facebook/bart
 ### Training DistilBERT model
 
 Training the [DistilBERT model](./src/PPPM%20BERTs.ipynb) did not work for ensembling. I also tried XLM-RoBERTa model with same code, but it also did not work.
+
+### MLM
+
+[Pretraining with Masked Language Model](./src/PPPM%20MLM.ipynb)
+
+Pretrained on [this dataset](./src/pppm_abstract.csv)
