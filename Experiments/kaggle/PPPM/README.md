@@ -6,7 +6,69 @@
 
 ### FGM
 
+Adversarial-training let us train networks with significantly improved resistance to adversarial attacks, thus improving robustness of neural networks.
+
+FGM implementation with PyTorch:
+
+```python
+class FGM():
+    def __init__(self, model):
+        self.model = model
+        self.backup = {}
+
+    def attack(self, epsilon=1., emb_name='word_embeddings'):
+        for name, param in self.model.named_parameters():
+            if param.requires_grad and emb_name in name:
+                self.backup[name] = param.data.clone()
+                norm = torch.norm(param.grad)
+                if norm != 0:
+                    r_at = epsilon * param.grad / norm
+                    param.data.add_(r_at)
+
+    def restore(self, emb_name='word_embeddings'):
+        for name, param in self.model.named_parameters():
+            if param.requires_grad and emb_name in name:
+                assert name in self.backup
+                param.data = self.backup[name]
+            self.backup = {}
+```
+
+Add FGM in training code:
+
+```python
+fgm = FGM(model)
+for batch_input, batch_label in data:
+    loss = model(batch_input, batch_label)
+    loss.backward()  
+
+    # adversarial training
+    fgm.attack() 
+    loss_adv = model(batch_input, batch_label)
+    loss_adv.backward() 
+    fgm.restore()  
+
+    optimizer.step()
+    model.zero_grad()
+```
+
+[original discussion](https://www.kaggle.com/competitions/tweet-sentiment-extraction/discussion/143764)
+
 ### EMA (Exponential Moving Average)
+
+Exponential Moving Average (EMA) is similar to Simple Moving Average (SMA), measuring trend direction over a period of time. However, whereas SMA simply calculates an average of price data, EMA applies more weight to data that is more current.
+
+### Transformer models used by gold medal achievers
+
+- microsoft/deberta-v3-large
+- anferico/bert-for-patents
+- ahotrod/electra_large_discriminator_squad2_512
+- Yanhao/simcse-bert-for-patent
+- funnel-transformer/large
+
+### Adding Bi-LSTM header to Transformer models
+
+- [PyTorch implementation](./src/pppm_1st_winner_train/torch/model.py)
+- [Tensorflow implementation](./src/pppm_1st_winner_train/tf/model.py)
 
 ## Things that worked for me
 
@@ -73,3 +135,7 @@ Training the [DistilBERT model](./src/PPPM%20BERTs.ipynb) did not work for ensem
 [Pretraining with Masked Language Model](./src/PPPM%20MLM.ipynb)
 
 Pretrained on [this dataset](./src/pppm_abstract.csv)
+
+### Post Processing
+
+Since the scoring metric that is used for this competition was a PCC (Pearson Correlation Coefficient), gives a score by comparing the distances between prediction data. So, doing things such as winsorizing, clipping, discretizing will not work.
