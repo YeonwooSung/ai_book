@@ -2,6 +2,10 @@
 
 [U.S. Patent Phrase to Phrase Matching](https://www.kaggle.com/competitions/us-patent-phrase-to-phrase-matching/overview)
 
+## My Result
+
+Ranked on 132th (132 out of 1889) - bronze medal
+
 ## Useful Resources
 
 ### FGM
