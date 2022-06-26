@@ -14,6 +14,8 @@ AI 101 for everyone
 
 - [Machine Learning](./MachineLearning)
 
+- [Multi-Modal Learning](./MultiModal/)
+
 - [NLP](./NLP)
 
 - [Self-Supervised Learning](./SelfSupervisedLearning)
