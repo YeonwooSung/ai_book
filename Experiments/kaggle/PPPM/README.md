@@ -57,6 +57,10 @@ for batch_input, batch_label in data:
 
 [original discussion](https://www.kaggle.com/competitions/tweet-sentiment-extraction/discussion/143764)
 
+### AWP
+
+AWP was also used for training the DeBERTa v3 large models.
+
 ### EMA (Exponential Moving Average)
 
 Exponential Moving Average (EMA) is similar to Simple Moving Average (SMA), measuring trend direction over a period of time. However, whereas SMA simply calculates an average of price data, EMA applies more weight to data that is more current.
@@ -73,6 +77,37 @@ Exponential Moving Average (EMA) is similar to Simple Moving Average (SMA), meas
 
 - [PyTorch implementation](./src/pppm_1st_winner_train/torch/model.py)
 - [Tensorflow implementation](./src/pppm_1st_winner_train/tf/model.py)
+
+### Pass more data to the neural network
+
+Most of the magics that high scorers did were improving the input data by making more input data with existing features.
+
+i.e.
+
+Grouping the target words per "anchor + context" and attach them to the end of each sentence.
+
+```python
+train['group'] = train['context'] + " " + train['anchor']
+
+allres = {}
+
+for text in tqdm(train["group"].unique()):
+  tmpdf = train[train["group"]==text].reset_index(drop=True)
+  texts = ",".join(tmpdf["target"])
+  allres[text] = texts
+
+train["target_gp"] = train["group"].map(allres)
+
+train["input"] = train.anchor + " " + tokenizer.sep_token + " " + train.target + " " + tokenizer.sep_token + " " + train.title + " " + tokenizer.sep_token + " " + train.target_gp
+```
+
+i.e.
+
+1) Group the targets from the same anchor, such as 'target1, target2, target3, …'. Then add them to the context.
+
+2) Group the targets from the same anchor and context. This brings more relevant targets.
+
+3) Group the targets from the same anchor. Group the anchors from the same context. Add them to the context in turn.
 
 ## Things that worked for me
 
