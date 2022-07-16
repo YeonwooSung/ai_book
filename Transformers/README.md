@@ -14,6 +14,12 @@ Transformers의 성공 요소는 크게 Self-Supervision 과 Self-Attention 으�
 
 또 다른 성공 요소인 Self-Attention은 말 그대로 스스로 attention을 계산하는 것을 의미하며 CNN, RNN과 같이 inductive bias가 많이 들어가 있는 모델들과는 다르게 최소한의 inductive bias를 가정합니다. Self-Attention Layer를 통해 주어진 sequence에서 각 token set elements(ex, words in language or patches in an image)간의 관계를 학습하면서 광범위한 context를 고려할 수 있게 됩니다.
 
+## Sample Codes
+
+- [Using GPU example](./src/transformer_gpu.ipynb)
+- [Training](./src/Training.ipynb)
+- [Inference](./src/Inference.ipynb)
+
 ## Semi-Supervised Learning
 
 Transformers typically undergo semi-supervised learning involving unsupervised pretraining followed by supervised fine-tuning.

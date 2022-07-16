@@ -1,0 +1,57 @@
+en =  The fear of the LORD is the beginning of wisdom; all who follow his precepts have good understanding. To him belongs eternal praise.
+answer =  주님을 경외하는 것이 지혜의 근본이다. 이것을 실천하는 사람은 바른 깨달음을 얻으니, 영원토록 주님을 찬양할 일이다.
+ko = ['주의 교훈은, 주의 법도를 따라 사는 모든 성도들이 다 지켰습니다. 주의 법도를 저버리는 모든 성도들이 주님을 찬양은, 주님을 찬양하겠습니다.']
+
+
+
+en =  What a wretched man I am! Who will rescue me from this body of death?
+answer =  아, 나는 비참한 사람입니다. 누가 이 죽음의 몸에서 나를 건져 주겠습니까?
+ko = ['누가 나를 누구며, 누가 나를 누구입니까? 누가 나를 건져 줄 수 있겠느냐?']
+
+en =  When Jehu came to Samaria, he killed all who were left there of Ahab's family; he destroyed them, according to the word of the LORD spoken to Elijah.
+answer =  그리고 그는 사마리아에 이르러서, 거기에 남아 있는 아합의 지지자를 모두 죽였다. 이 모든 것은 주께서 엘리야에게 말씀하신 대로 이루어진 것이다.
+ko = ["예후가 죽으니, 사마리아에 있는 그의 조상에게로 가서, 그를 죽였다. 주께서 그에게 '다윗 성' 하고 말씀하신 그대로 본받았다."]
+
+en =  " 'This is what the Sovereign LORD says: In the first month on the first day you are to take a young bull without defect and purify the sanctuary.
+answer =  "나 주 하나님이 말한다. 너는 첫째 달 초하루에는 언제나 소 떼 가운데서 흠 없는 수송아지 한 마리를 골라다가 성소를 정결하게 하여라.
+ko = ['나 주 하나님이 말한다. 그 날에는 수송아지 일곱 마리와 숫양 두 마리와 일 년 된 어린 숫양 한 마리를 흠 없는 것으로 바쳐라.']
+
+en =  "Son of man, set your face against Sidon; prophesy against her
+answer =  "사람아, 너는 얼굴을 돌려 시돈을 바라보고, 그 성읍을 규탄하여 예언을 하여라.
+ko = ['"사람아, 너는 네가 이렇게 전하여라. 너는 에돔을 규탄하여 예언하여라.']
+
+en =  Moses answered the people, "Do not be afraid. Stand firm and you will see the deliverance the LORD will bring you today. The Egyptians you see today you will never see again.
+answer =  모세가 백성에게 대답하였다. "두려워하지 말아라. 너희는 가만히 서서, 주께서 오늘 너희를 어떻게 구원하시는지 지켜 보기만 하여라. 너희가 오늘 보는 이 이집트 사람을 다시는 볼 수 없을 것이다.
+ko = ['모세가 백성에게 말하였다. "주께서 확실히 살아 계심을 두고 맹세합니다. 오늘 너희에게 재앙을 내리지 않을 것이다. 너희가 이집트 땅에서 너희가 어떻게 하시지 못할 것이다.']
+
+en =  then hear from heaven their prayer and their plea, and uphold their cause.
+answer =  주께서는 하늘에서 그들의 기도와 간구를 들으시고, 그들의 사정을 살펴보아 주십시오.
+ko = ['그러나 주님은, 하늘에서 그들의 기도와 간구를 들으시고, 그들의 사정을 살펴 주십시오.']
+
+en =  Say to the southern forest: 'Hear the word of the LORD. This is what the Sovereign LORD says: I am about to set fire to you, and it will consume all your trees, both green and dry. The blazing flame will not be quenched, and every face from south to north will be scorched by it.
+answer =  너는 네겝의 숲에 말하여라. '너는 주의 말을 들어라. 나 주 하나님이 말한다. 내가 숲 속에 불을 지르겠다. 그 불은 숲 속에 있는 모든 푸른 나무와 모든 마른 나무를 태울 것이다. 활활 치솟는 그 불꽃이 꺼지지 않아서, 남쪽에서 북쪽까지 모든 사람의 얼굴이 그 불에 그으를 것이다.
+ko = ['너는, 너는, 산들아, 너희는 나 주 하나님의 말이다. 내가 너희에게 말한다. 내가 너희에게 말한다. 내가 너를 치겠다. 내가 너를 치고, 네 모든 곳에서 불에 태워 버리겠다.']
+
+en =  The LORD said to Moses, "Chisel out two stone tablets like the first ones, and I will write on them the words that were on the first tablets, which you broke.
+answer =  주께서 모세에게 말씀하셨다. "너는 돌판 두 개를 처음 것과 같이 깎아라. 그러면, 네가 깨뜨려 버린 처음 돌판 위에 쓴 그 말을, 내가 새 돌판에 다시 새겨 주겠다.
+ko = ['주께서 모세에게 말씀하셨다. "너는 이 두 돌판에 휩싸여, 내가 너희에게 명한 대로, 그 두루마리를 펴겠다. 나는 너희에게 보여 주겠다.']
+
+en =  That night all the people of the community raised their voices and wept aloud.
+answer =  온 회중이 소리 높여 아우성쳤다. 백성이 밤새도록 통곡하였다.
+ko = ['그 날 밤에 온 백성이 모두 크게 통곡하였다. 백성은 모두 통곡하였다.']
+
+en =  The word of the LORD came to me:
+answer =  주께서 나에게 말씀하셨다.
+ko = ['주께서 나에게 말씀하셨다.']
+
+n =  Then he went in and stood before his master Elisha. "Where have you been, Gehazi?" Elisha asked. "Your servant didn't go anywhere," Gehazi answered.
+answer =  그리고 그가 들어가서 주인 앞에 서자, 엘리사가 그에게 물었다. "게하시야, 어디를 갔다 오는 길이냐?" 그러자 그는 "어른의 종인 저는 아무데도 가지 않았습니다" 하고 말하였다.
+ko = ['엘리사가 게하시가 그에게 말하였다. "선생님, 제가 여기에 있습니다." 엘리사가 말하였다. "저에게 무엇을 보러 나갔더냐?"']
+
+en =  Solomon reigned in Jerusalem over all Israel forty years.
+answer =  솔로몬은 예루살렘에서 사십 년 동안 온 이스라엘을 다스렸다.
+ko = ['솔로몬은 예루살렘에서 마흔 해 동안 다스렸다.']
+
+en =  from the tribe of Simeon 12,000, from the tribe of Levi 12,000, from the tribe of Issachar 12,000,
+answer =  시므온 지파에서 일만 이천 명이요, 레위 지파에서 일만 이천 명이요, 잇사갈 지파에서 일만 이천 명이요,
+ko = ['시므온 지파에서 일만 이천 명이요, 레위 지파에서 일만 이천 명이요, 잇사갈 지파에서 일만 이천 명이요,']

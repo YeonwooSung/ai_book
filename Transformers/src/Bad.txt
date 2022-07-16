@@ -1,0 +1,37 @@
+en =  And no one pours new wine into old wineskins. If he does, the new wine will burst the skins, the wine will run out and the wineskins will be ruined.
+answer =  새 포도주를 낡은 가죽 부대에다가 넣는 사람은 없다. 그렇게 하면, 새 포도주가 그 가죽 부대를 터뜨려서, 포도주는 쏟아지고, 가죽 부대는 못 쓰게 된다.
+ko = ['새 포도주는 새 가죽 부대에 담은 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과 가죽과']
+
+en =  "Say to the Levites: 'When you present the best part, it will be reckoned to you as the product of the threshing floor or the winepress.
+answer =  너는 또 그들에게 말하여라. '너희가 가장 좋은 부분을 들어 올려 바칠 때에, 나는 그것을 레위 사람이 타작 마당이나 포도 짜는 틀에서 나온 것을 바치는 것처럼 여길 것이다.
+ko = ['"너는 레위 사람에게 말하여라. \'너희가 여기에 있다. 내가 너희에게 준 대로, 너희가 타작 마당과 보리빵에 있는 타작 마당과 포도송이에 있는 타작 마당과 포도 짜는 틀에서 포도 짜는 틀에서 포도 짜는 틀에서 포도 짜는 틀에서 포도 짜는 틀에서 포도 짜는 틀에서 포도 짜는 틀에서 포도도 포도도 포도 짜는 틀에서 무화과처럼 풀을 뜯고,']
+
+
+en =  The next morning Jehu went out. He stood before all the people and said, "You are innocent. It was I who conspired against my master and killed him, but who killed all these?
+answer =  아침이 되었을 때에, 예후는 나가서 모든 백성에게 말하였다. "나는 내 옛 주인에게 역모를 꾀하여, 그를 죽였습니다. 백성들에게는 아무 잘못이 없습니다. 그러나 여기에 있는 이 모든 사람은 누가 죽였습니까?
+ko = ['다음날 아침에 일찍 일어나서, 그를 돌로 치고, 그 아이들은 그를 고발하는 말을 듣고, 그를 고발하는 것을 보고, 그를 고발하는구나.']
+
+
+en =  Terrifying sounds fill his ears; when all seems well, marauders attack him.
+answer =  들리는 소식이라고는 다 두려운 소식뿐이고, 좀 평안해졌는가 하면 갑자기 파괴하는 자가 들이닥치는 것이다.
+ko = ['미련한 사람은 수치를 당하고, 공포에 사로잡힌다.']
+
+en =  and saw the Lord speaking. 'Quick!' he said to me. 'Leave Jerusalem immediately, because they will not accept your testimony about me.'
+answer =  주님을 보았습니다. 그는 내게 '서둘러서 예루살렘을 떠나라. 예루살렘 사람들이 나를 두고 한 네 증언을 받아들이지 않을 것이기 때문이다' 하고 말씀하셨습니다.
+ko = ["주께서 나에게 말씀하셨다. '너는 나를 두고 맹세하여라. 내가 너희에게 말한다. 너는 나를 두고 맹세하지 말아라. 그들이 나를 두고 맹세하지 말아라."]
+
+en =  "Go down, sit in the dust, Virgin Daughter of Babylon; sit on the ground without a throne, Daughter of the Babylonians. No more will you be called tender or delicate.
+answer =  처녀 딸 바빌론아, 내려와서 티끌에 앉아라. 딸 바빌로니아야, 보좌를 잃었으니, 땅에 주저앉아라. 너의 몸매가 유연하고 맵시가 있다고들 하였지만, 이제는 아무도 그런 말을 하지 않을 것이다.
+ko = ['"너는 바빌론 도성 바빌론 도성아, 바빌론 도성아, 바빌론 도성 안에 있는 도성 안에 있는 네 오른손에는 칼이나 쳐라. 네 오른손에는 칼이나 기근이나 기근이나 기근이나 기근이나 기근이나 기근이나 기근이나 굶은 아니다.']
+
+en =  Obed-Edom also had sons: Shemaiah the firstborn, Jehozabad the second, Joah the third, Sacar the fourth, Nethanel the fifth,
+answer =  오벳에돔의 아들은, 맏아들 스마야와, 둘째 여호사밧과, 셋째 요아와, 넷째 사갈과, 다섯째 느다넬과,
+ko = ['오벳에돔과 아사의 아들 여호하난이 보수하였는데, 그 다음은 단에서부터 스바와 드라빔과 스바와 드라빔과 스바와 드라빔과 스바와 드라빔과 스바와 드라빔과 스바와 드라빔과 스바와 드라빔과 스바와 드라빔과 스바와 드라빔과 스바와 드라빔과 스바와 드라빔이다.']
+
+en =  Therefore we will not fear, though the earth give way and the mountains fall into the heart of the sea,
+answer =  땅이 흔들리고 산이 무너져 바다 속으로 빠져 들어도, 우리는 두려워하지 않는다.
+ko = ['그러므로 우리는 땅 위에 사는 사람들을 두려워하고, 바다 위로할 수 없는 것을 보고,']
+
+en =  He said to them, "If you are willing to let me bury my dead, then listen to me and intercede with Ephron son of Zohar on my behalf
+answer =  그들에게 말하였다. "여러분이, 내가 나의 아내를 이 곳에다 묻을 수 있게 해주시려면, 나의 청을 들어 주시고, 나를 대신해서, 소할의 아들 에브론에게 말을 전해 주시기 바랍니다.
+ko = ['예수께서 그들에게 말씀하셨다. "내가 내 말을 할 수 있는 이 말을 듣고, 나를 잘 듣고, 내 말을 잘 듣고, 내장군다.']
