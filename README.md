@@ -11,6 +11,8 @@ AI 101 for everyone
 - [Energy-Based Model](./EnergyBasedModel)
 
 - [Generative Models](./GenerativeModels)
+  - [Deepfake](./GenerativeModels/Deepfake/)
+  - [GAN](./GenerativeModels/GAN/)
 
 - [Machine Learning](./MachineLearning)
 
