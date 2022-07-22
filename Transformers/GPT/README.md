@@ -184,6 +184,12 @@ The most special thing in the GPT-3 is that the size of the model is extremely h
 
 ![Performance Comparison by size of model](./imgs/performance_comparison_by_size_of_models.png)
 
+#### Pretrained Language Models could be used for downstream tasks
+
+The main point that the GPT-3 actually surprised everyone is that the GPT-3 did not use the finetuning. Since the size of the GPT-3 is too large, researchers decided to not to use the finetuning the model. This is because finetuning an extrememly large model is extremely hard. Instead finetuning the model, GPT-3 trained with self-supervised pretraining and in-context learning.
+
+So, the training loop of the GPT-3 has 2 different loops - pretraining as a outer loop, and in-context learnings as inner loops. Basically, the incontext-learning is a training method that makes the model to infer what to do for the given task where doing the actual inference at the same time. To accomplish this, GPT-3 was trained with prompt-based learning. As it's name depicts, the prompt learning is a method that uses the prompt. It is one of the in-context learning methods that is used for language models. By giving both prompt that describes the task and the text data that should be used for actual inference, GPT-3 was able to learn new things via few shot learning. It is said that it might be possible to make a better and more generalised model if we increase both model size and training dataset, and train it with in-context learning method.
+
 #### AGI - we are almost there now
 
 AGI, Artifical General Intelligence, is the hypothetical intelligence of a machine that has the capacity to understand or learn any intellectual task that a human being can. It is a primary goal of some artificial intelligence research and a common topic in science fiction and futures studies. AGI can also be referred to as strong AI, full AI, or general intelligent action.
