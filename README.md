@@ -25,6 +25,7 @@ AI 101 for everyone
 - [Transfer Learning](./TransferLearning)
 
 - [Transformers](./Transformers)
+  * [Attention](./Transformers/Attention/)
 
 - [XAI](./XAI)
 
