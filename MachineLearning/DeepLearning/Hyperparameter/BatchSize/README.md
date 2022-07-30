@@ -51,6 +51,10 @@ It is well known that the ideal batch size is to make it in the power of 2: 64, 
 
 Furthremore, since you are using an extremely small batch size, you will always be suffering from sample bias. You are over-fitting the mini-batch distribution and not the actual distribution of the dataset. This means reduced accuracy.
 
+## Finding batch size for training model
+
+[Here](./src/findBatchsize.py), I am providing you a simple code that helps you to find the suitable batch size that you could use for training your model. Basically, it calculates the total memory on GPU (or CPU - depends on the environment that you used for you training) for you, which could be used for a boundary value for hyperparameter.
+
 ## References
 
 [1] Nitish Shirish Keskar, Dheevatsa Mudigere, Jorge Nocedal, Mikhail Smelyanskiy, Ping Tak Peter Tang. [On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima](https://arxiv.org/abs/1609.04836)
