@@ -2,6 +2,8 @@
 
 [U.S. Patent Phrase to Phrase Matching](https://www.kaggle.com/competitions/us-patent-phrase-to-phrase-matching/overview)
 
+Now the dataset is released as a public general purpose benchmark dataset! You could find the related paper [here](https://arxiv.org/pdf/2208.01171.pdf)
+
 ## My Result
 
 Ranked on 132th (132 out of 1889) - bronze medal
