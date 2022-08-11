@@ -4,8 +4,6 @@ AI 101 for everyone
 
 ## Table of Contents
 
-- [Adversarial ML](./AdversarialML/)
-
 - [CV](./CV)
 
 - [Distributed Training](./DistributedTraining/)
@@ -23,6 +21,10 @@ AI 101 for everyone
 - [NLP](./NLP)
 
 - [Self-Supervised Learning](./SelfSupervisedLearning)
+
+- [Training](./Training)
+  * [Adversarial ML](./Training/AdversarialML/)
+  * [Knowledge Distillation](./Training/KnowledgeDistillation/)
 
 - [Transfer Learning](./TransferLearning)
 
