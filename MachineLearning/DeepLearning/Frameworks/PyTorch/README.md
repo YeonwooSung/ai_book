@@ -7,6 +7,7 @@
 ## Related libraries
 
 1. [torchvision](./torchvision/)
+2. [torchdim](./torchdim/)
 
 ## Discussions
 
