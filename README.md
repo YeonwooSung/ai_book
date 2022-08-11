@@ -4,6 +4,8 @@ AI 101 for everyone
 
 ## Table of Contents
 
+- [Adversarial ML](./AdversarialML/)
+
 - [CV](./CV)
 
 - [Distributed Training](./DistributedTraining/)
