@@ -194,7 +194,7 @@ lightgbm==2.2.3
 llvmlite==0.34.0
 lmdb==0.99
 lunarcalendar==0.0.9
-lxml==4.2.6
+lxml==4.9.1
 markdown==3.4.1
 markupsafe==2.0.1
 matplotlib-inline==0.1.3
