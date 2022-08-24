@@ -287,7 +287,7 @@ pydrive==1.3.1
 pyemd==0.5.1
 pyerfa==2.0.0.1
 pyglet==1.5.0
-pygments==2.6.1
+pygments==2.7.4
 pygobject==3.26.1
 pymc3==3.11.5
 pymeeus==0.5.11
