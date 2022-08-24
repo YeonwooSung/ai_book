@@ -400,7 +400,7 @@ typer==0.4.2
 typing-extensions==4.1.1
 tzlocal==1.5.1
 uritemplate==3.0.1
-urllib3==1.25.11
+urllib3==1.26.5
 vega-datasets==0.9.0
 wandb==0.12.21
 wasabi==0.9.1
