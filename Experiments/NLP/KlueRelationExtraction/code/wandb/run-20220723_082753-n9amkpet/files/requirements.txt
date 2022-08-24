@@ -64,7 +64,7 @@ defusedxml==0.7.1
 deprecat==2.1.1
 descartes==1.1.0
 dill==0.3.5.1
-distributed==1.25.3
+distributed==2021.10.0
 dlib==19.18.0+zzzcolab20220513001918
 dm-tree==0.1.7
 docker-pycreds==0.4.0
