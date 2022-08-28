@@ -112,9 +112,23 @@ class AdaptiveEmbedding(nn.Module):
 # Positional Embedding
 
 class PositionalEmbedding(nn.Module):
-    def __init__(self) -> None:
+    def __init__(self, demb):
         super().__init__()
-        pass
+
+        self.demb = demb
+
+        inv_freq = 1 / (10000 ** (torch.arange(0.0, demb, 2.0) / demb))
+        self.register_buffer("inv_freq", inv_freq)
+
+    def forward(self, pos_seq, bsz=None):
+        sinusoid_inp = torch.ger(pos_seq, self.inv_freq)
+        pos_emb = torch.cat([sinusoid_inp.sin(), sinusoid_inp.cos()], dim=-1)
+
+        if bsz is not None:
+            return pos_emb[:, None, :].expand(-1, bsz, -1)
+        else:
+            return pos_emb[:, None, :]
+
 
 #-----------------------------#
 # TransformerXL Layers
@@ -526,7 +540,7 @@ class TransformerXL(nn.Module):
         else:
             head_mask = [None] * self.n_layer
         
-        # word embedding
+        # calculate the segment embeddings
         if inputs_embeds is None:
             word_emb = self.word_emb(input_ids)
         else:
@@ -553,11 +567,12 @@ class TransformerXL(nn.Module):
         pos_seq = torch.arange(klen - 1, -1, -1.0, device=word_emb.device, dtype=word_emb.dtype)
         if self.clamp_len > 0:
             pos_seq.clamp_(max=self.clamp_len)
+        # position embedding
         pos_emb = self.pos_emb(pos_seq)
 
-        # segment embedding
+        # apply dropout to segment embedding
         core_out = self.drop(word_emb)
-        # positional embedding
+        # apply dropout to positional embedding
         pos_emb = self.drop(pos_emb)
 
         # core transformer MHA
