@@ -384,7 +384,7 @@ class DisentangledSelfAttention(nn.Module):
         self.v_bias = nn.Parameter(torch.zeros((self.all_head_size), dtype=torch.float))
         self.pos_att_type = config.pos_att_type if config.pos_att_type is not None else []
 
-        self.relative_attention = getattr(config, "relative_attention", False)
+        self.relative_attention = getattr(config, "relative_attention", True)
         self.talking_head = getattr(config, "talking_head", False)
 
         if self.talking_head:
@@ -462,37 +462,55 @@ class DisentangledSelfAttention(nn.Module):
         value_layer = value_layer + self.transpose_for_scores(self.v_bias[None, None, :])
 
         rel_att = None
+
         # Take the dot product between "query" and "key" to get the raw attention scores.
         scale_factor = 1 + len(self.pos_att_type)
         scale = torch.sqrt(torch.tensor(query_layer.size(-1), dtype=torch.float) * scale_factor)
         query_layer = query_layer / torch.tensor(scale, dtype=query_layer.dtype)
+        
+        # calculate attention scores (c2c)
         attention_scores = torch.matmul(query_layer, key_layer.transpose(-1, -2))
+
+        # if the option for the relative attention is activated, calculate c2p and p2c attention scores
         if self.relative_attention:
             rel_embeddings = self.pos_dropout(rel_embeddings)
             rel_att = self.disentangled_att_bias(query_layer, key_layer, relative_pos, rel_embeddings, scale_factor)
 
-        if rel_att is not None:
-            attention_scores = attention_scores + rel_att
+            # if the rel_att is not None, append it to the attention scores
+            if rel_att is not None:
+                # attention_scores = attention_scores(c2c) + rel_att(c2p + p2c)
+                attention_scores = attention_scores + rel_att
 
-        # bxhxlxd
+        # [B x H x L x D]
         if self.talking_head:
             attention_scores = self.head_logits_proj(attention_scores.permute(0, 2, 3, 1)).permute(0, 3, 1, 2)
 
+        # calcualte attention probabilities by applying softmax on the attention scores
         attention_probs = XSoftmax.apply(attention_scores, attention_mask, -1)
         attention_probs = self.dropout(attention_probs)
         if self.talking_head:
             attention_probs = self.head_weights_proj(attention_probs.permute(0, 2, 3, 1)).permute(0, 3, 1, 2)
 
+        # compute context vector by multiplying attention probabilities with the values
         context_layer = torch.matmul(attention_probs, value_layer)
+        
+        # reshape the context vector to the original input shape
         context_layer = context_layer.permute(0, 2, 1, 3).contiguous()
         new_context_layer_shape = context_layer.size()[:-2] + (-1,)
         context_layer = context_layer.view(new_context_layer_shape)
+
+        # If the option for the output_attentions is activated, return the attention scores and the context vector
+        # Otherwise, return only the context vector
         if output_attentions:
             return (context_layer, attention_probs)
         else:
             return context_layer
 
+
     def disentangled_att_bias(self, query_layer, key_layer, relative_pos, rel_embeddings, scale_factor):
+        """
+        Compute the Context-to-Position (c2p) and Position-to-Context (p2c) attention scores.
+        """
         if relative_pos is None:
             q = query_layer.size(-2)
             relative_pos = build_relative_position(q, key_layer.size(-2), query_layer.device)
@@ -820,6 +838,13 @@ class DeBERTa(nn.Module):
         self.embeddings = DeBERTaEmbeddings(config)
         self.encoder = DeBERTaEncoder(config)
 
+    def get_input_embeddings(self):
+        return self.embeddings.word_embeddings
+
+    def set_input_embeddings(self, new_embeddings):
+        self.embeddings.word_embeddings = new_embeddings
+
+
     def forward(
         self,
         input_ids: Optional[torch.Tensor] = None,
@@ -831,4 +856,71 @@ class DeBERTa(nn.Module):
         output_hidden_states: Optional[bool] = None,
         return_dict: Optional[bool] = None,
     ) -> Union[Tuple, DeBERTaOutput]:
-        pass
+        output_attentions = output_attentions if output_attentions is not None else self.config.output_attentions
+        output_hidden_states = (
+            output_hidden_states if output_hidden_states is not None else self.config.output_hidden_states
+        )
+        return_dict = return_dict if return_dict is not None else self.config.use_return_dict
+
+        if input_ids is not None and inputs_embeds is not None:
+            raise ValueError("You cannot specify both input_ids and inputs_embeds at the same time")
+        elif input_ids is not None:
+            input_shape = input_ids.size()
+        elif inputs_embeds is not None:
+            input_shape = inputs_embeds.size()[:-1]
+        else:
+            raise ValueError("You have to specify either input_ids or inputs_embeds")
+
+        device = input_ids.device if input_ids is not None else inputs_embeds.device
+
+        if attention_mask is None:
+            attention_mask = torch.ones(input_shape, device=device)
+        if token_type_ids is None:
+            token_type_ids = torch.zeros(input_shape, dtype=torch.long, device=device)
+
+        embedding_output = self.embeddings(
+            input_ids=input_ids,
+            token_type_ids=token_type_ids,
+            position_ids=position_ids,
+            mask=attention_mask,
+            inputs_embeds=inputs_embeds,
+        )
+
+        encoder_outputs = self.encoder(
+            embedding_output,
+            attention_mask,
+            output_hidden_states=True,
+            output_attentions=output_attentions,
+            return_dict=return_dict,
+        )
+        encoded_layers = encoder_outputs[1]
+
+        if self.z_steps > 1:
+            hidden_states = encoded_layers[-2]
+            layers = [self.encoder.layer[-1] for _ in range(self.z_steps)]
+            query_states = encoded_layers[-1]
+            rel_embeddings = self.encoder.get_rel_embedding()
+            attention_mask = self.encoder.get_attention_mask(attention_mask)
+            rel_pos = self.encoder.get_rel_pos(embedding_output)
+            for layer in layers[1:]:
+                query_states = layer(
+                    hidden_states,
+                    attention_mask,
+                    output_attentions=False,
+                    query_states=query_states,
+                    relative_pos=rel_pos,
+                    rel_embeddings=rel_embeddings,
+                )
+                encoded_layers.append(query_states)
+
+        # get the output of the last deberta layer, which is the last hidden state of the deberta model
+        sequence_output = encoded_layers[-1]
+
+        if not return_dict:
+            return (sequence_output,) + encoder_outputs[(1 if output_hidden_states else 2) :]
+
+        return DeBERTaOutput(
+            last_hidden_state=sequence_output,
+            hidden_states=encoder_outputs.hidden_states if output_hidden_states else None,
+            attentions=encoder_outputs.attentions,
+        )
