@@ -10,32 +10,21 @@
 
 ## DETR의 구조
 
-![DETR](https://user-images.githubusercontent.com/48716219/103141201-2b2b4a00-4731-11eb-9b0a-5b0e8c5b8b0a.png)
+![DETR](./img/detr_architecture.png)
 
 - DETR은 Transformer의 Encoder와 Decoder를 사용하여 Object Detection을 수행
 - Encoder는 이미지를 Feature Map으로 변환
 - Decoder는 Feature Map을 입력으로 받아 Object Detection 수행
 - Encoder와 Decoder는 동일한 구조를 사용
 
-## DETR의 Encoder
+## Bipartite Matching
 
-![DETR Encoder](https://user-images.githubusercontent.com/48716219/103141202-2bc3e080-4731-11eb-9b1a-5b2b2b2b2b2b.png)
+- 이분 매칭을 통해 set prediction problem을 해결
+- 학습 과정에서 이분 매칭을 수행함으로써 검출 인스턴스가 중복되지 않게 만듬
 
-## DETR의 Decoder
+예를 들어, 이미지 내에 최대 8개의 객체가 검출될 수 있다고 가정을 했을 때, DETR는 "검출 안됨"을 포함한 8개의 결과 값을 반환하게 된다.
+학습 시에, 이 8개의 결과 값은 "객체 없음"을 포함한 8개의 인스턴스 집합과 이분 매칭을 통해 검출 결과가 최대가 되도록 매칭이 이루어지게 된다.
 
-![DETR Decoder](https://user-images.githubusercontent.com/48716219/103141203-2bc3e080-4731-11eb-9b1b-5b2b2b2b2b2b.png)
+아래 이미지는 최대 6개의 객체가 이미지 내에 존재할 수 있다고 가정을 하였을 때 학습 과정에서 이분 매칭이 이루어지는 과정을 보여준다.
 
-## DETR의 Loss
-
-![DETR Loss](https://user-images.githubusercontent.com/48716219/103141204-2bc3e080-4731-11eb-9b1c-5b2b2b2b2b2b.png)
-
-- DETR은 Cross Entropy Loss를 사용하여 Loss를 계산
-- Cross Entropy Loss는 Classification Loss와 Bounding Box Regression Loss를 포함
-- Classification Loss는 Object가 존재하는지 여부를 판단
-- Bounding Box Regression Loss는 Object의 Bounding Box를 예측
-
-## DETR의 성능
-
-![DETR Performance](https://user-images.githubusercontent.com/48716219/103141205-2c5c7700-4731-11eb-9b1d-5b2b2b2b2b2b.png)
-
-- DETR은 SOTA를 달성
+![bipartite_matching](./img/bipartite_matching.png)
