@@ -64,3 +64,9 @@ Below are the strategies that the high scorers used for fine-tuning.
 - Cosine scheduler
 - Layer wise learning rate decay
 - Mean pooling to extract span representations as opposed to [CLS] token based ones
+
+#### Multi-sample dropouts
+
+[Multi-sample dropout](https://arxiv.org/abs/1905.09788) is a technique that creates multiple dropout samples. The loss is calculated for each sample, and then the sample losses are averaged to obtain the final loss. This technique can be easily implemented by duplicating a part of the network after the dropout layer while sharing the weights among the duplicated fully connected layers.
+
+[Notebook for training transformer model with Multi-sample dropout](./src/Feedback%20training.ipynb).
