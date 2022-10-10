@@ -57,7 +57,6 @@ The length of the longest text data in the training dataset was around 1800, whi
 Below are the strategies that the high scorers used for fine-tuning.
 
 - Adversarial Training with AWP
-- Mask Augmentations (10-25%)
 - Multi-sample dropouts
 - Multi-head attention over span representations
 - LSTM over transformer encoder representations
