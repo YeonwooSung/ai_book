@@ -1,6 +1,6 @@
 # AI Book
 
-AI 101 for everyone
+Free online book on Artificial Intelligence to help people learn AI easily.
 
 ## Table of Contents
 
