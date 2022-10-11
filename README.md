@@ -22,6 +22,9 @@ AI 101 for everyone
     * [U.S. Patent Phrase to Phrase Matching](./Experiments/kaggle/PPPM/)
 
 - [CV](./CV)
+  * [Image Classification](./CV/CNN/)
+  * [Data Augmentation](./CV/DataAugmentation/)
+  * [Object Detection](./CV/ObjectDetection/)
 
 - [Distributed Training](./DistributedTraining/)
 
