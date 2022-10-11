@@ -4,6 +4,23 @@ AI 101 for everyone
 
 ## Table of Contents
 
+- [Transformers](./Transformers)
+  * [Attention](./Transformers/Attention/)
+  * [BERT](./Transformers/BERT/)
+  * [BLOOM](./Transformers/BLOOM/)
+  * [GLOM](./Transformers/GLOM/)
+  * [GPT](./Transformers/GPT/)
+
+- [Frameworks](./MachineLearning/DeepLearning/Frameworks/)
+  * [PyTorch](./MachineLearning/DeepLearning/Frameworks/PyTorch/)
+  * [Hugging Face](./MachineLearning/DeepLearning/Frameworks/HuggingFace/)
+
+- [Experiments](./Experiments/)
+  - [CV](./Experiments/CV/)
+  - [Kaggle](./Experiments/kaggle/)
+    * [NBME - Score Clinical Patients Notes](./Experiments/kaggle/NBME/)
+    * [U.S. Patent Phrase to Phrase Matching](./Experiments/kaggle/PPPM/)
+
 - [CV](./CV)
 
 - [Distributed Training](./DistributedTraining/)
@@ -28,19 +45,6 @@ AI 101 for everyone
 
 - [Transfer Learning](./TransferLearning)
 
-- [Transformers](./Transformers)
-  * [Attention](./Transformers/Attention/)
-
 - [XAI](./XAI)
 
 - [additional helpful books, resources, etc](./books)
-
-- [Frameworks](./MachineLearning/DeepLearning/Frameworks/)
-  * [PyTorch](./MachineLearning/DeepLearning/Frameworks/PyTorch/)
-  * [Hugging Face](./MachineLearning/DeepLearning/Frameworks/HuggingFace/)
-
-- [Experiments](./Experiments/)
-  - [CV](./Experiments/CV/)
-  - [Kaggle](./Experiments/kaggle/)
-    * [NBME - Score Clinical Patients Notes](./Experiments/kaggle/NBME/)
-    * [U.S. Patent Phrase to Phrase Matching](./Experiments/kaggle/PPPM/)
