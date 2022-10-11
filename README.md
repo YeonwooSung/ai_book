@@ -51,3 +51,7 @@ Free online book on Artificial Intelligence to help people learn AI easily.
 - [XAI](./XAI)
 
 - [additional helpful books, resources, etc](./books)
+
+## Contributing
+
+Submitting pull requests is always welcome. If you have any questions, please feel free to open an issue.
