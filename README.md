@@ -28,13 +28,13 @@ Free online book on Artificial Intelligence to help people learn AI easily.
 
 - [Distributed Training](./DistributedTraining/)
 
-- [Energy-Based Model](./EnergyBasedModel)
-
 - [Generative Models](./GenerativeModels)
   - [Deepfake](./GenerativeModels/Deepfake/)
   - [GAN](./GenerativeModels/GAN/)
 
 - [Machine Learning](./MachineLearning)
+  - [Deep Learning](./MachineLearning/DeepLearning/)
+  - [Energy-Based Model](./MachineLearning/EnergyBasedModel)
 
 - [Multi-Modal Learning](./MultiModal/)
 
@@ -45,8 +45,7 @@ Free online book on Artificial Intelligence to help people learn AI easily.
 - [Training](./Training)
   * [Adversarial ML](./Training/AdversarialML/)
   * [Knowledge Distillation](./Training/KnowledgeDistillation/)
-
-- [Transfer Learning](./TransferLearning)
+  * [Transfer Learning](./Training/TransferLearning/)
 
 - [XAI](./XAI)
 
