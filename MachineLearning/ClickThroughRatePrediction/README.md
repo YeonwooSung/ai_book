@@ -25,7 +25,7 @@ The traditional categorical feature encoding methods, such as LE and TE, works f
 - CatBoost suggests the modified version of Target Encoding, which uses the random shuffle to prevent the overfitting
 - Also, there is a method that combines the XGBoost and K-Fold Target Encoding, which uses the K-fold CV to overcome the TE's overfitting issue
 
-### Korean explanation
+### 한글 설명
 
 Gradient Boosting 으로 기존 Click-Through Rate(CTR) Prediction Task 의 SOTA 알고리즘들을 압도하는 성능을 낼 수 있다. (CTR Prediction 모델은 광고/추천 등 다양한 분야에서 활용되고 있습니다.)
 다만, Gradient Boosting으로 기존 파라미터 기반의 SOTA 모델들을 압도하기 위해서는 Gradient Boosting을 단순히 적용하기만 해서는 안되고, 최신 categorical feature encoding method를 사용해야 한다.
