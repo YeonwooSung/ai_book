@@ -1,5 +1,23 @@
 # Feedback Prize - English Language Learning
 
+I was in top 11%, which was extremely close for the bronze medal. Everytime I joined the regression-based competitions in kaggle, I was faced with over fitting issues..
+
+## Things that high scorers did
+
+### 2nd place
+
+[original post](https://www.kaggle.com/competitions/feedback-prize-english-language-learning/discussion/369369)
+
+1. Use 15 folds for K-fold CV
+
+2. Use rank loss for training
+
+3. Add Pearson correlation loss boosted the score
+
+4. Use SVR model of the sklearn for ensemble
+
+5. Pseudo labeling with previous competition data (Feedback Prize 1 & 2)
+
 ## Did not worked
 
 ### SiFT
