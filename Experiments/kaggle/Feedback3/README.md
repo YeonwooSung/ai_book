@@ -31,6 +31,14 @@ We don’t even care about the values of the representations, only about the dis
 
 [PyTorch MarginRankingLoss](https://pytorch.org/docs/stable/generated/torch.nn.MarginRankingLoss.html)
 
+### 5th place
+
+[original post](https://www.kaggle.com/competitions/feedback-prize-english-language-learning/discussion/369578)
+
+1. Pseudo labeling with previous competition data (Feedback Prize 1 & 2)
+
+2. Ensembling various Transformer-based models
+
 ## Did not worked
 
 ### SiFT
