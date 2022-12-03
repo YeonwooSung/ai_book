@@ -4,6 +4,48 @@ I was in top 11%, which was extremely close for the bronze medal. Everytime I jo
 
 ## Things that high scorers did
 
+### 1st place
+
+[original post](https://www.kaggle.com/competitions/feedback-prize-english-language-learning/discussion/369457)
+
+1. Cross Validation with MultilabelStratifiedKFold
+
+2. Pseudo Labeling with Feedback 1 & 2 data, current competition's train data
+
+3. Use multiple types of pooling layers
+
+4. Use Optuna for weight tuning
+
+#### Pooling layers
+
+1. MeanPooling
+
+2. ConcatPooling
+
+3. WeightedLayerPooling
+
+4. GemPooling
+
+5. LSTMPooling
+
+#### Used models
+
+1. microsoft-deberta-v3-base
+
+2. deberta-v3-large
+
+3. deberta-v2-xlarge
+
+4. roberta-large
+
+5. distilbert-base-uncased
+
+Model Used for Embeddings and SVR
+
+    - "facebook/bart-large"
+    - "flax-sentence-embeddings/all_datasets_v3_roberta-large"
+    - "facebook/bart-large-mnli"
+
 ### 2nd place
 
 [original post](https://www.kaggle.com/competitions/feedback-prize-english-language-learning/discussion/369369)
