@@ -38,6 +38,10 @@ Gradient Boosting 으로 기존 Click-Through Rate(CTR) Prediction Task 의 SOTA
 
 더 자세한 내용은 [논문 저자의 블로그](https://hyperconnect.github.io/2021/04/26/hakuna-recsys-gb.html?fbclid=IwAR3P2SZKbdBhzUGBoKihERcLThqfaFSht1sTInW9zcircATs4AimhStQyFQ) 참조.
 
+## Handling delayed feedback in CTR prediction
+
+In [this paper](https://arxiv.org/abs/1907.06558), Ktena et. al. compared the training methodologies for training machine learning models for CTR prediction models with various loss functions. The best loss function that works well with delayed feedback data is the "Fake Negative weigted log loss" (FN weighted), which labels the all unlabeled (data with delayed feedback) data as negative, and make the loss function to help the model to learn the relationship between fake negative samples and positive samples so that the model could automatically give weights to the fake negative samples during training.
+
 ## References
 
 [1] Joonyoung Yi and Buru Chang. [EFFICIENT CLICK-THROUGH RATE PREDICTION FOR DEVELOPING COUNTRIES VIA TABULAR LEARNING](https://arxiv.org/abs/2104.07553)
@@ -45,3 +49,5 @@ Gradient Boosting 으로 기존 Click-Through Rate(CTR) Prediction Task 의 SOTA
 [2] Daniele Micci-Barreca. [A preprocessing scheme for high-cardinality categorical attributes in classification and prediction problems](https://dl.acm.org/doi/10.1145/507533.507538). ACM SIGKDD Explorations Newsletter, 3(1 :27–32, 2001.
 
 [3] Benedikt Schifferer, Gilberto Titericz, Chris Deotte, Christof Henkel, Kazuki Onodera, Jiwei Liu, Bojan Tunguz, Even Oldridge, Gabriel De Souza Pereira Moreira, and Ahmet Erdem. [Gpu accelerated feature engineering and training for recommender systems](https://dl.acm.org/doi/10.1145/3415959.3415996). In Proceedings of the Recommender Systems Challenge 2020, pp. 16–23. 2020.
+
+[4] Sofia Ira Ktena, Alykhan Tejani, Lucas Theis, Pranay Kumar Myana, Deepak Dilipkumar, Ferenc Huszar, Steven Yoo, Wenzhe Shi. [Addressing Delayed Feedback for Continuous Training with Neural Networks in CTR prediction](https://arxiv.org/abs/1907.06558)
