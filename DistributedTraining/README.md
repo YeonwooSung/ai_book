@@ -54,7 +54,9 @@ It implements everything that are described in [ZeRO paper [1]](https://arxiv.or
 
 ### Integrate Huggingface with Deepspeed
 
-[This page](https://huggingface.co/docs/transformers/main_classes/deepspeed?highlight=deepspeed#deepspeed-integration) contains the descriptions and codes for integrating the Deepspeed with Huggingface for distributed training with Huggingface models.
+[This page](https://huggingface.co/docs/transformers/main_classes/deepspeed) contains the descriptions and codes for integrating the Deepspeed with Huggingface for distributed training with Huggingface models.
+
+[This](./src/Huggingface_DeepSpeed_CLI.ipynb) is the example notebook of using Deepspeed with Huggingface.
 
 ### DeepSpeed ZeRO
 
