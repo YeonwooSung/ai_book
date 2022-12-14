@@ -1,5 +1,11 @@
 # Distributed Training
 
+Currently, one of the significant challenges of deep learning is it is a very time-consuming process. Designing a deep learning model requires design space exploration of a large number of hyper-parameters and processing big data. Thus, accelerating the training process is critical for our research and development. Distributed deep learning is one of the essential technologies in reducing training time.
+
+## AllReduce
+
+AllReduce is a communication pattern that is used in distributed training. It is a collective communication operation that aggregates gradients or other parameters from all workers, and then broadcasts the result to all workers. AllReduce is a key component of distributed training, and it is used in many distributed training frameworks such as PyTorch, Tensorflow, and Horovod.
+
 ## Data parallelism
 
 Data parallelism is when you use the same model for every thread, but feed it with different parts of the data. Basically, when you train your model with data parallelism with multiple workers, what you do is you copy the same models to all workers, and split the training data into N subsets, where N is the number of the workers. Then, you will assign each subset of training dataset to corresponding worker. The forward propagation method works same with single machine training, however, when you run the back propagation for data parallelism, you should make all workers to share the loss values that they calculated with all other workers, so that all models could learn from entire dataset.
@@ -40,7 +46,7 @@ Mixed strategy combines the strategies of 2 different distributed training metho
 
 [Fairscale](https://github.com/facebookresearch/fairscale) is a PyTorch extensions for high performance and large scale training.
 
-## Deepspeed
+## DeepSpeed
 
 [DeepSpeed](https://github.com/microsoft/DeepSpeed) is a deep learning optimization library that makes distributed training and inference easy, efficient, and effective.
 
@@ -50,7 +56,33 @@ It implements everything that are described in [ZeRO paper [1]](https://arxiv.or
 
 [This page](https://huggingface.co/docs/transformers/main_classes/deepspeed?highlight=deepspeed#deepspeed-integration) contains the descriptions and codes for integrating the Deepspeed with Huggingface for distributed training with Huggingface models.
 
-### Deepspeed with ZeRO
+### DeepSpeed ZeRO
+
+ZeRO is a set of optimizations that allow us to train trillion parameter models on a single machine. ZeRO is a set of optimizations that allow us to train trillion parameter models on a single machine. ZeRO is a set of optimizations that allow us to train trillion parameter models on a single machine. ZeRO is a set of optimizations that allow us to train trillion parameter models on a single machine.
+
+![ZeRO](./img/zero.png)
+
+As it's name describes, ZeRO (Zero Redundancy Optimizer) tries to zero out the redundancy of optimizer states and gradients. It is a set of optimizations that allow us to train trillion parameter models on a single machine.
+
+There are 3 optimizations in ZeRO.
+
+- ZeRO-Stage 1: Partition optimizer states across data parallel workers.
+- ZeRO-Stage 2: Partition optimizer states and gradients across data parallel workers.
+- ZeRO-Offload: Offload optimizer states and gradients to CPU memory.
+
+By using pure PyTorch DataParallel, you will face with CUDA Out of Memory error when you try to train a model with 1.4 billion parameters on a single GPU. However, by using ZeRO-Stage 1, you can train a model with 100 billion parameters on a single GPU. By using ZeRO-Stage 2, you can train a Data Parallel model with up to 200 billion parameters on a single GPU.
+
+1. ZeRO-Stage 1
+
+Partition optimizer states across data parallel workers. This is the most basic form of ZeRO. It only requires 1/N of the memory of the optimizer states, where N is the number of data parallel workers. By using ZeRO-Stage 1, we can train a model with 100 billion parameters on a single GPU.
+
+![ZeRO-Stage 1](./img/zero1.png)
+
+2. ZeRO-Stage 2
+
+Partition optimizer states and gradients across data parallel workers. This optimization is more memory efficient than ZeRO-Stage 1, as it requires 1/N of the memory of the optimizer states and gradients, where N is the number of data parallel workers. By using ZeRO-Stage 2, we can train a model with up to 200 billion parameters on a single GPU.
+
+![ZeRO-Stage 2](./img/zero2.png)
 
 [Github repor for example codes of using Deepspeed for training large models](https://github.com/microsoft/DeepSpeedExamples)
 
