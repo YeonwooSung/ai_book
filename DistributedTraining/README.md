@@ -58,6 +58,8 @@ It implements everything that are described in [ZeRO paper [1]](https://arxiv.or
 
 ### DeepSpeed ZeRO
 
+Before start writing this section, most of the writings in this section are heavily refered from [Microsoft's this blog post](https://www.microsoft.com/en-us/research/blog/zero-infinity-and-deepspeed-unlocking-unprecedented-model-scale-for-deep-learning-training/).
+
 ZeRO is a set of optimizations that allow us to train trillion parameter models on a single machine. ZeRO is a set of optimizations that allow us to train trillion parameter models on a single machine. ZeRO is a set of optimizations that allow us to train trillion parameter models on a single machine. ZeRO is a set of optimizations that allow us to train trillion parameter models on a single machine.
 
 ![ZeRO](./img/zero.png)
@@ -68,7 +70,9 @@ There are 3 optimizations in ZeRO.
 
 - ZeRO-Stage 1: Partition optimizer states across data parallel workers.
 - ZeRO-Stage 2: Partition optimizer states and gradients across data parallel workers.
-- ZeRO-Offload: Offload optimizer states and gradients to CPU memory.
+- ZeRO-Stage 3: The 16-bit model parameters are partitioned across the processes.
+
+Also, there is an awesome optimizer in ZeRO called ZeRO-Offload, which is an optimizer that offloads states and gradients to CPU memory.
 
 By using pure PyTorch DataParallel, you will face with CUDA Out of Memory error when you try to train a model with 1.4 billion parameters on a single GPU. However, by using ZeRO-Stage 1, you can train a model with 100 billion parameters on a single GPU. By using ZeRO-Stage 2, you can train a Data Parallel model with up to 200 billion parameters on a single GPU.
 
@@ -84,8 +88,28 @@ Partition optimizer states and gradients across data parallel workers. This opti
 
 ![ZeRO-Stage 2](./img/zero2.png)
 
+3. ZeRO-Stage 3
+
+The 16-bit model parameters are partitioned across the processes. ZeRO-3 will automatically collect and partition them during the forward and backward passes. In addition, ZeRO-3 includes the infinity offload engine to form [ZeRO-Infinity [2]](https://arxiv.org/abs/2104.07857), which can offload to both CPU and NVMe memory for huge memory savings.
+
+4. ZeRO-Offload
+
+ZeRO-Offload is a ZeRO optimization that offloads the optimizer memory and computation from the GPU to the host CPU. ZeRO-Offload enables large models with up to 13 billion parameters to be efficiently trained on a single GPU.
+
+For large model training, optimizers such as [Adam [3]](https://arxiv.org/abs/1412.6980), can consume a significant amount of GPU compute and memory. ZeRO-Offload reduces the GPU compute and memory requirements of such models by leveraging compute and memory resources on the host CPU to execute the optimizer. Furthermore, to prevent the optimizer from becoming a bottleneck, ZeRO-Offload uses DeepSpeed’s highly optimized CPU implementation of Adam called [DeepSpeedCPUAdam](https://github.com/microsoft/DeepSpeed/tree/master/deepspeed/ops/adam). DeepSpeedCPUAdam is 5X–7X faster than the standard PyTorch implementation.
+
+Models with over tens of billions of parameters require a significant amount of memory for storing activations; memory beyond what is available on a single GPU. To avoid running out of memory, we can use activation checkpointing, where instead of storing all activations, we only store them at specified intervals to save memory at the expense of activation re-computation in the backward pass. Activation checkpointing can reduce the activation memory footprint by orders of magnitude. However, for massive models, the memory requirement after activation checkpointing can still be too large to fit in GPU memory. To address this, we support activation checkpointing with CPU offload, allowing all the activation to reside in the CPU memory.
+
+In the original ZeRO, parameters for each layer are owned by a unique data-parallel process, requiring each rank to broadcast the parameters when needed. If these parameters are located in CPU memory, then they first must be copied to GPU before the broadcast operation. The copy bandwidth is therefore limited by a single PCIe link bandwidth. On the contrary, in ZeRO-Infinity, the parameters for each layer are partitioned across all data-parallel processes, and they use an all-gather operation instead of broadcast when needed. If parameters for each layer are located in GPU memory, this makes no difference—as both broadcast and all-gather have the same communication cost. But if they are located in CPU, this makes a significant difference as each data-parallel process only transfers its partition of the parameters to the GPU in parallel before all-gather is done. Therefore, ZeRO-Infinity can leverage the aggregate bandwidth across all PCIe links instead of being bottlenecked by a single PCIe link.
+
+![ZeRO-Offload](./img/zero_offload.png)
+
 [Github repor for example codes of using Deepspeed for training large models](https://github.com/microsoft/DeepSpeedExamples)
 
 ## References
 
 [1] Samyam Rajbhandari, Jeff Rasley, Olatunji Ruwase, Yuxiong He. [ZeRO: Memory Optimizations Toward Training Trillion Parameter Models](https://arxiv.org/abs/1910.02054)
+
+[2] Samyam Rajbhandari, Olatunji Ruwase, Jeff Rasley, Shaden Smith, Yuxiong He. [ZeRO-Infinity: Breaking the GPU Memory Wall for Extreme Scale Deep Learning](https://arxiv.org/abs/2104.07857)
+
+[3] Diederik P. Kingma, Jimmy Ba. [Adam: A Method for Stochastic Optimization](https://arxiv.org/abs/1412.6980)
