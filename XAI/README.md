@@ -39,9 +39,9 @@ The explanation model for instance x is the model g (e.g. linear regression mode
 
 ### Example (LIME)
 
-[example code (1) - applying LIME to image data](./CV/src/Apply_LIME_to_Image_data.ipynb)
+[example code (1) - applying LIME to image data](../CV/src/Apply_LIME_to_Image_data.ipynb)
 
-[example code (2) - applying LIME to text data](./Applying_LIME_to_text_data.ipynb)
+[example code (2) - applying LIME to text data](./src/Applying_LIME_to_text_data.ipynb)
 
 ## SHAP
 
