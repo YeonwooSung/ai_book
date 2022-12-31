@@ -34,6 +34,14 @@ OpenAI GPT-2 model was proposed in [Language Models are Unsupervised Multitask L
 
 Basically, there were no much difference between the architecture of GPT and GPT-2 model. Simply, they just increase the size of the GPT model to generate GPT-2, so that they could train the model with much bigger dataset (40GB of text dataset). However, the GPT-2 model actually outperformed the original GPT model. Here, we could find that increasing the size of the neural network actually helps the model to increase the performance.
 
+- LayerNorm was moved to the input of each sub-block, similar to a pre-activation residual network
+- an additional layer normalization was added after the final self-attention block.
+- modified initialization which accounts for the accumulation on the residual path with model depth is used.
+- the vocabulary is expanded to 50,257
+- increase the context size from 512 to 1024 tokens
+- larger batch-size of 512 is used
+- GPT-2 used 48 layers and d_model 1600 (vs. original 12 layers and d_model 768). ~1.542B params
+
 ### What is GPT-2
 
 The GPT-2 is basically the next word prediction feature of a keyboard app, but one that is much larger and more sophisticated than what your phone has. The GPT-2 was trained on a massive 40GB dataset called WebText that the OpenAI researchers crawled from the internet as part of the research effort. To compare in terms of storage size, the keyboard app I use, SwiftKey, takes up 78MBs of space. The smallest variant of the trained GPT-2, takes up 500MBs of storage to store all of its parameters. The largest GPT-2 variant is 13 times the size so it could take up more than 6.5 GBs of storage space.
@@ -199,6 +207,21 @@ The most special thing in the GPT-3 is that the size of the model is extremely h
 ![Size of the GPT-3](./imgs/size_of_gpt3.png)
 
 ![Performance Comparison by size of model](./imgs/performance_comparison_by_size_of_models.png)
+
+- GPT-3: 96 layers, 96 heads, with d_model of 12,288 (175B parameters).
+- GPT-1-like: 12 layers, 12 heads, d_model 768 (125M)
+- uses the same model and architecture as GPT-2, including the modified initialization, pre-normalization, and reversible tokenization described therein
+- uses alternating dense and locally banded sparse attention patterns in the layers of the transformer, similar to the Sparse Transformer
+- *Always* have the feedforward layer four times the size of the bottleneck layer, dff = 4 ∗ dmodel
+- all models use a context window of nctx = 2048 tokens.
+- Adam with β1 = 0.9, β2 = 0.95, and eps = 10−8
+- All models use weight decay of 0.1 to provide a small amount of regularization.
+    * (NOTE: GPT-1 used 0.01 I believe, see above)
+- clip the global norm of the gradient at 1.0
+- Linear LR warmup over the first 375 million tokens.
+    - Then use cosine decay for learning rate down to 10% of its value, over 260 billion tokens.
+- gradually increase the batch size linearly from a small value (32k tokens) to the full value over the first 4-12 billion tokens of training, depending on the model size.
+- full 2048-sized time context window is always used, with a special END OF DOCUMENT token delimiter
 
 #### Pretrained Language Models could be used for downstream tasks
 
