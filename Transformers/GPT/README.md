@@ -6,6 +6,22 @@ GPT is the Transformer based model that is proposed by OpenAI.
 
 OpenAI GPT model was proposed in [Improving Language Understanding by Generative Pre-Training [1]](./papers/gpt.pdf) by Alec Radford, Karthik Narasimhan, Tim Salimans and Ilya Sutskever. It’s a causal (unidirectional) transformer pre-trained using language modeling on a large corpus will long range dependencies, the Toronto Book Corpus.
 
+- GPT-1 largely follows the original transformer work
+- Authors trained a 12-layer decoder-only transformer with masked self-attention heads (768 dimensional states and 12 attention heads).
+    - For the position-wise feed-forward networks, 3072 dimensional inner states has been used.
+- Adam max learning rate of 2.5e-4. (later GPT-3 for this model size uses 6e-4)
+- LR decay: increased linearly from zero over the first 2000 updates and annealed to 0 using a cosine schedule
+- It has been trained for 100 epochs on minibatches of 64 randomly sampled, contiguous sequences of 512 tokens.
+- Since layernorm is used extensively throughout the model, a simple weight initialization of N(0, 0.02) was sufficient
+- bytepair encoding (BPE) vocabulary with 40,000 merges
+- residual, embedding, and attention dropouts with a rate of 0.1 for regularization.
+- modified version of L2 regularization proposed in (37), with w = 0.01 on all non bias or gain weights
+- For the activation function, we used the Gaussian Error Linear Unit (GELU).
+- We used learned position embeddings instead of the sinusoidal version proposed in the original work
+- For finetuning: We add dropout to the classifier with a rate of 0.1. learning rate of 6.25e-5 and a batchsize of 32. 3 epochs.
+    - A linear learning rate decay schedule with warmup over 0.2% of training. λ was set to 0.5.
+- GPT-1 model is 12 layers and d_model 768, ~117M params
+
 ### Tips for using GPT
 
 - GPT is a model with absolute position embeddings so it’s usually advised to pad the inputs on the right rather than the left.
