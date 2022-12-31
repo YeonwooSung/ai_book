@@ -251,6 +251,24 @@ Forth, the model does not "memorize". Basically, there is not concept of "memory
 
 Fifth, the GPT-3 just inference the result by predicting the next word. Clearly, this is weird, since humans do not learn things by predicting the next word. Due to this reason, many researchers criticized that the GPT-3 is not doing fancy things, it just predicts the next word statistically, and the reason why it works well is because it has huge amount of parameters.
 
+## ImageGPT
+
+[ImageGPT](https://openai.com/blog/image-gpt/) is a GPT-based model for image generation task.
+
+- When working with images, we pick the identity permutation πi = i for 1 ≤ i ≤ n, also known as raster order.
+- creates own 9-bit color palette by clustering (R, G, B) pixel values using k-means with k = 512.
+- The largest model, iGPT-XL, contains L = 60 layers and uses an embedding size of d = 3072 for a total of 6.8B parameters.
+- The next largest model, iGPT-L, is essentially identical to GPT-2 with L = 48 layers, but contains a slightly smaller embedding size of d = 1536 (vs 1600) for a total of 1.4B parameters.
+- uses the same model code as GPT-2, except that the model is initialized weights in the layerdependent fashion as in Sparse Transformer (Child et al., 2019) and zero-initialize all projections producing logits.
+- They also train iGPT-M, a 455M parameter model with L = 36 and d = 1024
+- iGPT-S, a 76M parameter model with L = 24 and d = 512 (assuming 8 attention heads)
+- When pre-training iGPT-XL, we use a batch size of 64 and train for 2M iterations, and for all other models we use a batch size of 128 and train for 1M iterations.
+- Adam with β1 = 0.9 and β2 = 0.95
+- The learning rate is warmed up for one epoch, and then decays to 0
+- did not use weight decay because applying a small weight decay of 0.01 did not change representation quality.
+- iGPT-S lr 0.003
+- No dropout is used.
+
 ## References
 
 [1] Alec Radford, Karthik Narasimhan, Tim Salimans, Ilya Sutskever. [Improving Language Understanding by Generative Pre-Training [1]](./papers/gpt.pdf)
@@ -264,3 +282,5 @@ Fifth, the GPT-3 just inference the result by predicting the next word. Clearly,
 [5] Jay Alammar. [The Illustrated GPT-2 (Visualizing Transformer Language Models)](http://jalammar.github.io/illustrated-gpt2/)
 
 [6] Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan, Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, Sandhini Agarwal, Ariel Herbert-Voss, Gretchen Krueger, Tom Henighan, Rewon Child, Aditya Ramesh, Daniel M. Ziegler, Jeffrey Wu, Clemens Winter, Christopher Hesse, Mark Chen, Eric Sigler, Mateusz Litwin, Scott Gray, Benjamin Chess, Jack Clark, Christopher Berner, Sam McCandlish, Alec Radford, Ilya Sutskever, Dario Amodei. [Language Models are Few-Shot Learners](./papers/gpt3.pdf)
+
+[7] OpenAI blog. [ImageGPT](https://openai.com/blog/image-gpt/)
