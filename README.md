@@ -38,6 +38,8 @@ Free online book on Artificial Intelligence to help people learn AI easily.
 
 - [Multi-Modal Learning](./MultiModal/)
 
+- [MLOps](./MLOps)
+
 - [NLP](./NLP)
 
 - [Self-Supervised Learning](./SelfSupervisedLearning)
