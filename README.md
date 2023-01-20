@@ -16,8 +16,8 @@ Free online book on Artificial Intelligence to help people learn AI easily.
   * [Hugging Face](./MachineLearning/DeepLearning/Frameworks/HuggingFace/)
 
 - [Experiments](./Experiments/)
-  - [CV](./Experiments/CV/)
-  - [Kaggle](./Experiments/kaggle/)
+  * [CV](./Experiments/CV/)
+  * [Kaggle](./Experiments/kaggle/)
     * [NBME - Score Clinical Patients Notes](./Experiments/kaggle/NBME/)
     * [U.S. Patent Phrase to Phrase Matching](./Experiments/kaggle/PPPM/)
 
@@ -29,16 +29,19 @@ Free online book on Artificial Intelligence to help people learn AI easily.
 - [Distributed Training](./DistributedTraining/)
 
 - [Generative Models](./GenerativeModels)
-  - [Deepfake](./GenerativeModels/Deepfake/)
-  - [GAN](./GenerativeModels/GAN/)
+  * [Deepfake](./GenerativeModels/Deepfake/)
+  * [GAN](./GenerativeModels/GAN/)
 
 - [Machine Learning](./MachineLearning)
-  - [Deep Learning](./MachineLearning/DeepLearning/)
-  - [Energy-Based Model](./MachineLearning/EnergyBasedModel)
+  * [Deep Learning](./MachineLearning/DeepLearning/)
+  * [Energy-Based Model](./MachineLearning/EnergyBasedModel)
 
 - [Multi-Modal Learning](./MultiModal/)
 
 - [MLOps](./MLOps)
+  * [AWS - SageMaker](./MLOps/AWS/SageMaker/)
+    * [SageMaker HuggingFace Toolkit](./MLOps/AWS/SageMaker/sagemaker-huggingface-toolkit/)
+    * [Serverless Inference](./MLOps/AWS/SageMaker/serverless-inference/)
 
 - [NLP](./NLP)
 
