@@ -21,3 +21,15 @@ First introduced in Show, Attend and Tell: Neural Image Caption Generation with 
 ## Hierarchical Attention
 
 First introduced in Hierarchical Attention Networks for Document Classification by Zichao Yang et al. The idea is to reflect the hierarchical structure that exists within documents. The original paper proposes a bottom-up approach by applying attention mechanisms sequentially at word- and sentence-levels, but a top-down approach (ex. word- and character-levels) is also applicable. Hence, this type of mechanisms is said to attend differentially to more and less important content when constructing the document representation.
+
+## Luong Attention vs Bahdanau Attention
+
+Luong attention used top hidden layer states in both of encoder and decoder. But Bahdanau attention take concatenation of forward and backward source hidden state (Top Hidden Layer).
+
+In Luong attention they get the decoder hidden state at time t. Then calculate attention scores and from that get the context vector which will be concatenated with hidden state of the decoder and then predict.
+
+But in the Bahdanau at time t we consider about t-1 hidden state of the decoder. Then we calculate alignment , context vectors as above. But then we concatenate this context with hidden state of the decoder at t-1. So before the softmax this concatenated vector goes inside a GRU.
+
+Luong has diffferent types of alignments. Bahdanau has only concat score alignment model.
+
+![Attention methods](./imgs/att_methods.png)
