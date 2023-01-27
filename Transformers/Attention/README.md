@@ -33,3 +33,5 @@ But in the Bahdanau at time t we consider about t-1 hidden state of the decoder.
 Luong has diffferent types of alignments. Bahdanau has only concat score alignment model.
 
 ![Attention methods](./imgs/att_methods.png)
+
+[PyTorch implementation of Luong Attention](./src/luong_attention.py)  [PyTorch implementation of Bahdanau Attention](./src/bahdanau_attention.py)
