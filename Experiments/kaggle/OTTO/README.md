@@ -6,3 +6,13 @@
 
 The goal of [this competition](https://www.kaggle.com/competitions/otto-recommender-system) is to predict e-commerce clicks, cart additions, and orders.
 You'll build a multi-objective recommender system based on previous events in a user session.
+
+## My Result
+
+Ranked on 194th (194 out of 2615) - bronze medal
+
+## What I did
+
+- Prediction with Co-visitation Matrix
+- Try Node2Vec for embedding
+- Blending multiple models' predictions
