@@ -43,6 +43,9 @@ Free online book on Artificial Intelligence to help people learn AI easily.
     * [SageMaker HuggingFace Toolkit](./MLOps/AWS/SageMaker/sagemaker-huggingface-toolkit/)
     * [Serverless Inference](./MLOps/AWS/SageMaker/serverless-inference/)
 
+- [ML for IoT](./ML_for_IoT/)
+  * [Bot-IoT](./ML_for_IoT/Bot-IoT/)
+
 - [NLP](./NLP)
 
 - [Self-Supervised Learning](./SelfSupervisedLearning)
