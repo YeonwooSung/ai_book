@@ -4,8 +4,6 @@
 
 Contents of the first few sections are copied from [hoya012's repository](https://github.com/hoya012/awesome-anomaly-detection). Credits to Hoseong Lee.
 
-한글 설명: [이상치 감지](https://research.sualab.com/introduction/review/2020/01/30/anomaly-detection-overview-1.html)
-
 ## Introduction
 
 ![Anomaly Detection](./imgs/anomaly_detection.png)
