@@ -17,9 +17,15 @@ Free online book on Artificial Intelligence to help people learn AI easily.
 
 - [Experiments](./Experiments/)
   * [CV](./Experiments/CV/)
+  * [HuggingFace](./Experiments/huggingface/)
+    * [diffusers](./Experiments/huggingface/diffusers/)
+    * [transformers](./Experiments/huggingface/transformers/)
+    * [Online Language Model Training](./Experiments/huggingface/olm/)
+  * [NLP](./Experiments/NLP/)
   * [Kaggle](./Experiments/kaggle/)
     * [NBME - Score Clinical Patients Notes](./Experiments/kaggle/NBME/)
     * [U.S. Patent Phrase to Phrase Matching](./Experiments/kaggle/PPPM/)
+  * [Xformers](./Experiments/xformers/)
 
 - [CV](./CV)
   * [Image Classification](./CV/CNN/)
