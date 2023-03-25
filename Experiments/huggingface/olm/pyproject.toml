@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "olm"
+version = "0.1.0"
+description = "Online Language Modelling Training Pipeline"
+authors = ["YeonwooSung <neos960518@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+torch = "^1.13.1"
+transformers = "^4.26.1"
+datasets = "^2.10.1"
+tensorboard = "^2.12.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
