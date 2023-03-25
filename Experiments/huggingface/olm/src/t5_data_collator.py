@@ -1,3 +1,8 @@
+'''
+The codes are adapted from the following sources:
+    <https://github.com/huggingface/olm-training>
+'''
+
 from typing import Dict, List
 import numpy as np
 from transformers import (

@@ -2,6 +2,12 @@
 
 This directory has the code for training models and tokenizers on the olm data, but it should work with any Hugging Face dataset with text examples. You can see the models for the OLM project here: https://huggingface.co/olm. They actually get better performance than their original static counterparts.
 
+## Credits
+
+This project was created by HuggingFace in [this Repo](https://github.com/huggingface/olm-training).
+
+Credits to [TristanThrush](https://github.com/TristanThrush) and [Muhtasham Oblokulov](https://github.com/Muhtasham).
+
 ## Creating a Tokenizer and Tokenizing Datasets 
 
 Here is an example of how to tokenize the datasets and train a tokenizer:
@@ -48,4 +54,8 @@ Also note:
 Our `train_model.py` script is compatible with DeepSpeed, enabling you to train big models (which do not fit on a single GPU) accross a cluster of nodes. Just specify `--deepspeed=<path to your deepspeed config>` in the `train_model.py` arguments to use it. An example of a DeepSpeed config that you could use is [here](https://huggingface.co/docs/transformers/main_classes/deepspeed#zero3-example)
 
 ## Details on compute
-To train both our OLM GPT2 and OLM BERT/RoBERTa, we use a machine with 16 40GB A100's and around 1 TB of disk space. Each model takes about 5-6 days to train with this machine.
+
+To train both the OLM GPT2 and OLM BERT/RoBERTa, a machine with 16 40GB A100's and around 1 TB of disk space was used.
+Each model takes about 5-6 days to train with this machine.
+
+You could use some smaller machines with smaller batch sizes, however as you might know, the smaller batch size can lead to a lot of variance in the training process, so you might need to train for longer to get good results.

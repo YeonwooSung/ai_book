@@ -1,3 +1,8 @@
+'''
+The codes are adapted from the following sources:
+    <https://github.com/huggingface/olm-training>
+'''
+
 import logging
 import sys
 from dataclasses import dataclass, field

@@ -1,3 +1,8 @@
+'''
+The codes are adapted from the following sources:
+    <https://github.com/huggingface/olm-training>
+'''
+
 from datasets import concatenate_datasets, load_dataset
 from transformers import AutoTokenizer
 from itertools import chain
