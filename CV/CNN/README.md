@@ -48,7 +48,7 @@ I implemented various CNN architectures with PyTorch. You could find all codes f
 
 [EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks [7]](https://arxiv.org/abs/1905.11946)
 
-### Table of Contents (EfficientNet)f
+### Table of Contents (EfficientNet)
 
 - [Overview](#overview)
 - [Single Dimension Model Scaling](#single-dimension-model-scaling)
