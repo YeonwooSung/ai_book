@@ -1,6 +1,6 @@
 # Notion AI Prompts
 
-This document refers to [this awesome blog post]()
+This document refers to [this awesome blog post](https://www.latent.space/p/reverse-prompt-eng)
 
 Below are a full list of Notion AI's prompt source (our best guess) as of Dec 28 2022.
 
