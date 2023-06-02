@@ -40,6 +40,7 @@ Free online book on Artificial Intelligence to help people learn AI easily.
 
 - [LLMs](./LLMs/)
   * [Prompt Engineering](./LLMs/prompt-engineering/)
+    * [Notion AI prompts (2022 ver)](./LLMs/prompt-engineering/src/notion-ai/notion_ai_2022.md)
 
 - [Machine Learning](./MachineLearning)
   * [Deep Learning](./MachineLearning/DeepLearning/)
