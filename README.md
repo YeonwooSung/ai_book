@@ -38,6 +38,9 @@ Free online book on Artificial Intelligence to help people learn AI easily.
   * [Deepfake](./GenerativeModels/Deepfake/)
   * [GAN](./GenerativeModels/GAN/)
 
+- [LLMs](./LLMs/)
+  * [Prompt Engineering](./LLMs/prompt-engineering/)
+
 - [Machine Learning](./MachineLearning)
   * [Deep Learning](./MachineLearning/DeepLearning/)
   * [Energy-Based Model](./MachineLearning/EnergyBasedModel)
