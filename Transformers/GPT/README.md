@@ -269,6 +269,10 @@ Fifth, the GPT-3 just inference the result by predicting the next word. Clearly,
 - iGPT-S lr 0.003
 - No dropout is used.
 
+## GPT from scratch
+
+To learn how GPT works from scrath, please read [this awesome blog post (GPT in 60 lines of Numpy)](https://jaykmody.com/blog/gpt-from-scratch/)
+
 ## References
 
 [1] Alec Radford, Karthik Narasimhan, Tim Salimans, Ilya Sutskever. [Improving Language Understanding by Generative Pre-Training [1]](./papers/gpt.pdf)
@@ -284,3 +288,5 @@ Fifth, the GPT-3 just inference the result by predicting the next word. Clearly,
 [6] Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan, Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, Sandhini Agarwal, Ariel Herbert-Voss, Gretchen Krueger, Tom Henighan, Rewon Child, Aditya Ramesh, Daniel M. Ziegler, Jeffrey Wu, Clemens Winter, Christopher Hesse, Mark Chen, Eric Sigler, Mateusz Litwin, Scott Gray, Benjamin Chess, Jack Clark, Christopher Berner, Sam McCandlish, Alec Radford, Ilya Sutskever, Dario Amodei. [Language Models are Few-Shot Learners](./papers/gpt3.pdf)
 
 [7] OpenAI blog. [ImageGPT](https://openai.com/blog/image-gpt/)
+
+[8] [GPT in 60 lines of numpy](https://jaykmody.com/blog/gpt-from-scratch/)
