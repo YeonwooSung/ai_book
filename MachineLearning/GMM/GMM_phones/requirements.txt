@@ -1,6 +1,6 @@
 pandas==0.22.0
 python-speech-features==0.6
-scipy==1.0.1
+scipy==1.10.0
 tables==3.4.4
 numpy==1.22.0
 scikit-learn==0.19.1
