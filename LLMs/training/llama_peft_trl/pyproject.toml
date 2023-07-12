@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "llama-peft-trl"
+version = "0.1.0"
+description = ""
+authors = ["YeonwooSung <neos960518@gmail.com>"]
+readme = "README.md"
+packages = [{include = "llama_peft_trl"}]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.13"
+torch = "^2.0.1"
+transformers = "^4.30.2"
+trl = "^0.4.6"
+peft = "^0.3.0"
+datasets = "^2.13.1"
+tokenizers = "^0.13.3"
+tiktoken = "^0.4.0"
+bitsandbytes = "^0.40.0.post4"
+scipy = "^1.11.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
