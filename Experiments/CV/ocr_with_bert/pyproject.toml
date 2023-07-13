@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "ocr-with-bert"
+version = "0.1.0"
+description = ""
+authors = ["YeonwooSung <neos960518@gmail.com>"]
+readme = "README.md"
+packages = [{include = "ocr_with_bert"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+torch = "^2.0.1"
+opencv-python = "^4.8.0.74"
+transformers = "^4.30.2"
+numpy = "^1.25.1"
+contextualspellcheck = "^0.4.3"
+spacy = "^3.6.0"
+pytesseract = "^0.3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
