@@ -1,0 +1,60 @@
+# PEARL 방향 목표 보상 환경 설정
+
+# 일반 환경 설정
+# ----------
+# 메타-트레이닝에 대한 태스크들의 수
+train_tasks: 2
+
+# 메타-태스팅에 대한 태스크들이 수
+test_tasks: 2
+
+# Latent context의 차원의 수
+latent_dim: 5
+
+# 은닉 유닛의 차원의 수
+hidden_dim: 300
+
+# PEARL 환경 설정
+# -------------
+pearl_params:
+    # 트레이닝에 대한 반복 수
+    num_iterations: 1000
+    # 매 반복에서 수집할 샘플된 태스크의 수
+    num_sample_tasks: 5
+    # 트레이닝 이전에 태스크마다 수집된 샘플 수
+    num_init_samples: 2000
+    # z ~ prior를 이용할 때 태스크마다 수집할 샘플 수
+    num_prior_samples: 1000
+    # 정책 네트워크의 학습에만 사용되고 인코더에는 사용되지 않는
+    # z ~ posterior를 이용할 때 태스크마다 수집할 샘플 수
+    num_posterior_samples: 1000
+    # 하나의 반복마다 취할 메타-그레디언트의 수
+    num_meta_grads: 1500
+    # 메타-배치의 샘플 수
+    meta_batch_size: 4
+    # Context 배치의 샘플 수
+    batch_size: 256
+    # 환경에 대한 최대 스텝 수
+    max_step: 200
+    # 최대 버퍼 사이즈
+    max_buffer_size: 1000000
+    # 조기 중단 조건의 수
+    num_stop_conditions: 3
+    # 조기 중단 조건에서 사용되는 목표 값
+    stop_goal: 1900
+
+# SAC 환경 설정
+# -----------
+sac_params:
+    # 할인률
+    gamma: 0.99
+    # 인코더 손실 함수에서 사용되는 KL divergence에 대한 가중치 값
+    kl_lambda: 0.1
+    # 정책 네트워크와 가치 네트워크의 배치에서 사용되는 샘플 수
+    batch_size: 256
+    # 행동 가치 함수 네트워크의 학습률
+    qf_lr: 0.0003
+    # 인코더 네트워크의 학습률
+    encoder_lr: 0.0003
+    # 정책 네트워크의 학습률
+    policy_lr: 0.0003
