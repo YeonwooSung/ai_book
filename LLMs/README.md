@@ -81,6 +81,128 @@ There is also a class of LLMs based on the concept known as knowledge retrieval 
 
 What's likely is that the future of LLMs will remain bright as the technology continues to evolve in ways that help improve human productivity.
 
+## Secret Sauce behind long context window
+
+### 1. Better Positional Encoding (i.e. ALiBi)
+
+One solution to train a large context length Transformer is to train it in two stages: train the base model on 2K tokens context length and then fine-tune on longer contexts (for example, 65K).
+But, it is well know that it wouldn’t work with the original Transformer architecture.
+Why?
+
+Because of the Positional Sinusoidal Encoding, which has no “extrapolation” ability.
+In the ALiBI[3](https://arxiv.org/abs/2108.12409) paper, the authors showed that Positional Sinusoidal Encoding is not robust to the extension of the context window during inference.
+After a few more tokens, the performance starts degrading.
+So, lack of “extrapolation” ability basically means you can’t use larger context lengths during inference/fine-tuning than during training.
+The term “extrapolation” and the comparison of various positional encodings are described in.
+
+In the original transformer paper, Positional Sinusoidal Embedding has summed with the tokens Embeddings at the bottom of the architecture to add information about the order of words.
+
+So, the first trick is to remove Positional Sinusoidal Embedding and replace it with another position embedding.
+It is applied in the attention head (not on the bottom of the network), and it biases query-key attention scores with a penalty that is proportional to their distance (before softmax).
+
+![alibi 1](./imgs/pe_softmax.png)
+
+This trick speeds up training.
+
+![alibi vis](./imgs/alibi_vis.png)
+
+When computing attention scores for each head, ALiBi, adds a constant bias (right) to each attention score (qi · kj , left).
+As in the unmodified attention sublayer, the softmax function is then applied to these scores, and the rest of the computation is unmodified.
+m is a head-specific scalar that is set and not learned throughout the training.
+
+### 2. Sparse Attention
+
+Not all tokens in the context of size 100K are relevant to each other.
+One way to reduce the number of computations is to consider only some tokens when calculating the attention scores.
+The goal of adding the sparsity is to make the computation to be linear to n, not quadratic.
+There are several approaches how to select the connection between tokens, and there is an excellent illustration of this in the [Google blog post](https://blog.research.google/2021/03/constructing-transformers-for-longer.html):
+
+![sparse attention](./imgs/sparse_attention.png)
+
+For example, the [Sliding Window Attention](https://paperswithcode.com/method/sliding-window-attention) (also called Local) employs a fixed-size window attention surrounding each token.
+In this attention pattern, given a fixed window size of w, each token attends to w/2 tokens on each side.
+The computational complexity of this pattern is O(n*w), which scales linearly with input sequence length n.
+To make it efficient, w should be small compared with n. The trick is that the attention information “flows” the whole context window within near tokens, approximating the full graph.
+
+The [BigBird](https://arxiv.org/abs/2007.14062) attention score method combines global, local, and random mechanisms.
+In the paper, the authors showed a crucial observation that there is an inherent tension between how few similarity scores one computes and the flow of information between different nodes (i.e., the ability of one token to influence each other).
+
+This trick speeds up both training and inference.
+
+### 3. FlashAttention — efficient implementation of the attention layer for GPU
+
+There are several computational operations in the attention layer are repeated over and over again:
+
+![Attention](./imgs/attention_.png)
+
+Remember the notion for P, S and O results; we will use it later.
+[FlashAttention](https://arxiv.org/abs/2205.14135) authors “fused” these operations: they implemented an attention layer algorithm that utilized the GPU memory efficiently and calculated the exact attention.
+
+For a GPU to make an operation, the input data must be present in the “quick” memory named SRAM.
+The data is copied from “slow” HBM memory to SRAM and returned back to HBM once the computation is over.
+SRAM memory is much faster than HBM but much smaller in size (20MB vs 40GB in A100 40GB GPU).
+
+![A100 GPU FlashAttention](./imgs/a100_gpu.png)
+
+So, accessing the HBM is an expensive operation.
+
+The main problem in the attention layer w.r.t the GPU memory utilization is “intermediate” multiplication results, P, S, and O, that are large in size (n, n).
+We need to save them to HBM and read them again between attention operations.
+Moving P, S, and O from HBM to SRAM back and forth is the bottleneck, which the authors solved in the paper.
+
+The main idea behind the FlashAttention algorithm is to split the inputs Q, K, and V matrices into blocks, loading these blocks from HBM to SRAM and then computing the attention output w.r.t those blocks.
+This procedure is named tiling.
+
+![flash attention vs traditional attention](./imgs/flash_attention.png)
+
+The “matrix multiplication” operation is already optimized for GPU. You might think of this FlashAttention algorithm as implementing the “attention layer” operation optimized for GPU. The authors “fused” operations of several multiplications and softmax with tiling and optimized HBM accessing.
+
+From PyTorch 2.0, the FlashAttention has been officially implemented in the PyTorch as built-in.
+
+### 4. Multi-Query Attention
+
+The original Multi-Head Attention (MHA) has a separate linear layer for K and V matrices in every head.
+
+During inference, the keys and values of previous tokens in the decoder are cached to prevent re-computing them, so GPU memory usage grows with each generated token.
+
+[Multi-Query attention (MQA)](https://arxiv.org/abs/2211.05102) is the optimization that suggests sharing weights across all attention heads when linearly projecting K and V, so we would need to keep only 2 matrices of size (n, k) and (n, v).
+A big model can have up to 96 heads (such as GPT-3) which means using MQA can save 96x the memory consumption of the key/value decoder cache.
+
+This optimization is especially beneficial when generating long texts. For example, having a large context length and asking for a long, meaningful analysis or summarization.
+
+The main advantage of this approach is the significant speeding up of the incremental attention scores calculation during inference. Training speed stays mostly the same. For example, PaLM is using it.
+
+### 5. Conditional Computation
+
+When d > n, the bottleneck in speed is not the attention layer but the feedforward and projection layers.
+A common approach to reducing the FLOPs is employing some form of conditional computation that avoids applying all model parameters to all tokens from the input sequence.
+
+In the Sparse Attention section, we’ve discussed that some tokens are more important than others.
+Following the same intuition, in the [CoLT5 paper](https://arxiv.org/abs/2303.09752), authors separated all feedforward and attention computations into two branches: heavy and light.
+Lite layers are applied to all tokens, and the heavy ones only to important ones.
+
+```
+“The light and heavy feedforward branches differ only in their hidden dimension, with the light branch having a smaller hidden dimension than the standard T5 feedforward layer and the heavy branch larger”.
+```
+
+This approach has been shown to outperform both the speed and accuracy of the existing [LongT5](https://arxiv.org/abs/2112.07916) model for extremely long sequences up to 64K input tokens.
+
+![LongT5](./imgs/long_t5.png)
+
+### 6. Large RAM GPUs
+
+It’s not a trick but a necessity.
+To fit a large context, you need large RAM in GPU, so people use 80GB A100 GPUs.
+
 ## References
 
-[1] [TechTarget: Definition of LLMs](https://www.techtarget.com/whatis/definition/large-language-model-LLM)
+- [1] [TechTarget: Definition of LLMs](https://www.techtarget.com/whatis/definition/large-language-model-LLM)
+- [2] [The Secret Sauce behind 100K context window in LLMs: all tricks in one place](https://blog.gopenai.com/how-to-speed-up-llms-and-use-100k-context-window-all-tricks-in-one-place-ffd40577b4c)
+- [3] [Train Short, Test Long: Attention with Linear Biases Enables Input Length Extrapolation](https://arxiv.org/abs/2108.12409)
+- [4] [Constructing Transformers For Longer Sequences with Sparse Attention Methods](https://blog.research.google/2021/03/constructing-transformers-for-longer.html)
+- [5] [Big Bird: Transformers for Longer Sequences](https://arxiv.org/abs/2007.14062)
+- [6] [FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness](https://arxiv.org/abs/2205.14135)
+- [7] [Paper Summary: FlashAttention](https://shreyansh26.github.io/post/2023-03-26_flash-attention/)
+- [8] [Efficiently Scaling Transformer Inference](https://arxiv.org/abs/2211.05102)
+- [9] [CoLT5: Faster Long-Range Transformers with Conditional Computation](https://arxiv.org/abs/2303.09752)
+- [10] [LongT5: Efficient Text-To-Text Transformer for Long Sequences](https://arxiv.org/abs/2112.07916)
