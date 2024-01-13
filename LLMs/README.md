@@ -194,6 +194,14 @@ This approach has been shown to outperform both the speed and accuracy of the ex
 It’s not a trick but a necessity.
 To fit a large context, you need large RAM in GPU, so people use 80GB A100 GPUs.
 
+## Training LLMs
+
+### LLaMA Pro
+
+[LLaMA Pro](https://arxiv.org/abs/2401.02415) paper proposes a new approach call "block expansion", which expands the Transformer blocks of the LLMs, and tune the expanded layers with a new data corpus.
+
+To see the python implementation of the block expansion in LLaMA Pro, please refer to [here](./training/block_expansion.py).
+
 ## References
 
 - [1] [TechTarget: Definition of LLMs](https://www.techtarget.com/whatis/definition/large-language-model-LLM)
