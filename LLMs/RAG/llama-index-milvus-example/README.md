@@ -1,4 +1,5 @@
 # llama-index-milvus-example
+
 Open AI APIs with Llama Index and Milvus Vector DB for RAG testing
 
 Welcome to my ridiculously simple web scraping -> Retrieval Augmented Generation (RAG) example. This example walks through:
@@ -21,5 +22,3 @@ Getting it going is fairly easy. I used `pipenv` but use whatever environment yo
 9. python query.py
 
 Once Milvus is installed you can open localhost:8000 to log into Attu to view your setup, collections, and browse the vector store.
-
-Enjoy!
