@@ -35,3 +35,22 @@ substantial syntactic information is captured in BERT's attention.
 - The paper stated that `[SEP]` is activated for "No-Op"
     - The paper stated that if the attention layer think there is no extremely important token for sentence embedding
     - Model just looks up the `[SEP]` token for no operation
+
+## Setting EOS tokens to tokenizer for better generation
+
+Codes below are extremely useful for `Better Generation`!
+
+```python
+print(llama_pipe.tokenizer.eos_token)
+print(llama_pipe.tokenizer.eos_token_id)
+print(llama_pipe.tokenizer.encode(llama_pipe.tokenizer.eos_token))
+print()
+print(llama_pipe.tokenizer.encode('`'))
+print(llama_pipe.tokenizer.encode('``'))
+print(llama_pipe.tokenizer.encode('```'))
+print(llama_pipe.tokenizer.encode('\n'))
+print(llama_pipe.tokenizer.encode('\n`'))
+print(llama_pipe.tokenizer.encode('\n``'))
+print(llama_pipe.tokenizer.encode('\n```'))
+print(llama_pipe.tokenizer.encode('a\n```'))
+```
