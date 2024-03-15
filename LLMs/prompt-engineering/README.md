@@ -62,5 +62,6 @@ The one who spilled out the prompts said he was able to make the prompt injectio
 - [TechTarget: Prompt Engineering](https://www.techtarget.com/searchenterpriseai/definition/prompt-engineering)
 - [GeekNews(NewsHada): GitHub Copilot Chat 전체 프롬프트 유출](https://news.hada.io/topic?id=9182)
 - [GeekNews(NewsHada): Prompt Injection이란 무엇인가](https://news.hada.io/topic?id=9199)
+- [GeekNews(NewsHada): 최신 GPT-4 시스템 프롬프트 (유출)](https://news.hada.io/topic?id=13326&utm_source=slack&utm_medium=bot&utm_campaign=T01QNFF90J1)
 - [Simon Willison's Weblog: Series: Prompt injection](https://simonwillison.net/series/prompt-injection/)
 - [Simon Willison's Weblog: Dual LLM pattern](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/)
