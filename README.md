@@ -60,10 +60,11 @@ Free online book on Artificial Intelligence to help people learn AI easily.
 
 - [Self-Supervised Learning](./SelfSupervisedLearning)
 
-- [Training](./Training)
-  * [Adversarial ML](./Training/AdversarialML/)
-  * [Knowledge Distillation](./Training/KnowledgeDistillation/)
-  * [Transfer Learning](./Training/TransferLearning/)
+- [TrainingTricks](./TrainingTricks)
+  * [Adversarial ML](./TrainingTricks/AdversarialML/)
+  * [Meta Pseudo Labeling](./TrainingTricks/meta_pseudo_label/)
+  * [Knowledge Distillation](./TrainingTricks/KnowledgeDistillation/)
+  * [Transfer Learning](./TrainingTricks/TransferLearning/)
 
 - [XAI](./XAI)
 
