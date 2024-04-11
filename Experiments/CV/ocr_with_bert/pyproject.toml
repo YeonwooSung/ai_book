@@ -10,7 +10,7 @@ packages = [{include = "ocr_with_bert"}]
 python = "^3.10"
 torch = "^2.0.1"
 opencv-python = "^4.8.0.74"
-transformers = "^4.37.2"
+transformers = "^4.38.0"
 numpy = "^1.25.1"
 contextualspellcheck = "^0.4.3"
 spacy = "^3.6.0"
