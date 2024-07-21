@@ -1,0 +1,6 @@
+dataset/
+splitted
+venv/
+.DS_Store
+
+*.pt
