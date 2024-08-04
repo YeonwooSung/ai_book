@@ -6,6 +6,7 @@ It is fully open-sourced.
 ## Llama 3
 
 - 8B and 70B models are available, and 400B model is coming soon (24.06.16)
+    - Llama 3.1 is published already, and 405B model is out (24.08.01)
 - The tokenizer of LLaMA 3 trained with 128K tokens, where LLaMA 2 tokenizer was trained with 32K tokens
 - Context window is 8192 tokens, where LLaMA 2 is 4096 tokens and LLaMA 1 is 2048 tokens
 - Uses grouped query attention, which is more efficient than the standard multi-head attention
