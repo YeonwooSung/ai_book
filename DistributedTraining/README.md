@@ -10,6 +10,40 @@ AllReduce is a communication pattern that is used in distributed training. It is
 
 Data parallelism is when you use the same model for every thread, but feed it with different parts of the data. Basically, when you train your model with data parallelism with multiple workers, what you do is you copy the same models to all workers, and split the training data into N subsets, where N is the number of the workers. Then, you will assign each subset of training dataset to corresponding worker. The forward propagation method works same with single machine training, however, when you run the back propagation for data parallelism, you should make all workers to share the loss values that they calculated with all other workers, so that all models could learn from entire dataset.
 
+### Sample codes
+
+You could run `ddp_script.py` for data parallelism training with PyTorch.
+
+```bash
+python ddp_script.py
+```
+
+If you have more than 2 GPUs, run `CUDA_VISIBLE_DEVICES=0,1 python DDP-script.py` if you have GPUs > 2.
+If you want to increase the dataset size for distributed training, uncomment the code below in the `ddp_script.py`.
+
+```python
+    # Uncomment these lines to increase the dataset size to run this script on up to 8 GPUs:
+    # factor = 4
+    # X_train = torch.cat([X_train + torch.randn_like(X_train) * 0.1 for _ in range(factor)])
+    # y_train = y_train.repeat(factor)
+    # X_test = torch.cat([X_test + torch.randn_like(X_test) * 0.1 for _ in range(factor)])
+    # y_test = y_test.repeat(factor)
+```
+
+You could also play with `torchrun_ddp_script.py` by running the below command.
+
+```bash
+torchrun --nproc_per_node=2 torchrun_ddp_script.py
+```
+
+### Distributed Training LLM
+
+You could run `ddp_opt_multigpu.py` for distributed training with PyTorch.
+
+```bash
+python ddp_opt_multigpu.py
+```
+
 ## Model parallelism
 
 Model parallelism is when you use the same data for every thread, but split the model among threads.
