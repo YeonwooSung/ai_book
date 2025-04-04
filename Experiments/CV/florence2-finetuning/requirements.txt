@@ -133,7 +133,7 @@ torchvision==0.18.1
 tornado==6.4.2
 tqdm==4.66.4
 traitlets==5.14.3
-transformers==4.50.0
+transformers==4.50.3
 triton==2.3.1
 types-python-dateutil==2.9.0.20240316
 typing-extensions==4.12.2

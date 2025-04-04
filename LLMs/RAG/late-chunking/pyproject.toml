@@ -3,12 +3,12 @@ name = "late_chunking"
 requires-python = "~=3.8"
 dependencies = [
     "jupyterlab==4.2.5",
-    "transformers==4.50.0",
+    "transformers==4.50.3",
     "torch==2.4.0",
     "mteb==1.14.20",
     "datasets==2.19.1",
     "llama-index-embeddings-huggingface==0.3.1",
-    "llama-index==0.12.4",
+    "llama-index==0.12.9",
     "click==8.1.7",
     "einops==0.6.1",
 ]
