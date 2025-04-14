@@ -1474,14 +1474,14 @@ telegram = ["requests"]
 
 [[package]]
 name = "transformers"
-version = "4.51.1"
+version = "4.51.2"
 description = "State-of-the-art Machine Learning for JAX, PyTorch and TensorFlow"
 optional = false
 python-versions = ">=3.9.0"
 groups = ["main"]
 files = [
-    {file = "transformers-4.51.1-py3-none-any.whl", hash = "sha256:c7038e216afb2a3e9b00dd12d87ad5e3af4c30895f70b28e92f65459eded0161"},
-    {file = "transformers-4.51.1.tar.gz", hash = "sha256:206ea0b75dfde142ed7495b911da76579dce6ea249cc3695fdd29a544a9e007b"},
+    {file = "transformers-4.51.2-py3-none-any.whl", hash = "sha256:5cb8259098b75ff4b5dd04533a318f7c4750d5307d9617e6d0593526432c404d"},
+    {file = "transformers-4.51.2.tar.gz", hash = "sha256:ed221c31581e97127cff5de775b05f05d19698b439d7d638ff445502a7f37331"},
 ]
 
 [package.dependencies]
@@ -1615,4 +1615,4 @@ colorama = {version = ">=0.4.6", markers = "sys_platform == \"win32\" and python
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.10"
-content-hash = "294cf17079d7d0bceb2cdafe8e4019896cfaae299e8e2f03cd81665e00a27610"
+content-hash = "823b9f462a3bb97f3dc319eb74a8db891871733ecd034fe2e812143cd33a010a"
